@@ -1,0 +1,8 @@
+{% assign cta_href = include.href | default: "#contatto" %}
+{% assign cta_text = include.text | default: "Fai il primo passo →" %}
+{% assign cta_note = include.note | default: "Chiamata gratuita, completamente riservata" %}
+
+<div class="inline-cta">
+    <a href="{% if cta_href contains '://' or cta_href contains '#' %}{{ cta_href }}{% else %}{{ cta_href | relative_url }}{% endif %}" class="btn"{% if cta_href contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ cta_text }}</a>
+    <p class="inline-cta-note">{{ cta_note }}</p>
+</div>

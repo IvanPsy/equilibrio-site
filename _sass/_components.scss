@@ -1,0 +1,516 @@
+// ═══════════════════════════════════════
+// Components — Buttons, Forms, CTAs
+// ═══════════════════════════════════════
+
+// --- Buttons ---
+
+.btn {
+    display: inline-block;
+    font-family: $font-body;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 16px 32px;
+    background-color: $color-accent;
+    color: $color-bg;
+    border: 2px solid $color-accent;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: transparent;
+        color: $color-accent;
+    }
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: $color-accent;
+
+    &:hover {
+        background-color: $color-accent;
+        color: $color-bg;
+    }
+}
+
+// --- Hero ---
+
+.hero-ctas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .btn-outline {
+        margin-top: 20px;
+    }
+}
+
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+    background-color: $color-bg;
+}
+
+.hero-eyebrow {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $color-accent;
+    margin-bottom: 24px;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 24px;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: $color-text-soft;
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+// --- Inline CTA ---
+
+.inline-cta {
+    text-align: center;
+    padding: 48px 0 0;
+
+    .btn {
+        font-size: 0.95rem;
+        padding: 14px 28px;
+    }
+}
+
+.inline-cta-note {
+    font-size: 0.85rem;
+    color: $color-muted;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+// --- Contact Form ---
+
+.contact-form {
+    max-width: 400px;
+    margin: 40px auto 0;
+    text-align: left;
+
+    label {
+        display: block;
+        font-weight: 500;
+        color: $color-text;
+        margin-bottom: 8px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 14px 16px;
+        font-family: $font-body;
+        font-size: 1rem;
+        border: 1px solid $color-border;
+        background-color: $color-bg;
+        color: $color-text;
+        margin-bottom: 20px;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+            outline: none;
+            border-color: $color-accent;
+        }
+    }
+
+    button {
+        width: 100%;
+        font-family: $font-body;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 16px 32px;
+        background-color: $color-accent;
+        color: $color-bg;
+        border: 2px solid $color-accent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: transparent;
+            color: $color-accent;
+        }
+    }
+}
+
+.form-note {
+    font-size: 0.85rem;
+    color: $color-muted;
+    text-align: center;
+    margin-top: 16px;
+}
+
+// --- Form Divider (oppure) ---
+
+.form-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 32px 0;
+    color: $color-muted;
+    font-size: 0.9rem;
+
+    &::before, &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background-color: $color-border;
+    }
+}
+
+// --- WhatsApp ---
+
+.btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    font-family: $font-body;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 16px 32px;
+    background-color: $color-wa;
+    color: #FFFFFF;
+    border: none;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $color-wa-hover;
+        color: #FFFFFF;
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        fill: #FFFFFF;
+    }
+}
+
+.whatsapp-note {
+    font-size: 0.85rem;
+    color: $color-muted;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background-color: $color-wa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    z-index: 9998;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+
+    &:hover { transform: scale(1.1); }
+
+    svg {
+        width: 28px;
+        height: 28px;
+        fill: #FFFFFF;
+    }
+}
+
+// --- Pillars (2x2 grid) ---
+
+.pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.pillar {
+    padding: 24px;
+    background-color: $color-bg;
+    border-left: 3px solid $color-muted;
+}
+
+.pillar-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: $color-text;
+}
+
+.pillar-text {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+// --- Steps (numbered) ---
+
+.step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    padding: 32px 0;
+    border-bottom: 1px solid $color-border;
+
+    &:last-child { border-bottom: none; }
+}
+
+.step-number {
+    font-family: $font-heading;
+    font-size: 3rem;
+    font-weight: 500;
+    color: $color-muted;
+    line-height: 1;
+}
+
+.step-title {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: $color-text;
+}
+
+.step-price {
+    font-weight: 600;
+    color: $color-accent;
+    margin-bottom: 8px;
+}
+
+.step-description {
+    margin-bottom: 0;
+}
+
+// --- FAQ ---
+
+.faq-item {
+    padding: 24px 0;
+    border-bottom: 1px solid $color-border;
+
+    &:last-child { border-bottom: none; }
+}
+
+.faq-question {
+    font-family: $font-heading;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: $color-text;
+}
+
+.faq-answer {
+    color: $color-text-soft;
+    margin-bottom: 0;
+}
+
+// --- CTA Final ---
+
+.cta-final {
+    background-color: $color-bg-alt;
+    text-align: center;
+    padding: 100px 0;
+
+    h2 { margin-bottom: 24px; }
+    p {
+        max-width: 600px;
+        margin: 0 auto 24px;
+    }
+}
+
+// --- Cookie Banner ---
+
+.cookie-banner {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $color-text;
+    color: $color-bg;
+    padding: 16px 24px;
+    z-index: 9999;
+    font-family: $font-body;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 -2px 12px rgba(0,0,0,.15);
+
+    a {
+        color: $color-gold;
+        text-decoration: underline;
+    }
+}
+
+.cookie-banner-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    p { margin: 0; flex: 1; min-width: 240px; }
+}
+
+.cookie-banner-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+
+    button {
+        background: $color-gold;
+        color: $color-text;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .cookie-deny {
+        background: transparent;
+        color: $color-bg;
+        border: 1px solid $color-accent;
+        font-weight: 400;
+    }
+}
+
+// --- Thank You ---
+
+.thank-you {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.thank-you-content {
+    max-width: 500px;
+}
+
+.thank-you-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 32px;
+    border-radius: 50%;
+    background-color: $color-bg-alt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 40px;
+        height: 40px;
+        stroke: $color-accent;
+    }
+}
+
+.thank-you h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    margin-bottom: 24px;
+}
+
+.thank-you p {
+    color: $color-text-soft;
+    margin-bottom: 1.5em;
+
+    &:last-of-type { margin-bottom: 40px; }
+}
+
+.back-link {
+    display: inline-block;
+    font-family: $font-body;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 14px 28px;
+    background-color: transparent;
+    color: $color-accent;
+    border: 2px solid $color-accent;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: $color-accent;
+        color: $color-bg;
+    }
+}
+
+// --- Page Header (mini) ---
+
+.page-header {
+    padding: 24px 0;
+    border-bottom: 1px solid $color-border;
+
+    p {
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: $color-accent;
+        margin: 0;
+    }
+}
+
+// --- Cross-link ---
+
+.cross-link {
+    background-color: $color-bg;
+    border-top: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+    padding: 40px 0;
+    text-align: center;
+
+    p {
+        font-size: 0.95rem;
+        color: $color-text-soft;
+        margin-bottom: 0;
+    }
+
+    a {
+        color: $color-accent;
+        font-weight: 500;
+    }
+}
+
+// ═══════════════════════════════════════
+// Responsive
+// ═══════════════════════════════════════
+
+@media (max-width: $bp-mobile) {
+    .hero {
+        min-height: auto;
+        padding: 48px 0;
+    }
+
+    .pillars { grid-template-columns: 1fr; }
+
+    .step {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .step-number { font-size: 2rem; }
+
+    .contact-form { max-width: 100%; }
+
+    .thank-you { padding: 48px 0; }
+    .thank-you-icon {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 24px;
+        svg { width: 32px; height: 32px; }
+    }
+}

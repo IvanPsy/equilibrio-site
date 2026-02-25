@@ -1,0 +1,41 @@
+// ═══════════════════════════════════════
+// Landing Page — Section backgrounds
+// ═══════════════════════════════════════
+
+.recognition { background-color: $color-bg-alt; }
+.pied { background-color: $color-bg; }
+.pied strong { color: $color-text; }
+.differentiator { background-color: $color-bg-alt; }
+.steps { background-color: $color-bg; }
+.about { background-color: $color-bg-alt; }
+.faq { background-color: $color-bg; }
+
+// DE-specific overrides
+.mechanism { background-color: $color-bg; }
+.mechanism strong { color: $color-text; }
+.assessment { background-color: $color-bg-alt; }
+
+// Cycle visual (DE page)
+.cycle-visual {
+    background-color: $color-bg-alt;
+    border-left: 3px solid $color-muted;
+    padding: 32px;
+    margin: 32px 0;
+    font-size: 0.95rem;
+    line-height: 2.2;
+
+    .cycle-step {
+        color: $color-text;
+        font-weight: 500;
+    }
+
+    .cycle-arrow {
+        color: $color-muted;
+        display: block;
+        padding-left: 8px;
+    }
+}
+
+@media (max-width: $bp-mobile) {
+    .cycle-visual { padding: 24px; }
+}

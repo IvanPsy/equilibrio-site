@@ -1,0 +1,9 @@
+{% assign wa_msg = include.message | default: site.whatsapp_msg_generic %}
+<div class="contact-form" style="margin-top: 0;">
+    <div class="form-divider">oppure</div>
+    <a href="https://wa.me/{{ site.whatsapp_number }}?text={{ wa_msg }}" class="btn-whatsapp" target="_blank" rel="noopener">
+        {% include icon-whatsapp.svg %}
+        Scrivimi su WhatsApp →
+    </a>
+    <p class="whatsapp-note">Chat diretta e riservata</p>
+</div>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    {% include head.html %}
+    {% if page.extra_css %}
+    <style>{{ page.extra_css }}</style>
+    {% endif %}
+</head>
+<body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
+
+{{ content }}
+
+{% unless page.hide_footer %}
+{% include footer.html %}
+{% endunless %}
+
+{% if page.whatsapp_float %}
+{% include whatsapp-float.html %}
+{% endif %}
+
+{% include cookie-banner.html %}
+
+{% if page.extra_js %}
+<script>{{ page.extra_js }}</script>
+{% endif %}
+
+</body>
+</html>

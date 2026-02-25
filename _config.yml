@@ -1,0 +1,35 @@
+title: "Equilibrio — Dr. Ivan Ferrero"
+url: "https://equilibrio.ivanferrero.it"
+baseurl: ""  # Metti "/nome-repo" per GitHub Pages project site, "" per dominio custom
+description: "Psicoterapia online specializzata: dipendenza da pornografia, PIED e disfunzione erettile psicogena."
+
+# Site identity
+author: "Dr. Ivan Ferrero"
+credentials: "Psicologo e Psicoterapeuta"
+piva: "09303360011"
+albo: "Albo Psicologi Lombardia n. 03/16571"
+
+# Contact
+whatsapp_number: "393334339624"
+whatsapp_msg_generic: "Ciao%2C%20vorrei%20informazioni%20sulla%20chiamata%20conoscitiva%20gratuita."
+whatsapp_msg_assessment: "Ciao%2C%20ho%20completato%20l%27assessment%20e%20vorrei%20ricevere%20una%20restituzione%20dei%20risultati."
+privacy_url: "https://ivanferrero.it/privacy-policy/"
+
+# Google Ads
+gtag_id: "AW-1004214539"
+
+# Build
+markdown: kramdown
+permalink: pretty
+sass:
+  style: compressed
+
+plugins:
+  - jekyll-seo-tag
+
+# Exclude from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .DS_Store

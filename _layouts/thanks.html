@@ -1,0 +1,22 @@
+---
+layout: default
+noindex: true
+---
+
+<section class="thank-you">
+    <div class="container">
+        <div class="thank-you-content">
+            <div class="thank-you-icon">
+                {% include icon-check.svg %}
+            </div>
+            
+            <h1>{{ page.heading | default: "Grazie per avermi contattato" }}</h1>
+            
+            <p>{{ page.message | default: "Ho ricevuto la tua richiesta. Ti ricontatterò entro 24-48 ore per fissare la chiamata conoscitiva gratuita." }}</p>
+            
+            <p>{{ page.sub_message | default: "Nel frattempo, se hai domande urgenti puoi scrivermi direttamente." }}</p>
+            
+            <a href="{{ page.back_url | default: '/' | relative_url }}" class="back-link">← {{ page.back_text | default: "Torna alla pagina principale" }}</a>
+        </div>
+    </div>
+</section>

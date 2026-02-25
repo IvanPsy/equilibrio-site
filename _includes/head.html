@@ -1,0 +1,38 @@
+<!-- Consent Mode v2 (default: denied for EEA/GDPR) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  if (localStorage.getItem('cookie_consent') === 'granted') {
+    gtag('consent', 'update', {
+      'ad_storage': 'granted',
+      'ad_user_data': 'granted',
+      'ad_personalization': 'granted',
+      'analytics_storage': 'granted'
+    });
+  }
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.gtag_id }}"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', '{{ site.gtag_id }}');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<meta name="description" content="{{ page.description | default: site.description }}">
+<title>{{ page.title }} — {{ site.author }}</title>
+{% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}">{% endif %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">

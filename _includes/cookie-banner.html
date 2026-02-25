@@ -1,0 +1,21 @@
+<div id="cookieBanner" class="cookie-banner">
+  <div class="cookie-banner-inner">
+    <p>Questo sito utilizza cookie tecnici e di misurazione per migliorare il servizio. <a href="{{ site.privacy_url }}" target="_blank" rel="noopener">Privacy Policy</a></p>
+    <div class="cookie-banner-actions">
+      <button onclick="acceptCookies()">Accetta</button>
+      <button onclick="denyCookies()" class="cookie-deny">Rifiuta</button>
+    </div>
+  </div>
+</div>
+<script>
+  function acceptCookies(){
+    gtag('consent','update',{'ad_storage':'granted','ad_user_data':'granted','ad_personalization':'granted','analytics_storage':'granted'});
+    localStorage.setItem('cookie_consent','granted');
+    document.getElementById('cookieBanner').style.display='none';
+  }
+  function denyCookies(){
+    localStorage.setItem('cookie_consent','denied');
+    document.getElementById('cookieBanner').style.display='none';
+  }
+  if(!localStorage.getItem('cookie_consent'))document.getElementById('cookieBanner').style.display='block';
+</script>
