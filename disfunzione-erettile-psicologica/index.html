@@ -3,6 +3,7 @@ layout: default
 title: "Disfunzione Erettile Psicologica"
 description: "Disfunzione erettile psicologica: valutazione diagnostica completa con psicoterapeuta specializzato. Identifichiamo le cause reali — ansia da prestazione, stress, abitudini digitali. Percorso online, riservato, basato su evidenze scientifiche."
 canonical: "https://equilibrio.ivanferrero.it/disfunzione-erettile-psicologica/"
+whatsapp_float: true
 ---
 
 <section class="hero">
@@ -10,7 +11,7 @@ canonical: "https://equilibrio.ivanferrero.it/disfunzione-erettile-psicologica/"
         <p class="hero-eyebrow">{{ site.author }} — Psicoterapeuta</p>
         <h1 class="hero-title">L'urologo dice che è tutto a posto. Ma il problema c'è.</h1>
         <p class="hero-subtitle">Se hai fatto controlli medici e ti hanno detto che fisicamente stai bene — eppure il tuo corpo non risponde come dovrebbe — il problema ha un nome preciso. E soprattutto, ha una soluzione.</p>
-        <a href="#contatto" class="btn">Richiedi una chiamata conoscitiva →</a>
+        <a href="{{ '/autovalutazione/' | relative_url }}" class="btn">Fai il test di autovalutazione →</a>
     </div>
 </section>
 
@@ -183,9 +184,11 @@ canonical: "https://equilibrio.ivanferrero.it/disfunzione-erettile-psicologica/"
     <div class="container">
         <h2>Il primo passo è capire cosa sta succedendo</h2>
         <p>Se sei qui, probabilmente hai già cercato risposte — dall'urologo, su internet, magari da solo di notte. E probabilmente non le hai trovate.</p>
-        <p>Questa chiamata è uno spazio per fare chiarezza. 15 minuti, senza giudizio, per capire insieme se quello che stai vivendo ha una spiegazione — e soprattutto una soluzione.</p>
-        <p>Non devi avere le idee chiare. Non devi aver già deciso nulla. Devi solo essere stanco di non sapere cosa sta succedendo.</p>
-        
-        {% include contact-form.html name="contatto-de" action="/disfunzione-erettile-psicologica/grazie/" hidden_fields='<input type="hidden" name="landing" value="disfunzione-erettile-psicologica" />' %}
+        <p>Il test di autovalutazione ti dà un primo quadro concreto della tua situazione. 14 domande, 6 minuti, risultato immediato — e se vuoi, puoi chiedermi una restituzione gratuita dei tuoi risultati.</p>
+        <div class="inline-cta">
+            <a href="{{ '/autovalutazione/' | relative_url }}" class="btn">Fai il test di autovalutazione →</a>
+            <p class="inline-cta-note">14 domande, 6 minuti, risultato immediato</p>
+        </div>
+        {% include whatsapp-inline.html %}
     </div>
 </section>

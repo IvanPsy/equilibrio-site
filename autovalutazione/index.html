@@ -2,6 +2,7 @@
 layout: default
 title: "Assessment Gratuito"
 description: "Assessment gratuito e riservato: 14 domande, 6 minuti. Ottieni un profilo personalizzato su 4 dimensioni con strumenti scientifici validati. Dr. Ivan Ferrero, psicoterapeuta."
+whatsapp_float: true
 ---
 
 <div class="page-header"><div class="container"><p>{{ site.author }} — Psicoterapeuta</p></div></div>
@@ -94,22 +95,22 @@ description: "Assessment gratuito e riservato: 14 domande, 6 minuti. Ottieni un 
 <section class="result-cta" id="resultCta" style="display:none;"><div class="container">
     <h2>Vuoi una restituzione approfondita dei tuoi risultati?</h2>
     <p>Questo report è un primo quadro. In una chiamata gratuita di 15 minuti ti restituisco una lettura professionale dei tuoi punteggi — cosa significano nel tuo caso specifico e, se vuoi, quali opzioni hai. Senza impegno.</p>
-    <form class="contact-form" name="assessment" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="{{ '/grazie/' | relative_url }}">
-        <input type="hidden" name="form-name" value="assessment" />
-        <input type="hidden" name="punteggio-bps" id="hidBPS" value="" />
-        <input type="hidden" name="punteggio-iief" id="hidIIEF" value="" />
-        <input type="hidden" name="punteggio-phq" id="hidPHQ" value="" />
-        <input type="hidden" name="punteggio-gad" id="hidGAD" value="" />
-        <input type="hidden" name="profilo" id="hidProfile" value="" />
-        <input type="hidden" name="risposte" id="hidAnswers" value="" />
-        <p style="display:none;"><label>Non compilare: <input name="bot-field" /></label></p>
-        <label for="nome">Il tuo nome</label>
-        <input type="text" id="nome" name="nome" required placeholder="Come preferisci essere chiamato" />
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required placeholder="Dove posso ricontattarti" />
-        <button type="submit">Richiedi la restituzione gratuita →</button>
-        <p class="form-note">Ti ricontatto entro 24-48 ore. I tuoi dati sono al sicuro.</p>
-    </form>
+    <div class="contact-form" id="googleFormCta">
+        <label for="ctaNome">Il tuo nome</label>
+        <input type="text" id="ctaNome" placeholder="Come preferisci essere chiamato" />
+        <label for="ctaCognome">Cognome</label>
+        <input type="text" id="ctaCognome" placeholder="Il tuo cognome" />
+        <label for="ctaQuando">Quando preferisci essere ricontattato?</label>
+        <select id="ctaQuando">
+            <option value="Mattina (9-12)">Mattina (9-12)</option>
+            <option value="Pomeriggio (14-18)">Pomeriggio (14-18)</option>
+            <option value="Sera (18-20)">Sera (18-20)</option>
+            <option value="Indifferente">Indifferente</option>
+        </select>
+        <p class="error-msg" id="ctaError" style="display:none;">Inserisci nome e cognome per continuare.</p>
+        <button type="button" class="btn-submit" id="btnSendResults" onclick="sendToGoogleForm()">Richiedi la restituzione gratuita →</button>
+        <p class="form-note">Verrai reindirizzato a un modulo sicuro per confermare l'invio dei tuoi risultati.</p>
+    </div>
     {% include whatsapp-inline.html message=site.whatsapp_msg_assessment %}
 </div></section>
 

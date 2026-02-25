@@ -1,6 +1,6 @@
-{% assign cta_href = include.href | default: "#contatto" %}
-{% assign cta_text = include.text | default: "Fai il primo passo →" %}
-{% assign cta_note = include.note | default: "Chiamata gratuita, completamente riservata" %}
+{% assign cta_href = include.href | default: "/autovalutazione/" %}
+{% assign cta_text = include.text | default: "Fai il test di autovalutazione →" %}
+{% assign cta_note = include.note | default: "14 domande, 6 minuti, risultato immediato" %}
 
 <div class="inline-cta">
     <a href="{% if cta_href contains '://' or cta_href contains '#' %}{{ cta_href }}{% else %}{{ cta_href | relative_url }}{% endif %}" class="btn"{% if cta_href contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ cta_text }}</a>

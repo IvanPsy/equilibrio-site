@@ -179,13 +179,12 @@ function calculateResults() {
 
   document.getElementById('reportBody').innerHTML = r;
 
-  /* ── Hidden fields per Netlify ── */
-  document.getElementById('hidBPS').value = bps;
-  document.getElementById('hidIIEF').value = iiefAllZero ? 'N/A' : iief;
-  document.getElementById('hidPHQ').value = phq;
-  document.getElementById('hidGAD').value = gad;
-  document.getElementById('hidProfile').value = 'BPS:' + bps + '(' + bpsBandLabel + ') IIEF:' + (iiefAllZero ? 'N/A' : iief) + '(' + iiefBandLabel + ') PHQ:' + phq + '(' + phqBandLabel + ') GAD:' + gad + '(' + gadBandLabel + ')';
-  document.getElementById('hidAnswers').value = JSON.stringify(answers);
+  /* ── Store data for Google Form ── */
+  window._assessmentData = {
+    punteggi: 'BPS:' + bps + '/20 IIEF:' + (iiefAllZero ? 'N/A' : iief + '/25') + ' PHQ:' + phq + '/6 GAD:' + gad + '/6',
+    risposte: JSON.stringify(answers),
+    profilo: 'BPS:' + bps + '(' + bpsBandLabel + ') IIEF:' + (iiefAllZero ? 'N/A' : iief) + '(' + iiefBandLabel + ') PHQ:' + phq + '(' + phqBandLabel + ') GAD:' + gad + '(' + gadBandLabel + ')'
+  };
 
   /* ── UI switch ── */
   document.getElementById('assessmentWrapper').style.display = 'none';
@@ -193,4 +192,26 @@ function calculateResults() {
   document.getElementById('resultCta').style.display = 'block';
   document.getElementById('progressBar').style.display = 'none';
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── Google Form redirect ── */
+function sendToGoogleForm() {
+  var nome = (document.getElementById('ctaNome').value || '').trim();
+  var cognome = (document.getElementById('ctaCognome').value || '').trim();
+  if (!nome || !cognome) {
+    document.getElementById('ctaError').style.display = 'block';
+    return;
+  }
+  document.getElementById('ctaError').style.display = 'none';
+  var quando = document.getElementById('ctaQuando').value;
+  var data = window._assessmentData || {};
+  var baseUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSffFim5dyVsnQRzrU5jARNDuFFkJAJSiwt3RJsAzDrm3Q5URg/viewform?usp=pp_url';
+  var url = baseUrl
+    + '&entry.505395232=' + encodeURIComponent(nome)
+    + '&entry.338654322=' + encodeURIComponent(cognome)
+    + '&entry.499482887=' + encodeURIComponent(quando)
+    + '&entry.1233088920=' + encodeURIComponent(data.punteggi || '')
+    + '&entry.95763489=' + encodeURIComponent(data.risposte || '')
+    + '&entry.981953841=' + encodeURIComponent(data.profilo || '');
+  window.open(url, '_blank', 'noopener');
 }

@@ -11,10 +11,8 @@ whatsapp_float: true
         <h1 class="hero-title">Quando qualcosa che sembrava innocuo ha preso il controllo</h1>
         <p class="hero-subtitle">Se il tuo rapporto con il digitale sta influenzando la tua vita intima, le tue relazioni, o semplicemente come ti senti con te stesso — non sei solo. E c'è un percorso strutturato per riprendere in mano la situazione.</p>
         <div class="hero-ctas">
-            <a href="https://forms.gle/13jddWpzJRrgWBcx5" target="_blank" rel="noopener" class="btn">Fai il test di autovalutazione →</a>
-            <p style="margin-top: 8px; font-size: 0.9rem; color: #A89B8C;">14 domande, 6 minuti, anonimo</p>
-            <a href="#contatto" class="btn btn-outline">Oppure prenota la chiamata gratuita →</a>
-            <p style="margin-top: 8px; font-size: 0.9rem; color: #A89B8C;">15 minuti, senza impegno</p>
+            <a href="{{ '/autovalutazione/' | relative_url }}" class="btn">Fai il test di autovalutazione →</a>
+            <p style="margin-top: 8px; font-size: 0.9rem; color: #A89B8C;">14 domande, 6 minuti, risultato immediato</p>
         </div>
     </div>
 </section>
@@ -39,7 +37,7 @@ whatsapp_float: true
         <p>Non è un difetto del tuo corpo. È un condizionamento — e come tutto ciò che si impara, <strong>si può dis-imparare</strong>. La disfunzione erettile da pornografia è tra le problematiche più responsive al trattamento, proprio perché la causa è comportamentale, non organica.</p>
         <p>Nel percorso che propongo, la valutazione diagnostica distingue con precisione le componenti psicologiche da quelle che richiedono un approfondimento medico. Così sai esattamente su cosa stai lavorando — e perché funziona.</p>
 
-        {% include inline-cta.html href="https://forms.gle/13jddWpzJRrgWBcx5" text="Fai il test di autovalutazione →" note="14 domande, 6 minuti, anonimo" %}
+        {% include inline-cta.html href="/autovalutazione/" text="Fai il test di autovalutazione →" note="14 domande, 6 minuti, risultato immediato" %}
     </div>
 </section>
 
@@ -70,7 +68,7 @@ whatsapp_float: true
             </div>
         </div>
 
-        {% include inline-cta.html text="Richiedi una chiamata conoscitiva →" note="15 minuti, gratuita e riservata" %}
+        {% include inline-cta.html href="/autovalutazione/" text="Fai il test di autovalutazione →" note="14 domande, 6 minuti, risultato immediato" %}
     </div>
 </section>
 
@@ -149,7 +147,7 @@ whatsapp_float: true
             <p class="faq-answer">Assolutamente. Sono tenuto al segreto professionale per legge. Non conservo dati non necessari, le videocall avvengono su piattaforme sicure, e nessuno saprà mai che hai fatto questo percorso — a meno che tu non decida di dirlo.</p>
         </div>
 
-        {% include inline-cta.html %}
+        {% include inline-cta.html href="/autovalutazione/" text="Fai il test di autovalutazione →" note="14 domande, 6 minuti, risultato immediato" %}
     </div>
 </section>
 
@@ -157,10 +155,11 @@ whatsapp_float: true
     <div class="container">
         <h2>Il primo passo è sempre il più difficile</h2>
         <p>Se sei qui, probabilmente hai già provato a gestire la situazione da solo. Forse hai promesso a te stesso che avresti smesso, che avresti cambiato. E forse quella promessa si è rotta più volte di quante vorresti ammettere.</p>
-        <p>Questa chiamata è uno spazio sicuro per fare il punto. 15 minuti, senza giudizio, per capire insieme cosa sta succedendo e se ha senso lavorarci.</p>
-        <p>Non devi avere le idee chiare. Non devi aver già deciso nulla. Devi solo essere disposto a parlarne.</p>
-        
-        {% include contact-form.html %}
+        <p>Il test di autovalutazione è un modo concreto per fare il punto. 14 domande, 6 minuti, risultato immediato — e se vuoi, puoi chiedermi una restituzione gratuita dei tuoi risultati.</p>
+        <div class="inline-cta">
+            <a href="{{ '/autovalutazione/' | relative_url }}" class="btn">Fai il test di autovalutazione →</a>
+            <p class="inline-cta-note">14 domande, 6 minuti, risultato immediato</p>
+        </div>
         {% include whatsapp-inline.html %}
     </div>
 </section>
