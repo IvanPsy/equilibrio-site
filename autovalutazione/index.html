@@ -146,4 +146,37 @@ whatsapp_float: true
     {% include whatsapp-inline.html message=site.whatsapp_msg_assessment %}
 </div></section>
 
+<!-- WhatsApp dinamico post-assessment (sovrascrive il link statico sopra) -->
+<script>
+(function() {
+  var waLink = document.querySelector('#resultCta .btn-whatsapp');
+  if (!waLink) return;
+  waLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    var data = window._assessmentData || {};
+    var nome = (document.getElementById('ctaNome').value || '').trim();
+    var cognome = (document.getElementById('ctaCognome').value || '').trim();
+    var email = (document.getElementById('ctaEmail').value || '').trim();
+    var eta = (document.getElementById('ctaEta').value || '').trim();
+    var relazione = document.getElementById('ctaRelazione').value;
+    var partner = document.getElementById('ctaPartner').value;
+    var aiuto = document.getElementById('ctaAiuto').value;
+    var perche = (document.getElementById('ctaPerche').value || '').trim();
+    var quando = document.getElementById('ctaQuando').value;
+    var msg = 'Ciao, ho completato l\'assessment su Equilibrio e vorrei richiedere una restituzione dei risultati.\n\n';
+    msg += '📊 *I miei risultati:*\n' + (data.profilo || 'Non disponibile') + '\n\n';
+    if (nome || cognome) msg += '*Nome:* ' + nome + ' ' + cognome + '\n';
+    if (email) msg += '*Email:* ' + email + '\n';
+    if (eta) msg += '*Età:* ' + eta + '\n';
+    if (relazione) msg += '*Stato relazionale:* ' + relazione + '\n';
+    if (partner) msg += '*Partner a conoscenza:* ' + partner + '\n';
+    if (aiuto) msg += '*Aiuto cercato:* ' + aiuto + '\n';
+    if (quando) msg += '*Quando contattarmi:* ' + quando + '\n';
+    if (perche) msg += '\n*Perché ora:*\n' + perche + '\n';
+    msg += '\n📋 *Punteggi:* ' + (data.punteggi || 'N/A');
+    window.open('https://wa.me/{{ site.whatsapp_number }}?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+})();
+</script>
+
 <script src="{{ '/assets/js/assessment.js' | relative_url }}"></script>
