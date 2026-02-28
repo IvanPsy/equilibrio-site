@@ -100,6 +100,8 @@ whatsapp_float: true
         <input type="text" id="ctaNome" placeholder="Come preferisci essere chiamato" />
         <label for="ctaCognome">Cognome</label>
         <input type="text" id="ctaCognome" placeholder="Il tuo cognome" />
+        <label for="ctaEmail">Email</label>
+        <input type="email" id="ctaEmail" placeholder="Dove posso ricontattarti" />
         <label for="ctaQuando">Quando preferisci essere ricontattato?</label>
         <select id="ctaQuando">
             <option value="Mattina (9-12)">Mattina (9-12)</option>
@@ -107,7 +109,37 @@ whatsapp_float: true
             <option value="Sera (18-20)">Sera (18-20)</option>
             <option value="Indifferente">Indifferente</option>
         </select>
-        <p class="error-msg" id="ctaError" style="display:none;">Inserisci nome e cognome per continuare.</p>
+        <label for="ctaEta">Età</label>
+        <input type="text" id="ctaEta" placeholder="La tua età" inputmode="numeric" />
+        <label for="ctaRelazione">Stato relazionale</label>
+        <select id="ctaRelazione">
+            <option value="">— Seleziona —</option>
+            <option value="Single">Single</option>
+            <option value="In relazione">In relazione</option>
+            <option value="Convivente">Convivente</option>
+            <option value="Sposato">Sposato</option>
+            <option value="Separato/Divorziato">Separato/Divorziato</option>
+            <option value="Vedovo">Vedovo</option>
+        </select>
+        <label for="ctaPartner">Il/la partner è a conoscenza dei comportamenti?</label>
+        <select id="ctaPartner">
+            <option value="">— Seleziona —</option>
+            <option value="Sì, completamente">Sì, completamente</option>
+            <option value="Parzialmente">Parzialmente</option>
+            <option value="No">No</option>
+            <option value="N/A (single)">N/A (single)</option>
+        </select>
+        <label for="ctaAiuto">Ha già cercato aiuto professionale per questo?</label>
+        <select id="ctaAiuto">
+            <option value="">— Seleziona —</option>
+            <option value="No, è la prima volta">No, è la prima volta</option>
+            <option value="Psicologo/psicoterapeuta">Psicologo/psicoterapeuta</option>
+            <option value="Medico">Medico</option>
+            <option value="Entrambi">Entrambi</option>
+        </select>
+        <label for="ctaPerche">Cosa l'ha spinta a cercare aiuto proprio ora?</label>
+        <textarea id="ctaPerche" rows="3" placeholder="Non c'è una risposta giusta — qualsiasi cosa ti venga in mente va bene"></textarea>
+        <p class="error-msg" id="ctaError" style="display:none;">Compila almeno nome, cognome e email per continuare.</p>
         <button type="button" class="btn-submit" id="btnSendResults" onclick="sendToGoogleForm()">Richiedi la restituzione gratuita →</button>
         <p class="form-note">Verrai reindirizzato a un modulo sicuro per confermare l'invio dei tuoi risultati.</p>
     </div>

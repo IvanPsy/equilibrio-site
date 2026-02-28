@@ -198,18 +198,30 @@ function calculateResults() {
 function sendToGoogleForm() {
   var nome = (document.getElementById('ctaNome').value || '').trim();
   var cognome = (document.getElementById('ctaCognome').value || '').trim();
-  if (!nome || !cognome) {
+  var email = (document.getElementById('ctaEmail').value || '').trim();
+  if (!nome || !cognome || !email) {
     document.getElementById('ctaError').style.display = 'block';
     return;
   }
   document.getElementById('ctaError').style.display = 'none';
   var quando = document.getElementById('ctaQuando').value;
+  var eta = (document.getElementById('ctaEta').value || '').trim();
+  var relazione = document.getElementById('ctaRelazione').value;
+  var partner = document.getElementById('ctaPartner').value;
+  var aiuto = document.getElementById('ctaAiuto').value;
+  var perche = (document.getElementById('ctaPerche').value || '').trim();
   var data = window._assessmentData || {};
   var baseUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSffFim5dyVsnQRzrU5jARNDuFFkJAJSiwt3RJsAzDrm3Q5URg/viewform?usp=pp_url';
   var url = baseUrl
     + '&entry.505395232=' + encodeURIComponent(nome)
     + '&entry.338654322=' + encodeURIComponent(cognome)
+    + '&entry.165398742=' + encodeURIComponent(email)
     + '&entry.499482887=' + encodeURIComponent(quando)
+    + '&entry.1864579851=' + encodeURIComponent(eta)
+    + '&entry.185807262=' + encodeURIComponent(relazione)
+    + '&entry.1932324362=' + encodeURIComponent(partner)
+    + '&entry.1212788347=' + encodeURIComponent(aiuto)
+    + '&entry.1497780864=' + encodeURIComponent(perche)
     + '&entry.1233088920=' + encodeURIComponent(data.punteggi || '')
     + '&entry.95763489=' + encodeURIComponent(data.risposte || '')
     + '&entry.981953841=' + encodeURIComponent(data.profilo || '');
