@@ -24,5 +24,22 @@
 <script>{{ page.extra_js }}</script>
 {% endif %}
 
+<!-- Conversion tracking: click WhatsApp -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href*="wa.me"], .btn-whatsapp, .whatsapp-float').forEach(function(el) {
+    el.addEventListener('click', function() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-1004214539/WHATSAPP_CLICK_LABEL',
+          'value': 5.0,
+          'currency': 'EUR'
+        });
+      }
+    });
+  });
+});
+</script>
+
 </body>
 </html>

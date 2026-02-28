@@ -186,6 +186,15 @@ function calculateResults() {
     profilo: 'BPS:' + bps + '(' + bpsBandLabel + ') IIEF:' + (iiefAllZero ? 'N/A' : iief) + '(' + iiefBandLabel + ') PHQ:' + phq + '(' + phqBandLabel + ') GAD:' + gad + '(' + gadBandLabel + ')'
   };
 
+  /* ── Conversion tracking: assessment completato ── */
+  if (typeof gtag === 'function') {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-1004214539/ASSESSMENT_COMPLETED_LABEL',
+      'value': 1.0,
+      'currency': 'EUR'
+    });
+  }
+
   /* ── UI switch ── */
   document.getElementById('assessmentWrapper').style.display = 'none';
   document.getElementById('resultsWrapper').style.display = 'block';
@@ -204,6 +213,16 @@ function sendToGoogleForm() {
     return;
   }
   document.getElementById('ctaError').style.display = 'none';
+
+  /* ── Conversion tracking: lead form inviato ── */
+  if (typeof gtag === 'function') {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-1004214539/LEAD_FORM_SUBMITTED_LABEL',
+      'value': 5.0,
+      'currency': 'EUR'
+    });
+  }
+
   var quando = document.getElementById('ctaQuando').value;
   var eta = (document.getElementById('ctaEta').value || '').trim();
   var relazione = document.getElementById('ctaRelazione').value;
