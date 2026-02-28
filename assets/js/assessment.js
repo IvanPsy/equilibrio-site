@@ -189,7 +189,7 @@ function calculateResults() {
   /* ── Conversion tracking: assessment completato ── */
   if (typeof gtag === 'function') {
     gtag('event', 'conversion', {
-      'send_to': 'AW-1004214539/ASSESSMENT_COMPLETED_LABEL',
+      'send_to': 'AW-1004214539/zENhCO3HzoAcEIuy7N4D',
       'value': 1.0,
       'currency': 'EUR'
     });
@@ -217,7 +217,7 @@ function sendToGoogleForm() {
   /* ── Conversion tracking: lead form inviato ── */
   if (typeof gtag === 'function') {
     gtag('event', 'conversion', {
-      'send_to': 'AW-1004214539/LEAD_FORM_SUBMITTED_LABEL',
+      'send_to': 'AW-1004214539/rjxoCOrHzoAcEIuy7N4D',
       'value': 5.0,
       'currency': 'EUR'
     });
