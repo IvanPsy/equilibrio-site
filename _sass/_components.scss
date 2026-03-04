@@ -2,6 +2,50 @@
 // Components — Buttons, Forms, CTAs
 // ═══════════════════════════════════════
 
+// --- Site Nav ---
+
+.site-nav {
+    padding: 20px 0;
+    border-bottom: 1px solid $color-border;
+    background-color: $color-bg;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.site-nav-brand {
+    font-family: $font-heading;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: $color-text;
+    text-decoration: none;
+
+    &:hover { color: $color-accent; }
+}
+
+.site-nav-links {
+    display: flex;
+    gap: 28px;
+
+    a {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: $color-text-soft;
+        text-decoration: none;
+        letter-spacing: 0.02em;
+
+        &:hover { color: $color-accent; }
+    }
+}
+
+@media (max-width: $bp-mobile) {
+    .site-nav-links { gap: 16px; }
+    .site-nav-links a { font-size: 0.85rem; }
+}
+
 // --- Buttons ---
 
 .btn {
