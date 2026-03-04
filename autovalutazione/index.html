@@ -153,6 +153,14 @@ whatsapp_float: true
   if (!waLink) return;
   waLink.addEventListener('click', function(e) {
     e.preventDefault();
+    /* ── Conversion tracking: lead restituzione (via WhatsApp) ── */
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-1004214539/rjxoCOrHzoAcEIuy7N4D',
+        'value': 5.0,
+        'currency': 'EUR'
+      });
+    }
     var data = window._assessmentData || {};
     var nome = (document.getElementById('ctaNome').value || '').trim();
     var cognome = (document.getElementById('ctaCognome').value || '').trim();
