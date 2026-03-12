@@ -142,8 +142,13 @@ whatsapp_float: true
         <p class="error-msg" id="ctaError" style="display:none;">Compila almeno nome, cognome e email per continuare.</p>
         <button type="button" class="btn-submit" id="btnSendResults" onclick="sendToGoogleForm()">Richiedi la restituzione gratuita →</button>
         <p class="form-note">Verrai reindirizzato a un modulo sicuro per confermare l'invio dei tuoi risultati.</p>
+        <div class="form-divider">oppure</div>
+        <a href="https://wa.me/{{ site.whatsapp_number }}?text={{ site.whatsapp_msg_assessment }}" class="btn-whatsapp" target="_blank" rel="noopener">
+            {% include icon-whatsapp.svg %}
+            Invia i tuoi risultati su WhatsApp →
+        </a>
+        <p class="whatsapp-note">Ricevi la restituzione direttamente in chat — riservata e immediata</p>
     </div>
-    {% include whatsapp-inline.html message=site.whatsapp_msg_assessment %}
 </div></section>
 
 <!-- WhatsApp dinamico post-assessment (sovrascrive il link statico sopra) -->
