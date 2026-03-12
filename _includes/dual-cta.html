@@ -1,0 +1,15 @@
+{% assign wa_msg = include.wa_message | default: site.whatsapp_msg_generic %}
+<div class="dual-cta">
+    <div class="dual-cta-primary">
+        <a href="https://wa.me/{{ site.whatsapp_number }}?text={{ wa_msg }}" class="btn-whatsapp" target="_blank" rel="noopener">
+            {% include icon-whatsapp.svg %}
+            Scrivimi — parliamone
+        </a>
+        <p class="dual-cta-note">Chat diretta e riservata. Rispondo personalmente.</p>
+    </div>
+    <div class="dual-cta-divider">oppure</div>
+    <div class="dual-cta-secondary">
+        <a href="{{ '/autovalutazione/' | relative_url }}" class="btn-outline">Fai prima il test di autovalutazione →</a>
+        <p class="dual-cta-note">14 domande, 6 minuti, risultato immediato</p>
+    </div>
+</div>

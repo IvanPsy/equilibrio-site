@@ -14,8 +14,6 @@ extra_css: |
   .article-content a { color: #6B5B4F; text-decoration: underline; }
   .article-content a:hover { color: #2D2A26; }
   .article-content .inline-cta .btn { color: #FDFCFA; text-decoration: none; }
-  .article-content .dual-cta .btn-whatsapp { border-radius: 0; }
-  .article-content .dual-cta .btn-outline { border-radius: 0; }
   .article-content .inline-cta .btn:hover { color: #6B5B4F; }
   .article-content .btn-whatsapp { color: #FFFFFF; text-decoration: none; }
   .article-content .btn-whatsapp:hover { color: #FFFFFF; }

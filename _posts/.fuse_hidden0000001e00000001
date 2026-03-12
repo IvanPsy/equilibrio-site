@@ -14,8 +14,6 @@ extra_css: |
   .article-content a { color: #6B5B4F; text-decoration: underline; }
   .article-content a:hover { color: #2D2A26; }
   .article-content .inline-cta .btn { color: #FDFCFA; text-decoration: none; }
-  .article-content .dual-cta .btn-whatsapp { border-radius: 0; }
-  .article-content .dual-cta .btn-outline { border-radius: 0; }
   .article-content .inline-cta .btn:hover { color: #6B5B4F; }
   .article-content .btn-whatsapp { color: #FFFFFF; text-decoration: none; }
   .article-content .btn-whatsapp:hover { color: #FFFFFF; }
@@ -78,7 +76,8 @@ Paura del prossimo incontro sessuale
 <p><em>Se si riconosce in quello che ha letto, può fare un primo passo concreto: ho preparato un questionario di autovalutazione gratuito e riservato (6 minuti) che utilizza gli stessi strumenti validati della ricerca scientifica internazionale. Non è una diagnosi — è una bussola per avere un primo quadro di come ansia e funzionamento sessuale interagiscono nel Suo caso. <a href="https://equilibrio.ivanferrero.it/autovalutazione/" target="_blank">Compili il questionario →</a></em></p>
 <p><em>Se preferisci parlarne direttamente, scrivimi su WhatsApp — trovi il bottone qui sotto. Nessun impegno, nessun giudizio: è solo un primo contatto per capire se posso aiutarti.</em></p>
         <div class="article-cta">
-            {% include dual-cta.html %}
+            {% include inline-cta.html %}
+            {% include whatsapp-inline.html %}
         </div>
         <div class="article-signature">
             <p><strong>Dott. Ivan Ferrero</strong></p>

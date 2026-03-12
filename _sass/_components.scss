@@ -279,6 +279,47 @@
     }
 }
 
+// --- Dual CTA (WhatsApp + Assessment) ---
+
+.dual-cta {
+    max-width: 400px;
+    margin: 40px auto 0;
+    text-align: center;
+}
+
+.dual-cta-note {
+    font-size: 0.85rem;
+    color: $color-muted;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.dual-cta-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 20px 0;
+    color: $color-muted;
+    font-size: 0.9rem;
+
+    &::before, &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background-color: $color-border;
+    }
+}
+
+.dual-cta-secondary {
+    .btn-outline {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 14px 28px;
+        font-size: 0.95rem;
+    }
+}
+
 // --- Pillars (2x2 grid) ---
 
 .pillars {

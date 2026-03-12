@@ -14,8 +14,6 @@ extra_css: |
   .article-content a { color: #6B5B4F; text-decoration: underline; }
   .article-content a:hover { color: #2D2A26; }
   .article-content .inline-cta .btn { color: #FDFCFA; text-decoration: none; }
-  .article-content .dual-cta .btn-whatsapp { border-radius: 0; }
-  .article-content .dual-cta .btn-outline { border-radius: 0; }
   .article-content .inline-cta .btn:hover { color: #6B5B4F; }
   .article-content .btn-whatsapp { color: #FFFFFF; text-decoration: none; }
   .article-content .btn-whatsapp:hover { color: #FFFFFF; }
@@ -61,7 +59,8 @@ extra_css: |
 <p>Il punto di arrivo non è necessariamente l'astinenza assoluta e permanente dalla pornografia (anche se per alcuni lo è). Per molti è un rapporto diverso con la sessualità: una capacità di scegliere che prima non c'era, una risposta sessuale ricalibrata verso stimoli reali, un repertorio di regolazione emotiva che non dipende più da un unico strumento.</p>
 
         <div class="article-cta">
-            {% include dual-cta.html %}
+            {% include inline-cta.html %}
+            {% include whatsapp-inline.html %}
         </div>
         <div class="article-signature">
             <p><strong>Dott. Ivan Ferrero</strong></p>

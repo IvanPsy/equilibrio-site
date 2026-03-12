@@ -14,8 +14,6 @@ extra_css: |
   .article-content a { color: #6B5B4F; text-decoration: underline; }
   .article-content a:hover { color: #2D2A26; }
   .article-content .inline-cta .btn { color: #FDFCFA; text-decoration: none; }
-  .article-content .dual-cta .btn-whatsapp { border-radius: 0; }
-  .article-content .dual-cta .btn-outline { border-radius: 0; }
   .article-content .inline-cta .btn:hover { color: #6B5B4F; }
   .article-content .btn-whatsapp { color: #FFFFFF; text-decoration: none; }
   .article-content .btn-whatsapp:hover { color: #FFFFFF; }
@@ -63,7 +61,8 @@ extra_css: |
 <p>I tempi di miglioramento dipendono dal quadro, ma nella mia esperienza clinica molti uomini nella Sua fascia d'età — proprio perché il condizionamento è più recente e la salute fisica è buona — rispondono bene e in tempi ragionevoli. La giovane età, che in questo momento sembra il problema ("non dovrebbe succedere a me"), è in realtà un vantaggio terapeutico: la neuroplasticità è ancora alta, i fattori organici sono assenti, e con il giusto intervento il recupero è concreto e duraturo.</p>
 
         <div class="article-cta">
-            {% include dual-cta.html %}
+            {% include inline-cta.html %}
+            {% include whatsapp-inline.html %}
         </div>
         <div class="article-signature">
             <p><strong>Dott. Ivan Ferrero</strong></p>
