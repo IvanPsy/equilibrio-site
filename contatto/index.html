@@ -1,0 +1,338 @@
+---
+layout: default
+title: "Parliamone — Primo Contatto Riservato"
+description: "Hai cercato aiuto per problemi legati alla pornografia o alla sessualità? Scrivimi su WhatsApp o prenota una chiamata gratuita di 15 minuti. Online, riservato, senza impegno."
+noindex: true
+whatsapp_float: false
+body_class: "page-contatto"
+extra_css: |
+  /* ============================
+     Landing Contatto Diretto
+     ============================ */
+
+  .contatto-hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 60px 0 40px;
+    background-color: #FDFCFA;
+  }
+
+  .contatto-hero .container {
+    max-width: 640px;
+  }
+
+  .contatto-hero-eyebrow {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6B5B4F;
+    margin-bottom: 20px;
+  }
+
+  .contatto-hero h1 {
+    font-family: 'Cormorant', Georgia, serif;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    font-weight: 500;
+    color: #2D2A26;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .contatto-hero-subtitle {
+    font-size: 1.1rem;
+    color: #5C5650;
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  /* --- Primary CTA block --- */
+  .cta-block {
+    max-width: 420px;
+  }
+
+  .cta-block .btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    font-family: 'Source Sans 3', -apple-system, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 18px 32px;
+    background-color: #25D366;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .cta-block .btn-whatsapp:hover {
+    background-color: #1DA851;
+    color: #FFFFFF;
+  }
+  .cta-block .btn-whatsapp svg {
+    width: 22px;
+    height: 22px;
+    fill: #FFFFFF;
+  }
+
+  .cta-whatsapp-note {
+    font-size: 0.85rem;
+    color: #A89B8C;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .cta-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 24px 0;
+    color: #A89B8C;
+    font-size: 0.9rem;
+  }
+  .cta-divider::before,
+  .cta-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #E8E4DF;
+  }
+
+  .cta-block .btn-call {
+    display: block;
+    width: 100%;
+    font-family: 'Source Sans 3', -apple-system, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 16px 32px;
+    background-color: transparent;
+    color: #6B5B4F;
+    border: 2px solid #6B5B4F;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .cta-block .btn-call:hover {
+    background-color: #6B5B4F;
+    color: #FDFCFA;
+  }
+
+  .cta-call-note {
+    font-size: 0.85rem;
+    color: #A89B8C;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* --- Privacy reassurance --- */
+  .privacy-reassurance {
+    margin-top: 32px;
+    padding: 16px 20px;
+    background-color: #F7F5F2;
+    border-left: 3px solid #E8E4DF;
+    font-size: 0.9rem;
+    color: #5C5650;
+    line-height: 1.5;
+  }
+  .privacy-reassurance strong {
+    color: #2D2A26;
+  }
+
+  /* --- Recognition section --- */
+  .contatto-recognition {
+    background-color: #F7F5F2;
+    padding: 80px 0;
+  }
+  .contatto-recognition .container {
+    max-width: 640px;
+  }
+  .contatto-recognition h2 {
+    font-family: 'Cormorant', Georgia, serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 500;
+    margin-bottom: 28px;
+    color: #2D2A26;
+  }
+  .contatto-recognition p {
+    color: #5C5650;
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+
+  .recognition-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+  }
+  .recognition-list li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 14px;
+    color: #5C5650;
+    line-height: 1.6;
+  }
+  .recognition-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #A89B8C;
+  }
+
+  /* --- Credentials --- */
+  .contatto-credentials {
+    padding: 60px 0;
+    background-color: #FDFCFA;
+  }
+  .contatto-credentials .container {
+    max-width: 640px;
+  }
+  .contatto-credentials p {
+    color: #5C5650;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .contatto-credentials strong {
+    color: #2D2A26;
+  }
+
+  /* --- Bottom CTA --- */
+  .contatto-cta-bottom {
+    background-color: #F7F5F2;
+    padding: 80px 0;
+    text-align: center;
+  }
+  .contatto-cta-bottom .container {
+    max-width: 640px;
+  }
+  .contatto-cta-bottom h2 {
+    font-family: 'Cormorant', Georgia, serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #2D2A26;
+  }
+  .contatto-cta-bottom p {
+    color: #5C5650;
+    margin-bottom: 28px;
+  }
+  .contatto-cta-bottom .cta-block {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .test-link {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid #E8E4DF;
+  }
+  .test-link p {
+    font-size: 0.9rem;
+    color: #A89B8C;
+  }
+  .test-link a {
+    color: #6B5B4F;
+    font-weight: 500;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 768px) {
+    .contatto-hero {
+      min-height: auto;
+      padding: 40px 0 32px;
+    }
+    .cta-block {
+      max-width: 100%;
+    }
+    .contatto-recognition,
+    .contatto-cta-bottom {
+      padding: 56px 0;
+    }
+    .contatto-credentials {
+      padding: 40px 0;
+    }
+  }
+---
+
+<section class="contatto-hero">
+    <div class="container">
+        <p class="contatto-hero-eyebrow">{{ site.author }} — Psicoterapeuta</p>
+        <h1>Sei qui perché qualcosa non funziona come vorresti. È il primo passo.</h1>
+        <p class="contatto-hero-subtitle">Non serve avere le idee chiare. Non serve sapere esattamente cosa hai. Basta voler capire — e io sono qui per aiutarti a farlo.</p>
+
+        <div class="cta-block">
+            <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20visto%20il%20tuo%20sito%20e%20vorrei%20capire%20se%20puoi%20aiutarmi." class="btn-whatsapp" target="_blank" rel="noopener">
+                {% include icon-whatsapp.svg %}
+                Scrivimi su WhatsApp — la prima risposta è gratuita
+            </a>
+            <p class="cta-whatsapp-note">Chat diretta e riservata. Rispondo personalmente.</p>
+
+            <div class="cta-divider">oppure</div>
+
+            <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20vorrei%20prenotare%20la%20chiamata%20conoscitiva%20gratuita%20di%2015%20minuti." class="btn-call">
+                Prenota 15 minuti gratuiti — senza impegno
+            </a>
+            <p class="cta-call-note">Videocall riservata. Mi racconti la situazione, io ti dico se posso aiutarti.</p>
+        </div>
+
+        <div class="privacy-reassurance">
+            <strong>Tutto resta tra noi.</strong> Sono tenuto al segreto professionale per legge. Nessun dato condiviso. Puoi scrivermi anche con un nome di fantasia.
+        </div>
+    </div>
+</section>
+
+<section class="contatto-recognition">
+    <div class="container">
+        <h2>Se ti riconosci in qualcuna di queste situazioni, sei nel posto giusto</h2>
+
+        <ul class="recognition-list">
+            <li>Il tuo corpo funziona con la pornografia, ma non con una persona reale</li>
+            <li>Hai provato a smettere con il porno, ma non ci riesci — e ogni volta ti senti peggio</li>
+            <li>L'ansia da prestazione sta rovinando la tua vita sessuale e la tua relazione</li>
+            <li>Hai una doppia vita digitale che nessuno conosce, e il peso sta diventando insostenibile</li>
+            <li>L'urologo dice che è tutto a posto, ma il problema c'è — e nessuno ti dà risposte concrete</li>
+        </ul>
+
+        <p>Non sei un caso raro. E non sei "rotto". Queste sono problematiche specifiche, con meccanismi precisi e soluzioni documentate dalla ricerca scientifica.</p>
+    </div>
+</section>
+
+<section class="contatto-credentials">
+    <div class="container">
+        <p><strong>Psicologo e psicoterapeuta con oltre 20 anni di esperienza.</strong> Mi sono specializzato nell'impatto del digitale sulla sessualità e sulle relazioni. Lavoro esclusivamente online, da tutta Italia, con un metodo strutturato e misurabile.</p>
+        <p>Non offro ascolto generico. Offro un percorso con valutazione diagnostica, fasi definite e risultati che puoi vedere — non solo sentire.</p>
+    </div>
+</section>
+
+<section class="contatto-cta-bottom">
+    <div class="container">
+        <h2>Quando sei pronto, io sono qui</h2>
+        <p>Nessuna pressione. Nessun impegno. Solo una conversazione riservata per capire se posso aiutarti.</p>
+
+        <div class="cta-block">
+            <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20visto%20il%20tuo%20sito%20e%20vorrei%20capire%20se%20puoi%20aiutarmi." class="btn-whatsapp" target="_blank" rel="noopener">
+                {% include icon-whatsapp.svg %}
+                Scrivimi su WhatsApp
+            </a>
+            <p class="cta-whatsapp-note">Chat diretta e riservata. Rispondo personalmente.</p>
+
+            <div class="cta-divider">oppure</div>
+
+            <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20vorrei%20prenotare%20la%20chiamata%20conoscitiva%20gratuita%20di%2015%20minuti." class="btn-call">
+                Prenota 15 minuti gratuiti
+            </a>
+        </div>
+
+        <div class="test-link">
+            <p>Preferisci prima un quadro anonimo della tua situazione? <a href="{{ '/autovalutazione/' | relative_url }}">Fai il test di autovalutazione →</a></p>
+        </div>
+    </div>
+</section>
