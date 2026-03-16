@@ -208,7 +208,7 @@ function sendToGoogleForm() {
   var nome = (document.getElementById('ctaNome').value || '').trim();
   var cognome = (document.getElementById('ctaCognome').value || '').trim();
   var email = (document.getElementById('ctaEmail').value || '').trim();
-  if (!nome || !cognome || !email) {
+  if (!email) {
     document.getElementById('ctaError').style.display = 'block';
     return;
   }

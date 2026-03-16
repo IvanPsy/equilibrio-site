@@ -93,61 +93,28 @@ whatsapp_float: true
 
 <!-- CTA -->
 <section class="result-cta" id="resultCta" style="display:none;"><div class="container">
-    <h2>Vuoi una restituzione approfondita dei tuoi risultati?</h2>
-    <p>Questo report è un primo quadro. In una chiamata gratuita di 15 minuti ti restituisco una lettura professionale dei tuoi punteggi — cosa significano nel tuo caso specifico e, se vuoi, quali opzioni hai. Senza impegno.</p>
+    <h2>Vuoi che ti commenti questi risultati?</h2>
+    <p>Lascia solo la tua email. Ti invio una restituzione personalizzata dei tuoi punteggi — cosa significano, cosa indicano nel tuo caso, e se ha senso approfondire. Nessun impegno, nessuna chiamata non richiesta.</p>
     <div class="contact-form" id="googleFormCta">
-        <label for="ctaNome">Il tuo nome</label>
-        <input type="text" id="ctaNome" placeholder="Come preferisci essere chiamato" />
-        <label for="ctaCognome">Cognome</label>
-        <input type="text" id="ctaCognome" placeholder="Il tuo cognome" />
-        <label for="ctaEmail">Email</label>
-        <input type="email" id="ctaEmail" placeholder="Dove posso ricontattarti" />
-        <label for="ctaQuando">Quando preferisci essere ricontattato?</label>
-        <select id="ctaQuando">
-            <option value="Mattina (9-12)">Mattina (9-12)</option>
-            <option value="Pomeriggio (14-18)">Pomeriggio (14-18)</option>
-            <option value="Sera (18-20)">Sera (18-20)</option>
-            <option value="Indifferente">Indifferente</option>
-        </select>
-        <label for="ctaEta">Età</label>
-        <input type="text" id="ctaEta" placeholder="La tua età" inputmode="numeric" />
-        <label for="ctaRelazione">Stato relazionale</label>
-        <select id="ctaRelazione">
-            <option value="">— Seleziona —</option>
-            <option value="Single">Single</option>
-            <option value="In relazione">In relazione</option>
-            <option value="Convivente">Convivente</option>
-            <option value="Sposato">Sposato</option>
-            <option value="Separato/Divorziato">Separato/Divorziato</option>
-            <option value="Vedovo">Vedovo</option>
-        </select>
-        <label for="ctaPartner">Il/la partner è a conoscenza dei comportamenti?</label>
-        <select id="ctaPartner">
-            <option value="">— Seleziona —</option>
-            <option value="Sì, completamente">Sì, completamente</option>
-            <option value="Parzialmente">Parzialmente</option>
-            <option value="No">No</option>
-            <option value="N/A (single)">N/A (single)</option>
-        </select>
-        <label for="ctaAiuto">Ha già cercato aiuto professionale per questo?</label>
-        <select id="ctaAiuto">
-            <option value="">— Seleziona —</option>
-            <option value="No, è la prima volta">No, è la prima volta</option>
-            <option value="Psicologo/psicoterapeuta">Psicologo/psicoterapeuta</option>
-            <option value="Medico">Medico</option>
-            <option value="Entrambi">Entrambi</option>
-        </select>
-        <label for="ctaPerche">Cosa l'ha spinta a cercare aiuto proprio ora?</label>
-        <textarea id="ctaPerche" rows="3" placeholder="Non c'è una risposta giusta — qualsiasi cosa ti venga in mente va bene"></textarea>
-        <p class="error-msg" id="ctaError" style="display:none;">Compila almeno nome, cognome e email per continuare.</p>
-        <button type="button" class="btn-submit" id="btnSendResults" onclick="sendToGoogleForm()">Richiedi la restituzione gratuita →</button>
-        <p class="form-note">Verrai reindirizzato a un modulo sicuro per confermare l'invio dei tuoi risultati.</p>
-        <div class="form-divider">oppure</div>
+        <label for="ctaEmail">La tua email</label>
+        <input type="email" id="ctaEmail" placeholder="Un indirizzo dove posso scriverti" />
+        <input type="hidden" id="ctaNome" value="" />
+        <input type="hidden" id="ctaCognome" value="" />
+        <input type="hidden" id="ctaQuando" value="Email" />
+        <input type="hidden" id="ctaEta" value="" />
+        <input type="hidden" id="ctaRelazione" value="" />
+        <input type="hidden" id="ctaPartner" value="" />
+        <input type="hidden" id="ctaAiuto" value="" />
+        <input type="hidden" id="ctaPerche" value="" />
+        <p class="error-msg" id="ctaError" style="display:none;">Inserisci un indirizzo email per continuare.</p>
+        <button type="button" class="btn-submit" id="btnSendResults" onclick="sendToGoogleForm()">Inviami i risultati commentati →</button>
+        <p class="form-note">Solo email. Niente telefonate, niente spam. Rispondo personalmente entro 24 ore.</p>
+        <div class="form-divider">oppure scrivimi direttamente</div>
         <a href="https://wa.me/{{ site.whatsapp_number }}?text={{ site.whatsapp_msg_assessment }}" class="btn-whatsapp" target="_blank" rel="noopener">
             {% include icon-whatsapp.svg %}
             Invia i tuoi risultati su WhatsApp →
         </a>
-        <p class="whatsapp-note">Ricevi la restituzione direttamente in chat — riservata e immediata</p>
+        <p class="whatsapp-note">Chat diretta e riservata</p>
     </div>
 </div></section>
 
