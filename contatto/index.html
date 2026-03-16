@@ -52,6 +52,34 @@ extra_css: |
     max-width: 420px;
   }
 
+  /* --- Assessment CTA (primary, low-barrier) --- */
+  .cta-block .btn-assessment {
+    display: block;
+    width: 100%;
+    font-family: 'Source Sans 3', -apple-system, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 18px 32px;
+    background-color: #2D2A26;
+    color: #FDFCFA;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .cta-block .btn-assessment:hover {
+    background-color: #6B5B4F;
+    color: #FDFCFA;
+  }
+  .cta-assessment-note {
+    font-size: 0.85rem;
+    color: #A89B8C;
+    text-align: center;
+    margin-top: 10px;
+  }
+
   .cta-block .btn-whatsapp {
     display: flex;
     align-items: center;
@@ -269,9 +297,16 @@ extra_css: |
         <p class="contatto-hero-subtitle">Non serve avere le idee chiare. Non serve sapere esattamente cosa hai. Basta voler capire — e io sono qui per aiutarti a farlo.</p>
 
         <div class="cta-block">
+            <a href="{{ '/autovalutazione/' | relative_url }}" class="btn-assessment">
+                Fai il test anonimo — scopri il tuo profilo
+            </a>
+            <p class="cta-assessment-note">14 domande, 6 minuti. Nessun dato trasmesso. Risultato immediato.</p>
+
+            <div class="cta-divider">oppure contattami direttamente</div>
+
             <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20visto%20il%20tuo%20sito%20e%20vorrei%20capire%20se%20puoi%20aiutarmi." class="btn-whatsapp" target="_blank" rel="noopener">
                 {% include icon-whatsapp.svg %}
-                Scrivimi su WhatsApp — parliamone
+                Scrivimi su WhatsApp
             </a>
             <p class="cta-whatsapp-note">Chat diretta e riservata. Rispondo personalmente.</p>
 
@@ -318,21 +353,18 @@ extra_css: |
         <p>Nessuna pressione. Nessun impegno. Solo una conversazione riservata per capire se posso aiutarti.</p>
 
         <div class="cta-block">
+            <a href="{{ '/autovalutazione/' | relative_url }}" class="btn-assessment">
+                Fai il test anonimo — 6 minuti
+            </a>
+            <p class="cta-assessment-note">Nessun dato trasmesso. Risultato immediato sul tuo dispositivo.</p>
+
+            <div class="cta-divider">oppure contattami</div>
+
             <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20visto%20il%20tuo%20sito%20e%20vorrei%20capire%20se%20puoi%20aiutarmi." class="btn-whatsapp" target="_blank" rel="noopener">
                 {% include icon-whatsapp.svg %}
                 Scrivimi su WhatsApp
             </a>
             <p class="cta-whatsapp-note">Chat diretta e riservata. Rispondo personalmente.</p>
-
-            <div class="cta-divider">oppure</div>
-
-            <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20vorrei%20prenotare%20la%20chiamata%20conoscitiva%20gratuita%20di%2015%20minuti." class="btn-call">
-                Prenota 15 minuti gratuiti
-            </a>
-        </div>
-
-        <div class="test-link">
-            <p>Preferisci prima un quadro anonimo della tua situazione? <a href="{{ '/autovalutazione/' | relative_url }}">Fai il test di autovalutazione →</a></p>
         </div>
     </div>
 </section>

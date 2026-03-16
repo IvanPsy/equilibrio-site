@@ -26,9 +26,10 @@
 <script>{{ page.extra_js }}</script>
 {% endif %}
 
-<!-- Conversion tracking: click WhatsApp -->
+<!-- Conversion tracking -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  /* Track: click WhatsApp (conversione primaria) */
   document.querySelectorAll('a[href*="wa.me"], .btn-whatsapp, .whatsapp-float').forEach(function(el) {
     el.addEventListener('click', function() {
       if (typeof gtag === 'function') {
@@ -36,6 +37,17 @@ document.addEventListener('DOMContentLoaded', function() {
           'send_to': 'AW-1004214539/GJyQCOjIzoAcEIuy7N4D',
           'value': 5.0,
           'currency': 'EUR'
+        });
+      }
+    });
+  });
+  /* Track: click Assessment (micro-conversione — inizio funnel) */
+  document.querySelectorAll('a.btn-assessment, a[href*="autovalutazione"]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'begin_assessment', {
+          'event_category': 'engagement',
+          'event_label': 'landing_to_assessment'
         });
       }
     });

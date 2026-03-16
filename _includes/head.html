@@ -1,4 +1,4 @@
-<!-- Consent Mode v2 (default: denied for EEA/GDPR) -->
+<!-- Consent Mode v2 Advanced (consente modeling conversioni anche senza consenso) -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -9,6 +9,11 @@
     'analytics_storage': 'denied',
     'wait_for_update': 500
   });
+  /* Con Advanced Consent Mode, Google riceve ping anonimi (senza cookie)
+     anche quando il consenso è negato. Questo permette il conversion modeling:
+     Google stima le conversioni totali basandosi sui dati di chi ha accettato.
+     Nessun cookie viene scritto senza consenso — è GDPR-compliant.
+     Ref: https://support.google.com/google-ads/answer/10000067 */
   if (localStorage.getItem('cookie_consent') === 'granted') {
     gtag('consent', 'update', {
       'ad_storage': 'granted',
@@ -23,6 +28,9 @@
 <script>
   gtag('js', new Date());
   gtag('config', '{{ site.gtag_id }}');
+  /* Advanced Consent Mode: passa gclid/dclid via URL per attribution senza cookie */
+  gtag('set', 'url_passthrough', true);
+  gtag('set', 'ads_data_redaction', true);
 </script>
 
 <meta charset="UTF-8">
