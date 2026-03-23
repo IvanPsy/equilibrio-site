@@ -31,6 +31,49 @@
   /* Advanced Consent Mode: passa gclid/dclid via URL per attribution senza cookie */
   gtag('set', 'url_passthrough', true);
   gtag('set', 'ads_data_redaction', true);
+
+  /* ── Preserva gclid/utm tra navigazioni interne ──
+     Quando ad_storage è denied, il cookie _gcl_aw non viene scritto.
+     url_passthrough funziona solo per link cross-domain.
+     Questo script salva i parametri di attribuzione in sessionStorage
+     e li ripristina sui link interni, garantendo che la conversione
+     venga attribuita al clic sull'annuncio anche senza cookie.
+     GDPR-safe: sessionStorage è effimero (muore con la tab). */
+  (function() {
+    var params = ['gclid', 'dclid', 'gclsrc', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    var url = new URL(window.location.href);
+    var stored = {};
+    /* Salva parametri dalla URL corrente */
+    params.forEach(function(p) {
+      var v = url.searchParams.get(p);
+      if (v) {
+        sessionStorage.setItem('_eq_' + p, v);
+        stored[p] = v;
+      }
+    });
+    /* Decora link interni con i parametri salvati */
+    document.addEventListener('DOMContentLoaded', function() {
+      var host = window.location.hostname;
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        try {
+          var linkUrl = new URL(a.href, window.location.origin);
+          /* Solo link interni, non WhatsApp/external */
+          if (linkUrl.hostname !== host) return;
+          if (linkUrl.href.indexOf('wa.me') !== -1) return;
+          if (linkUrl.href.indexOf('google.com/forms') !== -1) return;
+          var modified = false;
+          params.forEach(function(p) {
+            var v = stored[p] || sessionStorage.getItem('_eq_' + p);
+            if (v && !linkUrl.searchParams.has(p)) {
+              linkUrl.searchParams.set(p, v);
+              modified = true;
+            }
+          });
+          if (modified) a.href = linkUrl.toString();
+        } catch(e) { /* ignora link malformati */ }
+      });
+    });
+  })();
 </script>
 
 <meta charset="UTF-8">
