@@ -93,9 +93,15 @@ whatsapp_float: true
 
 <!-- CTA -->
 <section class="result-cta" id="resultCta" style="display:none;"><div class="container">
-    <h2>Vuoi che ti commenti questi risultati?</h2>
-    <p>Lascia solo la tua email. Ti invio una restituzione personalizzata dei tuoi punteggi — cosa significano, cosa indicano nel tuo caso, e se ha senso approfondire. Nessun impegno, nessuna chiamata non richiesta.</p>
+    <h2>Hai il tuo profilo. Il prossimo passo è parlarne.</h2>
+    <p>Scrivimi direttamente — nessun impegno, nessuna pressione. Mi racconti cosa stai vivendo, io ti dico se posso aiutarti e come. Rispondo personalmente entro 24 ore.</p>
     <div class="contact-form" id="googleFormCta">
+        <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20fatto%20il%20test%20sul%20tuo%20sito%20e%20vorrei%20capire%20meglio%20i%20miei%20risultati.%20Puoi%20aiutarmi%3F" class="btn-whatsapp" target="_blank" rel="noopener">
+            {% include icon-whatsapp.svg %}
+            Scrivimi su WhatsApp →
+        </a>
+        <p class="whatsapp-note">Chat diretta e riservata. Rispondo personalmente.</p>
+        <div class="form-divider">oppure ricevi i risultati commentati via email</div>
         <label for="ctaEmail">La tua email</label>
         <input type="email" id="ctaEmail" placeholder="Un indirizzo dove posso scriverti" />
         <input type="hidden" id="ctaNome" value="" />
@@ -108,13 +114,7 @@ whatsapp_float: true
         <input type="hidden" id="ctaPerche" value="" />
         <p class="error-msg" id="ctaError" style="display:none;">Inserisci un indirizzo email per continuare.</p>
         <button type="button" class="btn-submit" id="btnSendResults" onclick="sendToGoogleForm()">Inviami i risultati commentati →</button>
-        <p class="form-note">Solo email. Niente telefonate, niente spam. Rispondo personalmente entro 24 ore.</p>
-        <div class="form-divider">oppure scrivimi direttamente</div>
-        <a href="https://wa.me/{{ site.whatsapp_number }}?text={{ site.whatsapp_msg_assessment }}" class="btn-whatsapp" target="_blank" rel="noopener">
-            {% include icon-whatsapp.svg %}
-            Invia i tuoi risultati su WhatsApp →
-        </a>
-        <p class="whatsapp-note">Chat diretta e riservata</p>
+        <p class="form-note">Solo email. Niente telefonate, niente spam. Rispondo entro 24 ore.</p>
     </div>
 </div></section>
 
@@ -143,7 +143,7 @@ whatsapp_float: true
     var aiuto = document.getElementById('ctaAiuto').value;
     var perche = (document.getElementById('ctaPerche').value || '').trim();
     var quando = document.getElementById('ctaQuando').value;
-    var msg = 'Ciao, ho completato l\'assessment su Equilibrio e vorrei richiedere una restituzione dei risultati.\n\n';
+    var msg = 'Ciao, ho fatto il test sul tuo sito e vorrei capire meglio i miei risultati. Puoi aiutarmi?\n\n';
     msg += '📊 *I miei risultati:*\n' + (data.profilo || 'Non disponibile') + '\n\n';
     if (nome || cognome) msg += '*Nome:* ' + nome + ' ' + cognome + '\n';
     if (email) msg += '*Email:* ' + email + '\n';

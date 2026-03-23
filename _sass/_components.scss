@@ -382,6 +382,79 @@
     margin-bottom: 0;
 }
 
+// --- About (with photo + credentials) ---
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.about-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 15%;
+    border: 3px solid $color-border;
+}
+
+.about-body {
+    p { margin-bottom: 16px; }
+}
+
+.about-credentials {
+    margin-top: 28px;
+    padding: 24px;
+    background-color: $color-bg-alt;
+    border-left: 3px solid $color-accent;
+}
+
+.about-credentials-title {
+    font-family: $font-heading;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $color-text;
+    margin-bottom: 12px;
+}
+
+.about-credential-item {
+    font-size: 0.9rem;
+    color: $color-text-soft;
+    margin-bottom: 6px;
+    padding-left: 16px;
+    position: relative;
+
+    &::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: $color-muted;
+    }
+
+    &:last-child { margin-bottom: 0; }
+}
+
+@media (max-width: $bp-mobile) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        justify-items: center;
+    }
+
+    .about-photo {
+        width: 160px;
+        height: 160px;
+    }
+
+    .about-body { text-align: left; }
+
+    .about-credentials {
+        padding: 20px;
+    }
+}
+
 // --- FAQ ---
 
 .faq-item {
