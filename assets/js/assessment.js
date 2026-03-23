@@ -214,8 +214,14 @@ function sendToGoogleForm() {
   }
   document.getElementById('ctaError').style.display = 'none';
 
-  /* ── Conversion tracking: lead form inviato ── */
+  /* ── Enhanced Conversions: passa email per attribuzione ──
+     Google hasha automaticamente l'email prima di inviarla.
+     Questo permette di attribuire la conversione al clic sull'annuncio
+     anche quando il gclid si perde o il cookie consent è negato. */
   if (typeof gtag === 'function') {
+    gtag('set', 'user_data', {
+      'email': email
+    });
     gtag('event', 'conversion', {
       'send_to': 'AW-1004214539/rjxoCOrHzoAcEIuy7N4D',
       'value': 5.0,
