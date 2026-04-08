@@ -11,7 +11,7 @@ whatsapp_float: true
         <p class="hero-eyebrow">{{ site.author }} — Psicoterapeuta</p>
         <h1 class="hero-title">L'urologo dice che è tutto a posto. Ma il problema c'è.</h1>
         <p class="hero-subtitle">Se hai fatto controlli medici e ti hanno detto che fisicamente stai bene — eppure il tuo corpo non risponde come dovrebbe — il problema ha un nome preciso. E soprattutto, ha una soluzione.</p>
-        <a href="{{ '/autovalutazione/' | relative_url }}" class="btn">Fai il test di autovalutazione →</a>
+        <a href="#contatto" class="btn">Parliamone — è gratuito e riservato →</a>
     </div>
 </section>
 
@@ -106,16 +106,14 @@ whatsapp_float: true
             <div class="step-number">2</div>
             <div class="step-content">
                 <h3 class="step-title">Valutazione diagnostica</h3>
-                <p class="step-price">€230</p>
                 <p class="step-description">Una seduta approfondita con batteria di questionari validati scientificamente. Ricevi un report clinico dettagliato con l'analisi delle cause specifiche e un piano di intervento personalizzato. È il fondamento di tutto il lavoro successivo.</p>
             </div>
         </div>
-        
+
         <div class="step">
             <div class="step-number">3</div>
             <div class="step-content">
                 <h3 class="step-title">Percorso terapeutico</h3>
-                <p class="step-price">€120/seduta</p>
                 <p class="step-description">Sedute settimanali online, con flessibilità di orario. Durata tipica: 4-6 mesi. Fasi strutturate, progressi documentati, rivalutazioni periodiche.</p>
             </div>
         </div>
@@ -184,7 +182,23 @@ whatsapp_float: true
     <div class="container">
         <h2>Il primo passo è capire cosa sta succedendo</h2>
         <p>Se sei qui, probabilmente hai già cercato risposte — dall'urologo, su internet, magari da solo di notte. E probabilmente non le hai trovate.</p>
-        <p>Puoi scrivermi direttamente, oppure fare prima il test di autovalutazione per avere un quadro della tua situazione.</p>
-        {% include dual-cta.html %}
+        <p>Scrivimi — mi racconti la tua situazione, io ti dico se posso aiutarti e come. Nessun impegno, nessuna pressione.</p>
+
+        {% include contact-form.html source="Landing DE Psicologica" %}
+
+        <div class="cta-alternatives">
+            <div class="cta-divider-line"><span>oppure contattami direttamente</span></div>
+
+            <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20visto%20la%20pagina%20sulla%20disfunzione%20erettile%20psicologica%20e%20vorrei%20capire%20se%20puoi%20aiutarmi." class="btn-whatsapp-secondary" target="_blank" rel="noopener">
+                {% include icon-whatsapp.svg %}
+                Scrivimi su WhatsApp
+            </a>
+            <p class="cta-note-small">Chat diretta e riservata. Rispondo personalmente.</p>
+
+            <div class="cta-divider-line"><span>vuoi prima capire meglio la tua situazione?</span></div>
+
+            <a href="{{ '/autovalutazione-de/' | relative_url }}" class="btn-outline-small">Fai il check-up rapido — 5 domande, 2 minuti →</a>
+            <p class="cta-note-small">Anonimo. Risultato immediato sul tuo dispositivo.</p>
+        </div>
     </div>
 </section>

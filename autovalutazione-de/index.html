@@ -1,0 +1,314 @@
+---
+layout: default
+title: "Check-up Rapido: Funzionamento Sessuale | Dr. Ivan Ferrero"
+description: "5 domande, 2 minuti. Scopri se le tue difficoltà erettili hanno una componente psicologica. Anonimo, risultato immediato. Strumento clinico validato (IIEF-5)."
+canonical: "https://equilibrio.ivanferrero.it/autovalutazione-de/"
+whatsapp_float: true
+extra_css: |
+  /* ============================
+     Mini-Assessment DE (IIEF-5)
+     ============================ */
+  .mini-intro { padding: 60px 0 40px; background-color: #FDFCFA; }
+  .mini-intro .container { max-width: 640px; }
+  .mini-intro h1 { font-family: 'Cormorant', Georgia, serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 500; color: #2D2A26; line-height: 1.25; margin-bottom: 16px; }
+  .mini-intro p { color: #5C5650; line-height: 1.7; margin-bottom: 12px; }
+  .mini-intro .intro-meta { display: flex; gap: 24px; margin-top: 20px; font-size: 0.9rem; color: #A89B8C; font-weight: 500; }
+
+  .mini-progress { position: sticky; top: 0; z-index: 100; background: #FDFCFA; border-bottom: 1px solid #E8E4DF; padding: 12px 0; }
+  .mini-progress .progress-track { height: 4px; background: #E8E4DF; border-radius: 2px; overflow: hidden; }
+  .mini-progress .progress-fill { height: 100%; background: #2D2A26; border-radius: 2px; width: 0%; transition: width 0.4s ease; }
+  .mini-progress .progress-text { text-align: center; font-size: 0.8rem; color: #A89B8C; margin-top: 6px; }
+
+  .mini-section { padding: 48px 0; }
+  .mini-section .container { max-width: 640px; }
+  .mini-section .section-instruction { color: #5C5650; margin-bottom: 32px; line-height: 1.6; }
+
+  .mini-question { background: #fff; border: 1px solid #E8E4DF; padding: 24px; margin-bottom: 20px; border-radius: 4px; }
+  .mini-question .q-number { font-size: 0.8rem; color: #A89B8C; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .mini-question .q-text { font-size: 1.05rem; color: #2D2A26; line-height: 1.5; margin-bottom: 16px; }
+  .mini-question .radio-options { display: flex; flex-direction: column; gap: 8px; }
+  .mini-question .radio-option { display: flex; align-items: flex-start; gap: 12px; padding: 10px 14px; border: 1px solid #E8E4DF; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+  .mini-question .radio-option:hover { border-color: #A89B8C; background: #FDFCFA; }
+  .mini-question .radio-option.selected { border-color: #2D2A26; background: #F7F5F2; }
+  .mini-question .radio-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #A89B8C; flex-shrink: 0; margin-top: 1px; transition: all 0.2s; }
+  .mini-question .radio-option.selected .radio-dot { border-color: #2D2A26; background: #2D2A26; box-shadow: inset 0 0 0 3px #FDFCFA; }
+  .mini-question .radio-text { font-size: 0.95rem; color: #5C5650; line-height: 1.4; }
+
+  .mini-submit { text-align: center; padding: 32px 0 60px; }
+  .mini-submit .container { max-width: 640px; }
+  .mini-submit .error-msg { color: #c0392b; font-size: 0.9rem; margin-bottom: 16px; display: none; }
+  .mini-submit .btn-submit { display: inline-block; font-family: 'Source Sans 3', sans-serif; font-size: 1.1rem; font-weight: 600; padding: 16px 40px; background: #2D2A26; color: #FDFCFA; border: none; cursor: pointer; transition: background 0.3s; }
+  .mini-submit .btn-submit:hover { background: #6B5B4F; }
+  .mini-submit .submit-note { font-size: 0.85rem; color: #A89B8C; margin-top: 10px; }
+
+  /* Results */
+  .mini-results { display: none; padding: 60px 0 40px; background: #FDFCFA; }
+  .mini-results .container { max-width: 640px; }
+  .mini-results h1 { font-family: 'Cormorant', Georgia, serif; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 500; color: #2D2A26; margin-bottom: 24px; }
+  .mini-result-card { background: #F7F5F2; padding: 24px; margin-bottom: 24px; border-left: 4px solid #A89B8C; }
+  .mini-result-card .result-label { font-size: 0.85rem; color: #A89B8C; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .mini-result-card .result-score { font-size: 1.8rem; font-weight: 600; color: #2D2A26; }
+  .mini-result-card .result-score span { font-size: 1rem; font-weight: 400; color: #A89B8C; }
+  .mini-result-card .result-band { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 500; margin-top: 8px; }
+  .band-green { background: #e8f5e9; color: #2e7d32; }
+  .band-yellow { background: #fff8e1; color: #f57f17; }
+  .band-red { background: #fce4ec; color: #c62828; }
+  .mini-result-text { color: #5C5650; line-height: 1.7; margin-bottom: 16px; }
+  .mini-result-text p { margin-bottom: 12px; }
+  .mini-result-highlight { background: #F7F5F2; border-left: 3px solid #6B5B4F; padding: 16px 20px; margin: 16px 0; font-size: 0.95rem; color: #5C5650; line-height: 1.6; }
+  .mini-result-source { font-size: 0.8rem; color: #A89B8C; margin-top: 32px; padding-top: 16px; border-top: 1px solid #E8E4DF; }
+
+  /* CTA post-results */
+  .mini-cta { display: none; padding: 48px 0 80px; background: #F7F5F2; }
+  .mini-cta .container { max-width: 640px; }
+  .mini-cta h2 { font-family: 'Cormorant', Georgia, serif; font-size: clamp(1.3rem, 3.5vw, 1.8rem); font-weight: 500; color: #2D2A26; margin-bottom: 16px; }
+  .mini-cta > .container > p { color: #5C5650; margin-bottom: 24px; line-height: 1.6; }
+  .mini-cta .cta-alternatives { margin-top: 32px; }
+
+  /* Full assessment link */
+  .mini-full-link { text-align: center; padding: 32px 0; }
+  .mini-full-link p { font-size: 0.9rem; color: #A89B8C; }
+  .mini-full-link a { color: #6B5B4F; font-weight: 500; text-decoration: underline; }
+
+  /* Shared CTA styles */
+  .cta-divider-line { display: flex; align-items: center; gap: 16px; margin: 24px 0; color: #A89B8C; font-size: 0.85rem; }
+  .cta-divider-line::before, .cta-divider-line::after { content: ''; flex: 1; height: 1px; background: #E8E4DF; }
+  .btn-whatsapp-secondary { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; max-width: 420px; margin: 0 auto; font-family: 'Source Sans 3', sans-serif; font-size: 1rem; font-weight: 600; padding: 14px 24px; background: #25D366; color: #fff; border: none; text-decoration: none; transition: background 0.3s; cursor: pointer; }
+  .btn-whatsapp-secondary:hover { background: #1DA851; color: #fff; }
+  .btn-whatsapp-secondary svg { width: 20px; height: 20px; fill: #fff; }
+  .cta-note-small { font-size: 0.82rem; color: #A89B8C; text-align: center; margin-top: 8px; }
+  .btn-outline-small { display: block; width: 100%; max-width: 420px; margin: 0 auto; font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; font-weight: 500; padding: 12px 24px; background: transparent; color: #6B5B4F; border: 1.5px solid #6B5B4F; text-decoration: none; text-align: center; transition: all 0.3s; }
+  .btn-outline-small:hover { background: #6B5B4F; color: #FDFCFA; }
+
+  @media (max-width: 768px) {
+    .mini-intro { padding: 40px 0 32px; }
+    .mini-intro .intro-meta { flex-wrap: wrap; gap: 12px; }
+    .mini-question .radio-option { padding: 12px; }
+  }
+---
+
+<div id="miniAssessmentWrapper">
+
+<section class="mini-intro">
+  <div class="container">
+    <p class="hero-eyebrow">{{ site.author }} — Psicoterapeuta</p>
+    <h1>Check-up rapido: come sta funzionando il tuo corpo?</h1>
+    <p>Uno strumento clinico validato (IIEF-5) usato da urologi e psicologi in tutto il mondo per valutare la funzione erettile. Ti dà un primo quadro oggettivo — e ti aiuta a capire se serve approfondire.</p>
+    <div class="intro-meta"><span>5 domande</span><span>2 minuti</span><span>Risultato immediato</span></div>
+  </div>
+</section>
+
+<div class="mini-progress" id="miniProgressBar">
+  <div class="container">
+    <div class="progress-track"><div class="progress-fill" id="miniProgressFill"></div></div>
+    <div class="progress-text" id="miniProgressText">0 di 5</div>
+  </div>
+</div>
+
+<section class="mini-section">
+  <div class="container">
+    <p class="section-instruction">Pensa alle <strong>ultime 4 settimane</strong>. Se non hai avuto attività sessuale, puoi indicarlo.</p>
+
+    <div class="mini-question">
+      <div class="q-number">Domanda 1 di 5</div>
+      <div class="q-text">Con quale frequenza sei riuscito ad avere un'erezione durante l'attività sessuale?</div>
+      <div class="radio-options">
+        <div class="radio-option" data-q="c1" data-val="0"><div class="radio-dot"></div><div class="radio-text">Non ho avuto attività sessuale</div></div>
+        <div class="radio-option" data-q="c1" data-val="1"><div class="radio-dot"></div><div class="radio-text">Quasi mai o mai</div></div>
+        <div class="radio-option" data-q="c1" data-val="2"><div class="radio-dot"></div><div class="radio-text">Poche volte (molto meno della metà)</div></div>
+        <div class="radio-option" data-q="c1" data-val="3"><div class="radio-dot"></div><div class="radio-text">Qualche volta (circa la metà)</div></div>
+        <div class="radio-option" data-q="c1" data-val="4"><div class="radio-dot"></div><div class="radio-text">La maggior parte delle volte</div></div>
+        <div class="radio-option" data-q="c1" data-val="5"><div class="radio-dot"></div><div class="radio-text">Quasi sempre o sempre</div></div>
+      </div>
+    </div>
+
+    <div class="mini-question">
+      <div class="q-number">Domanda 2 di 5</div>
+      <div class="q-text">Quando hai avuto erezioni, con quale frequenza sono state abbastanza rigide per la penetrazione?</div>
+      <div class="radio-options">
+        <div class="radio-option" data-q="c2" data-val="0"><div class="radio-dot"></div><div class="radio-text">Non ho avuto attività sessuale</div></div>
+        <div class="radio-option" data-q="c2" data-val="1"><div class="radio-dot"></div><div class="radio-text">Quasi mai o mai</div></div>
+        <div class="radio-option" data-q="c2" data-val="2"><div class="radio-dot"></div><div class="radio-text">Poche volte (molto meno della metà)</div></div>
+        <div class="radio-option" data-q="c2" data-val="3"><div class="radio-dot"></div><div class="radio-text">Qualche volta (circa la metà)</div></div>
+        <div class="radio-option" data-q="c2" data-val="4"><div class="radio-dot"></div><div class="radio-text">La maggior parte delle volte</div></div>
+        <div class="radio-option" data-q="c2" data-val="5"><div class="radio-dot"></div><div class="radio-text">Quasi sempre o sempre</div></div>
+      </div>
+    </div>
+
+    <div class="mini-question">
+      <div class="q-number">Domanda 3 di 5</div>
+      <div class="q-text">Quando hai tentato un rapporto, con quale frequenza sei riuscito a penetrare?</div>
+      <div class="radio-options">
+        <div class="radio-option" data-q="c3" data-val="0"><div class="radio-dot"></div><div class="radio-text">Non ho tentato rapporti</div></div>
+        <div class="radio-option" data-q="c3" data-val="1"><div class="radio-dot"></div><div class="radio-text">Quasi mai o mai</div></div>
+        <div class="radio-option" data-q="c3" data-val="2"><div class="radio-dot"></div><div class="radio-text">Poche volte (molto meno della metà)</div></div>
+        <div class="radio-option" data-q="c3" data-val="3"><div class="radio-dot"></div><div class="radio-text">Qualche volta (circa la metà)</div></div>
+        <div class="radio-option" data-q="c3" data-val="4"><div class="radio-dot"></div><div class="radio-text">La maggior parte delle volte</div></div>
+        <div class="radio-option" data-q="c3" data-val="5"><div class="radio-dot"></div><div class="radio-text">Quasi sempre o sempre</div></div>
+      </div>
+    </div>
+
+    <div class="mini-question">
+      <div class="q-number">Domanda 4 di 5</div>
+      <div class="q-text">Durante i rapporti, con quale frequenza sei riuscito a mantenere l'erezione?</div>
+      <div class="radio-options">
+        <div class="radio-option" data-q="c4" data-val="0"><div class="radio-dot"></div><div class="radio-text">Non ho tentato rapporti</div></div>
+        <div class="radio-option" data-q="c4" data-val="1"><div class="radio-dot"></div><div class="radio-text">Quasi mai o mai</div></div>
+        <div class="radio-option" data-q="c4" data-val="2"><div class="radio-dot"></div><div class="radio-text">Poche volte (molto meno della metà)</div></div>
+        <div class="radio-option" data-q="c4" data-val="3"><div class="radio-dot"></div><div class="radio-text">Qualche volta (circa la metà)</div></div>
+        <div class="radio-option" data-q="c4" data-val="4"><div class="radio-dot"></div><div class="radio-text">La maggior parte delle volte</div></div>
+        <div class="radio-option" data-q="c4" data-val="5"><div class="radio-dot"></div><div class="radio-text">Quasi sempre o sempre</div></div>
+      </div>
+    </div>
+
+    <div class="mini-question">
+      <div class="q-number">Domanda 5 di 5</div>
+      <div class="q-text">Quanto ti è stato difficile mantenere l'erezione fino al completamento del rapporto?</div>
+      <div class="radio-options">
+        <div class="radio-option" data-q="c5" data-val="0"><div class="radio-dot"></div><div class="radio-text">Non ho tentato rapporti</div></div>
+        <div class="radio-option" data-q="c5" data-val="1"><div class="radio-dot"></div><div class="radio-text">Estremamente difficile</div></div>
+        <div class="radio-option" data-q="c5" data-val="2"><div class="radio-dot"></div><div class="radio-text">Molto difficile</div></div>
+        <div class="radio-option" data-q="c5" data-val="3"><div class="radio-dot"></div><div class="radio-text">Difficile</div></div>
+        <div class="radio-option" data-q="c5" data-val="4"><div class="radio-dot"></div><div class="radio-text">Leggermente difficile</div></div>
+        <div class="radio-option" data-q="c5" data-val="5"><div class="radio-dot"></div><div class="radio-text">Per niente difficile</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mini-submit">
+  <div class="container">
+    <p class="error-msg" id="miniErrorMsg">Rispondi a tutte le 5 domande per vedere il risultato.</p>
+    <button type="button" class="btn-submit" id="miniBtnSubmit">Vedi il tuo risultato →</button>
+    <p class="submit-note">Nessun dato viene trasmesso — il calcolo avviene interamente sul tuo dispositivo.</p>
+  </div>
+</div>
+
+</div><!-- /miniAssessmentWrapper -->
+
+<!-- RESULTS -->
+<section class="mini-results" id="miniResults">
+  <div class="container">
+    <h1>Il tuo risultato</h1>
+    <div id="miniResultCard"></div>
+    <div id="miniResultText"></div>
+    <p class="mini-result-source">Strumento utilizzato: <em>International Index of Erectile Function-5</em> (Rosen et al., 1999). Questo check-up non sostituisce una valutazione clinica.</p>
+  </div>
+</section>
+
+<!-- CTA post-results -->
+<section class="mini-cta" id="miniCta">
+  <div class="container">
+    <h2>Hai un primo quadro. Il prossimo passo è parlarne.</h2>
+    <p>Scrivimi — mi racconti la tua situazione, io ti dico se posso aiutarti e come. Nessun impegno.</p>
+
+    {% include contact-form.html source="Mini-Assessment DE (post-risultato)" %}
+
+    <div class="cta-alternatives">
+      <div class="cta-divider-line"><span>oppure contattami direttamente</span></div>
+      <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20fatto%20il%20check-up%20rapido%20sul%20tuo%20sito%20e%20vorrei%20capire%20meglio%20i%20miei%20risultati." class="btn-whatsapp-secondary" target="_blank" rel="noopener">
+        {% include icon-whatsapp.svg %}
+        Scrivimi su WhatsApp
+      </a>
+      <p class="cta-note-small">Chat diretta e riservata. Rispondo personalmente.</p>
+    </div>
+
+    <div class="mini-full-link">
+      <p>Vuoi un profilo più completo? <a href="{{ '/autovalutazione/' | relative_url }}">Fai l'assessment completo su 4 dimensioni →</a></p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var answers = {};
+  var TOTAL = 5;
+  var qs = ['c1','c2','c3','c4','c5'];
+
+  function updateProgress() {
+    var n = Object.keys(answers).length;
+    document.getElementById('miniProgressFill').style.width = ((n / TOTAL) * 100) + '%';
+    document.getElementById('miniProgressText').textContent = n + ' di ' + TOTAL;
+  }
+
+  document.querySelectorAll('.radio-option').forEach(function(opt) {
+    opt.addEventListener('click', function() {
+      var q = this.dataset.q;
+      answers[q] = parseInt(this.dataset.val);
+      document.querySelectorAll('.radio-option[data-q="' + q + '"]').forEach(function(o) { o.classList.remove('selected'); });
+      this.classList.add('selected');
+      document.getElementById('miniErrorMsg').style.display = 'none';
+      updateProgress();
+    });
+  });
+
+  document.getElementById('miniBtnSubmit').addEventListener('click', function() {
+    if (Object.keys(answers).length < TOTAL) {
+      document.getElementById('miniErrorMsg').style.display = 'block';
+      for (var i = 0; i < qs.length; i++) {
+        if (!(qs[i] in answers)) {
+          var el = document.querySelector('[data-q="' + qs[i] + '"]');
+          if (el) el.closest('.mini-question').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          break;
+        }
+      }
+      return;
+    }
+
+    var items = [answers.c1, answers.c2, answers.c3, answers.c4, answers.c5];
+    var allZero = items.every(function(v) { return v === 0; });
+    var score = items.reduce(function(s, v) { return s + v; }, 0);
+
+    var band, bandLabel, bandClass, text;
+
+    if (allZero) {
+      band = 'noactivity'; bandLabel = 'No attività recente'; bandClass = 'band-yellow';
+      text = '<p>Hai indicato di non aver avuto attività sessuale nelle ultime 4 settimane. Questo dato in sé non è un problema — ci possono essere molte ragioni.</p>' +
+             '<div class="mini-result-highlight">In alcuni casi, l\'evitamento dell\'intimità è un segnale importante: può essere legato ad ansia da prestazione, a esperienze passate negative, o ad altri fattori che vale la pena esplorare. Una conversazione riservata può aiutare a capire cosa sta succedendo.</div>';
+    } else if (score >= 22) {
+      band = 'normale'; bandLabel = 'Nella norma'; bandClass = 'band-green';
+      text = '<p>Il tuo punteggio (' + score + '/25) indica un funzionamento erettile nella norma. Questo è un dato positivo.</p>' +
+             '<p>Se però qualcosa ti ha portato a fare questo check-up — un dubbio, un episodio, una preoccupazione — quel segnale merita attenzione. A volte il problema non è nel corpo, ma nell\'ansia che ci costruiamo intorno. Anche su questo si può lavorare.</p>';
+    } else if (score >= 17) {
+      band = 'lieve'; bandLabel = 'Difficoltà lievi'; bandClass = 'band-yellow';
+      text = '<p>Il tuo punteggio (' + score + '/25) indica difficoltà erettili di grado lieve. Qualcosa non funziona come vorresti, anche se non in modo costante.</p>' +
+             '<div class="mini-result-highlight">Le difficoltà lievi sono spesso le più frustranti — perché a volte funziona e a volte no, e non capisci perché. Le cause più comuni in questa fascia sono l\'ansia da prestazione, lo stress, e fattori relazionali. Un assessment più approfondito può identificare con precisione cosa sta succedendo.</div>';
+    } else if (score >= 12) {
+      band = 'moderata'; bandLabel = 'Difficoltà moderate'; bandClass = 'band-yellow';
+      text = '<p>Il tuo punteggio (' + score + '/25) indica difficoltà erettili di grado moderato. Questo ha probabilmente un impatto concreto sulla tua vita intima.</p>' +
+             '<div class="mini-result-highlight">Le difficoltà in questa fascia hanno quasi sempre una componente psicologica significativa — ansia anticipatoria, auto-monitoraggio durante il rapporto, pensieri intrusivi. Sono meccanismi precisi, conosciuti, e trattabili. Con il percorso giusto, la risposta al trattamento è tra le più rapide.</div>' +
+             '<p>Se non hai ancora fatto un controllo urologico, è un buon primo passo per escludere componenti organiche. I due percorsi (medico e psicologico) si completano.</p>';
+    } else {
+      band = 'severa'; bandLabel = 'Difficoltà significative'; bandClass = 'band-red';
+      text = '<p>Il tuo punteggio (' + score + '/25) indica difficoltà erettili significative. Probabilmente questo sta avendo un impatto importante sulla tua vita intima e sulla tua autostima.</p>' +
+             '<div class="mini-result-highlight">Con un punteggio in questa fascia, è importante un approccio completo: escludere componenti organiche (se non l\'hai già fatto) e indagare le componenti psicologiche — ansia da prestazione, stress cronico, dinamiche di coppia, e altri fattori che spesso vengono trascurati. La buona notizia: quando la causa è psicologica, il trattamento funziona.</div>';
+    }
+
+    var scoreDisplay = allZero ? '—' : score;
+    var maxDisplay = allZero ? '' : '<span> / 25</span>';
+
+    document.getElementById('miniResultCard').innerHTML =
+      '<div class="mini-result-card">' +
+      '<div class="result-label">Funzione erettile (IIEF-5)</div>' +
+      '<div class="result-score">' + scoreDisplay + maxDisplay + '</div>' +
+      '<div class="result-band ' + bandClass + '">' + bandLabel + '</div>' +
+      '</div>';
+    document.getElementById('miniResultText').innerHTML = '<div class="mini-result-text">' + text + '</div>';
+
+    /* Conversion tracking */
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-1004214539/zENhCO3HzoAcEIuy7N4D',
+        'value': 1.0,
+        'currency': 'EUR'
+      });
+    }
+
+    /* UI switch */
+    document.getElementById('miniAssessmentWrapper').style.display = 'none';
+    document.getElementById('miniResults').style.display = 'block';
+    document.getElementById('miniCta').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>

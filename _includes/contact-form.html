@@ -1,0 +1,77 @@
+{% comment %}
+  Include: contact-form.html
+  Form di contatto diretto che invia a Google Form via fetch (no redirect).
+  Parametri opzionali:
+    source: stringa identificativa della pagina (default: "Pagina generica")
+    heading: titolo sopra il form (default: nessuno)
+{% endcomment %}
+{% assign form_source = include.source | default: "Pagina generica" %}
+
+<div class="contact-form-inline" id="contactFormBlock">
+  <form id="contactFormInline" onsubmit="return submitContactForm(event)">
+    <div class="form-field">
+      <label for="cfEmail">La tua email <span class="required">*</span></label>
+      <input type="email" id="cfEmail" name="email" placeholder="Un indirizzo dove posso scriverti" required />
+    </div>
+    <div class="form-field">
+      <label for="cfMessaggio">Raccontami brevemente la tua situazione <span class="optional">(facoltativo)</span></label>
+      <textarea id="cfMessaggio" name="messaggio" rows="3" placeholder="Anche solo poche righe — mi aiutano a prepararmi per risponderti al meglio."></textarea>
+    </div>
+    <input type="hidden" id="cfSource" value="{{ form_source }}" />
+    <p class="form-error" id="cfError" style="display:none;">Inserisci un indirizzo email valido.</p>
+    <button type="submit" class="btn-form-submit" id="cfSubmitBtn">Scrivimi — ti rispondo entro 24 ore</button>
+    <p class="form-note">Solo email. Niente telefonate, niente spam. Rispondo personalmente.</p>
+  </form>
+</div>
+
+<div class="contact-form-success" id="contactFormSuccess" style="display:none;">
+  <div class="success-icon">✓</div>
+  <h3>Messaggio ricevuto</h3>
+  <p>Ti rispondo personalmente entro 24 ore. Controlla anche la cartella spam.</p>
+</div>
+
+<script>
+function submitContactForm(e) {
+  e.preventDefault();
+  var email = document.getElementById('cfEmail').value.trim();
+  var messaggio = document.getElementById('cfMessaggio').value.trim();
+  var source = document.getElementById('cfSource').value;
+
+  if (!email || !email.includes('@')) {
+    document.getElementById('cfError').style.display = 'block';
+    return false;
+  }
+  document.getElementById('cfError').style.display = 'none';
+  document.getElementById('cfSubmitBtn').disabled = true;
+  document.getElementById('cfSubmitBtn').textContent = 'Invio in corso…';
+
+  /* Enhanced Conversions: passa email per attribuzione */
+  if (typeof gtag === 'function') {
+    gtag('set', 'user_data', { 'email': email });
+    gtag('event', 'conversion', {
+      'send_to': 'AW-1004214539/rjxoCOrHzoAcEIuy7N4D',
+      'value': 5.0,
+      'currency': 'EUR'
+    });
+  }
+
+  /* Invio a Google Form (no-cors = fire-and-forget) */
+  var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSffFim5dyVsnQRzrU5jARNDuFFkJAJSiwt3RJsAzDrm3Q5URg/formResponse';
+  var params = new URLSearchParams();
+  params.append('entry.165398742', email);
+  params.append('entry.1497780864', messaggio);
+  params.append('entry.499482887', source);
+
+  fetch(formUrl, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: params.toString()
+  }).finally(function() {
+    document.getElementById('contactFormBlock').style.display = 'none';
+    document.getElementById('contactFormSuccess').style.display = 'block';
+  });
+
+  return false;
+}
+</script>

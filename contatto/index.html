@@ -296,11 +296,8 @@ extra_css: |
         <h1>Sei qui perché qualcosa non funziona come vorresti. È il primo passo.</h1>
         <p class="contatto-hero-subtitle">Non serve avere le idee chiare. Non serve sapere esattamente cosa hai. Basta voler capire — e io sono qui per aiutarti a farlo.</p>
 
-        <div class="cta-block">
-            <a href="{{ '/autovalutazione/' | relative_url }}" class="btn-assessment">
-                Fai il test anonimo — scopri il tuo profilo
-            </a>
-            <p class="cta-assessment-note">14 domande, 6 minuti. Nessun dato trasmesso. Risultato immediato.</p>
+        <div class="cta-block" id="formContatto">
+            {% include contact-form.html source="Pagina Contatto" %}
 
             <div class="cta-divider">oppure contattami direttamente</div>
 
@@ -364,18 +361,29 @@ extra_css: |
         <p>Nessuna pressione. Nessun impegno. Solo una conversazione riservata per capire se posso aiutarti.</p>
 
         <div class="cta-block">
-            <a href="{{ '/autovalutazione/' | relative_url }}" class="btn-assessment">
-                Fai il test anonimo — 6 minuti
+            <a href="#formContatto" class="btn-assessment">
+                Scrivimi — ti rispondo entro 24 ore
             </a>
-            <p class="cta-assessment-note">Nessun dato trasmesso. Risultato immediato sul tuo dispositivo.</p>
+            <p class="cta-assessment-note">Email riservata. Nessun impegno.</p>
 
-            <div class="cta-divider">oppure contattami</div>
+            <div class="cta-divider">oppure</div>
 
             <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20visto%20il%20tuo%20sito%20e%20vorrei%20capire%20se%20puoi%20aiutarmi." class="btn-whatsapp" target="_blank" rel="noopener">
                 {% include icon-whatsapp.svg %}
                 Scrivimi su WhatsApp
             </a>
             <p class="cta-whatsapp-note">Chat diretta e riservata. Rispondo personalmente.</p>
+
+            <div class="cta-divider">oppure</div>
+
+            <a href="{{ '/autovalutazione/' | relative_url }}" class="btn-call">
+                Fai il test anonimo — 6 minuti
+            </a>
+            <p class="cta-call-note">Nessun dato trasmesso. Risultato immediato.</p>
+        </div>
+
+        <div class="test-link">
+            <p>Vuoi un check-up rapido sulla funzione erettile? <a href="{{ '/autovalutazione-de/' | relative_url }}">5 domande, 2 minuti →</a></p>
         </div>
     </div>
 </section>
