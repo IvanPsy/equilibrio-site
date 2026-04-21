@@ -204,16 +204,11 @@ extra_css: |
 
     {% include contact-form.html source="Mini-Assessment DE (post-risultato)" %}
 
-    <div class="cta-alternatives">
-      <div class="cta-divider-line"><span>oppure contattami direttamente</span></div>
-      <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20fatto%20il%20check-up%20rapido%20sul%20tuo%20sito%20e%20vorrei%20capire%20meglio%20i%20miei%20risultati." class="btn-whatsapp-secondary" target="_blank" rel="noopener">
-        {% include icon-whatsapp.svg %}
-        Scrivimi su WhatsApp
-      </a>
-      <p class="cta-note-small">Chat diretta e riservata. Rispondo personalmente.</p>
-    </div>
+    <p class="cta-alt-line" style="text-align:center; margin: 24px auto 0; max-width: 520px; font-size: 0.95rem; color: #5C5650;">
+      Oppure se preferisci, <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20fatto%20il%20check-up%20rapido%20sul%20tuo%20sito%20e%20vorrei%20capire%20meglio%20i%20miei%20risultati." style="color: #6B5B4F; text-decoration: underline;" target="_blank" rel="noopener">mandami un messaggio su WhatsApp →</a>
+    </p>
 
-    <div class="mini-full-link">
+    <div class="mini-full-link" style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #E8E4DF;">
       <p>Vuoi un profilo più completo? <a href="{{ '/autovalutazione/' | relative_url }}">Fai l'assessment completo su 4 dimensioni →</a></p>
     </div>
   </div>

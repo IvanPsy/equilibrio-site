@@ -49,7 +49,25 @@ extra_css: |
 
   /* --- Primary CTA block --- */
   .cta-block {
-    max-width: 420px;
+    max-width: 460px;
+  }
+
+  .cta-alt-line {
+    font-size: 0.95rem;
+    color: #5C5650;
+    text-align: center;
+    margin: 24px 0 0;
+    line-height: 1.6;
+  }
+  .cta-alt-link {
+    color: #6B5B4F;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+  }
+  .cta-alt-link:hover {
+    color: #2D2A26;
   }
 
   /* --- Assessment CTA (primary, low-barrier) --- */
@@ -299,24 +317,13 @@ extra_css: |
         <div class="cta-block" id="formContatto">
             {% include contact-form.html source="Pagina Contatto" %}
 
-            <div class="cta-divider">oppure contattami direttamente</div>
-
-            <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20visto%20il%20tuo%20sito%20e%20vorrei%20capire%20se%20puoi%20aiutarmi." class="btn-whatsapp" target="_blank" rel="noopener">
-                {% include icon-whatsapp.svg %}
-                Scrivimi su WhatsApp
-            </a>
-            <p class="cta-whatsapp-note">Chat diretta e riservata. Rispondo personalmente.</p>
-
-            <div class="cta-divider">oppure</div>
-
-            <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20vorrei%20prenotare%20la%20chiamata%20conoscitiva%20gratuita%20di%2015%20minuti." class="btn-call">
-                Prenota 15 minuti gratuiti — senza impegno
-            </a>
-            <p class="cta-call-note">Videocall riservata. Mi racconti la situazione, io ti dico se posso aiutarti.</p>
+            <p class="cta-alt-line">
+                Oppure se preferisci, <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20visto%20il%20tuo%20sito%20e%20vorrei%20capire%20se%20puoi%20aiutarmi." class="cta-alt-link" target="_blank" rel="noopener">mandami un messaggio su WhatsApp →</a>
+            </p>
         </div>
 
         <div class="privacy-reassurance">
-            <strong>Tutto resta tra noi.</strong> Sono tenuto al segreto professionale per legge. Nessun dato condiviso. Puoi scrivermi anche con un nome di fantasia.
+            <strong>Tutto resta tra noi.</strong> Sono tenuto al segreto professionale per legge. Nessun dato condiviso con terzi. Puoi scrivermi anche con un nome di fantasia — l'importante è che ci sia un indirizzo dove posso risponderti.
         </div>
     </div>
 </section>
@@ -362,28 +369,17 @@ extra_css: |
 
         <div class="cta-block">
             <a href="#formContatto" class="btn-assessment">
-                Scrivimi — ti rispondo entro 24 ore
+                Scrivimi via email — ti rispondo entro 24 ore
             </a>
-            <p class="cta-assessment-note">Email riservata. Nessun impegno.</p>
+            <p class="cta-assessment-note"><strong>Più privacy.</strong> La mail arriva a me (ivan@ivanferrero.it). Nessun modulo anonimo.</p>
 
-            <div class="cta-divider">oppure</div>
-
-            <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20visto%20il%20tuo%20sito%20e%20vorrei%20capire%20se%20puoi%20aiutarmi." class="btn-whatsapp" target="_blank" rel="noopener">
-                {% include icon-whatsapp.svg %}
-                Scrivimi su WhatsApp
-            </a>
-            <p class="cta-whatsapp-note">Chat diretta e riservata. Rispondo personalmente.</p>
-
-            <div class="cta-divider">oppure</div>
-
-            <a href="{{ '/autovalutazione/' | relative_url }}" class="btn-call">
-                Fai il test anonimo — 6 minuti
-            </a>
-            <p class="cta-call-note">Nessun dato trasmesso. Risultato immediato.</p>
+            <p class="cta-alt-line">
+                Oppure se preferisci, <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20visto%20il%20tuo%20sito%20e%20vorrei%20capire%20se%20puoi%20aiutarmi." class="cta-alt-link" target="_blank" rel="noopener">mandami un messaggio su WhatsApp →</a>
+            </p>
         </div>
 
         <div class="test-link">
-            <p>Vuoi un check-up rapido sulla funzione erettile? <a href="{{ '/autovalutazione-de/' | relative_url }}">5 domande, 2 minuti →</a></p>
+            <p>Non sei ancora pronto a scrivermi? Fai il <a href="{{ '/autovalutazione/' | relative_url }}">test di autovalutazione anonimo (6 minuti)</a> — o, se il tema è specificamente la funzione erettile, il <a href="{{ '/autovalutazione-de/' | relative_url }}">check-up rapido (2 minuti)</a>.</p>
         </div>
     </div>
 </section>

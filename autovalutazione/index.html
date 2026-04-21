@@ -96,12 +96,10 @@ whatsapp_float: true
     <h2>Hai il tuo profilo. Il prossimo passo è parlarne.</h2>
     <p>Scrivimi direttamente — nessun impegno, nessuna pressione. Mi racconti cosa stai vivendo, io ti dico se posso aiutarti e come. Rispondo personalmente entro 24 ore.</p>
     <div class="contact-form" id="googleFormCta">
-        <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20fatto%20il%20test%20sul%20tuo%20sito%20e%20vorrei%20capire%20meglio%20i%20miei%20risultati.%20Puoi%20aiutarmi%3F" class="btn-whatsapp" target="_blank" rel="noopener">
-            {% include icon-whatsapp.svg %}
-            Scrivimi su WhatsApp →
-        </a>
-        <p class="whatsapp-note">Chat diretta e riservata. Rispondo personalmente.</p>
-        <div class="form-divider">oppure ricevi i risultati commentati via email</div>
+        <div class="form-privacy-header">
+            <span class="privacy-badge">Più privacy</span>
+            <span class="form-privacy-text">Ricevi i risultati commentati direttamente da me (<strong>ivan@ivanferrero.it</strong>). Nessun modulo anonimo, nessun centralino.</span>
+        </div>
         <label for="ctaEmail">La tua email</label>
         <input type="email" id="ctaEmail" placeholder="Un indirizzo dove posso scriverti" />
         <input type="hidden" id="ctaNome" value="" />
@@ -113,8 +111,12 @@ whatsapp_float: true
         <input type="hidden" id="ctaAiuto" value="" />
         <input type="hidden" id="ctaPerche" value="" />
         <p class="error-msg" id="ctaError" style="display:none;">Inserisci un indirizzo email per continuare.</p>
-        <button type="button" class="btn-submit" id="btnSendResults" onclick="sendToGoogleForm()">Inviami i risultati commentati →</button>
+        <button type="button" class="btn-submit" id="btnSendResults" onclick="sendToGoogleForm()">Inviami i risultati commentati via email →</button>
         <p class="form-note">Solo email. Niente telefonate, niente spam. Rispondo entro 24 ore.</p>
+
+        <p class="cta-alt-line" style="text-align:center; margin-top: 22px; font-size: 0.95rem; color: #5C5650;">
+            Oppure se preferisci, <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20fatto%20il%20test%20sul%20tuo%20sito%20e%20vorrei%20capire%20meglio%20i%20miei%20risultati.%20Puoi%20aiutarmi%3F" class="btn-whatsapp" style="color: #6B5B4F; text-decoration: underline;" target="_blank" rel="noopener">mandami i risultati via WhatsApp →</a>
+        </p>
     </div>
 </div></section>
 

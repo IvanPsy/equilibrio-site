@@ -279,10 +279,10 @@
     }
 }
 
-// --- Dual CTA (WhatsApp + Assessment) ---
+// --- Dual CTA (Email primary + WhatsApp fallback + Test) ---
 
 .dual-cta {
-    max-width: 400px;
+    max-width: 460px;
     margin: 40px auto 0;
     text-align: center;
 }
@@ -292,6 +292,40 @@
     color: $color-muted;
     margin-top: 10px;
     margin-bottom: 0;
+}
+
+.dual-cta-privacy {
+    font-size: 0.9rem;
+    color: $color-text-soft;
+    line-height: 1.5;
+    margin-top: 14px;
+    margin-bottom: 0;
+    text-align: center;
+
+    strong {
+        color: $color-text;
+        font-weight: 600;
+    }
+}
+
+.dual-cta-alt {
+    font-size: 0.95rem;
+    color: $color-text-soft;
+    margin: 24px 0 0;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.dual-cta-alt-link {
+    color: $color-accent;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+
+    &:hover {
+        color: $color-text;
+    }
 }
 
 .dual-cta-divider {
@@ -318,6 +352,53 @@
         padding: 14px 28px;
         font-size: 0.95rem;
     }
+}
+
+// --- Privacy badge (used in dual-cta + contact form header) ---
+
+.privacy-badge {
+    display: inline-block;
+    font-family: $font-body;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    background-color: #E8F1EA;
+    color: #2F5D3F;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+// --- Contact form privacy header ---
+
+.form-privacy-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    background-color: #F7F5F2;
+    border-left: 3px solid #2F5D3F;
+    font-size: 0.92rem;
+    color: $color-text-soft;
+    line-height: 1.5;
+    text-align: left;
+
+    .privacy-badge {
+        flex-shrink: 0;
+        margin-top: 2px;
+        margin-right: 0;
+    }
+
+    strong {
+        color: $color-text;
+    }
+}
+
+.form-privacy-text {
+    flex: 1;
 }
 
 // --- Pillars (2x2 grid) ---
@@ -877,6 +958,10 @@
 }
 
 .dual-cta-tertiary {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid $color-border;
+
     .btn-outline {
         display: block;
         width: 100%;
