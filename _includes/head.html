@@ -1,3 +1,10 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<meta name="description" content="{{ page.description | default: site.description }}">
+<title>{{ page.title }} — {{ site.author }}</title>
+{% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}">{% endif %}
+
 <!-- Consent Mode v2 Advanced (consente modeling conversioni anche senza consenso) -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -75,13 +82,6 @@
     });
   })();
 </script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-{% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
-<meta name="description" content="{{ page.description | default: site.description }}">
-<title>{{ page.title }} — {{ site.author }}</title>
-{% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}">{% endif %}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
