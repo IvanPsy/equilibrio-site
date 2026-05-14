@@ -1,0 +1,17 @@
+# robots.txt per equilibrio.ivanferrero.it (Equilibrio — Dr. Ivan Ferrero)
+# Sito Jekyll su GitHub Pages, CNAME equilibrio.ivanferrero.it
+
+User-agent: *
+Allow: /
+
+# Lead magnet PDF — accessibile solo via link diretto dalla sequenza
+# email post double-opt-in. Non indicizzare per evitare che il PDF
+# compaia nei risultati di ricerca senza il contesto della sequenza
+# nurture e senza il consenso GDPR alla raccolta dati.
+Disallow: /assets/guida/
+
+# Pagine ausiliarie del flusso lead magnet — già in noindex via meta tag,
+# qui rafforzato per i crawler che si basano su robots.txt
+Disallow: /guida-autovalutazione/conferma/
+Disallow: /guida-autovalutazione/grazie/
+Disallow: /guida-autovalutazione/disiscrivi/
