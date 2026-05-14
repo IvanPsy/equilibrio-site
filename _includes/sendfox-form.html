@@ -1,0 +1,40 @@
+{% comment %}
+  Include: sendfox-form.html
+  Form di iscrizione lead magnet (SendFox embedded).
+  Form ID: 3l9e90 / List: Equilibrio — Guida Autovalutazione PPU
+  Redirect post-submit: configurato lato SendFox (Form settings → URL to redirect)
+                       Atteso: https://equilibrio.ivanferrero.it/guida-autovalutazione/conferma/
+  Lo script form.js di SendFox è incluso una volta sola alla fine.
+{% endcomment %}
+
+<div class="sendfox-form-wrap">
+  <p class="form-intro">Inserisci nome ed email. Ti arriva subito la guida via email, dopo aver confermato l'iscrizione.</p>
+
+  <form method="post" action="https://sendfox.com/form/3lp080/3l9e90" class="sendfox-form" id="3l9e90" data-async="true" data-recaptcha="true">
+    <p>
+      <label for="sendfox_form_name">Nome</label>
+      <input type="text" id="sendfox_form_name" placeholder="Il tuo nome" name="first_name" required />
+    </p>
+    <p>
+      <label for="sendfox_form_email">Email</label>
+      <input type="email" id="sendfox_form_email" placeholder="email@esempio.it" name="email" required />
+    </p>
+    <p>
+      <label class="consent-label">
+        <input type="checkbox" name="gdpr" value="1" required />
+        <span>Ho letto la <a href="{{ site.privacy_url }}" target="_blank" rel="noopener">privacy policy</a> e acconsento al trattamento dei miei dati per ricevere la guida e la sequenza di email educative collegata. Posso disiscrivermi in qualsiasi momento.</span>
+      </label>
+    </p>
+    {% comment %} Honeypot anti-bot (campo nascosto, lasciare invariato) {% endcomment %}
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" />
+    </div>
+    <p>
+      <button type="submit">Sì, voglio la guida</button>
+    </p>
+  </form>
+
+  <p class="form-reassurance">Riceverai una email per confermare l'iscrizione. Niente spam, niente promozioni. Cancellazione in un click in qualunque momento.</p>
+</div>
+
+<script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
