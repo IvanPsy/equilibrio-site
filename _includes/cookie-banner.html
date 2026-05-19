@@ -1,21 +1,352 @@
-<div id="cookieBanner" class="cookie-banner">
-  <div class="cookie-banner-inner">
-    <p>Questo sito utilizza cookie tecnici e di misurazione per migliorare il servizio. <a href="{{ site.privacy_url }}" target="_blank" rel="noopener">Privacy Policy</a></p>
-    <div class="cookie-banner-actions">
-      <button onclick="acceptCookies()">Accetta</button>
-      <button onclick="denyCookies()" class="cookie-deny">Rifiuta</button>
+{%- comment -%}
+  ═══════════════════════════════════════════════════════════
+  Cookie Banner — Equilibrio
+  ═══════════════════════════════════════════════════════════
+  GDPR-compliant + Google Consent Mode v2 (Advanced).
+
+  Tre azioni esplicite:
+    • Accetta tutto       — granted su ad_* e analytics_*
+    • Solo necessari      — denied (default)
+    • Personalizza        — modal con toggle per categoria
+
+  Persistenza in localStorage (chiave: eq_cookie_consent_v2)
+  Stato iniziale (default deny) impostato in _includes/head.html
+  prima del caricamento di gtag.js.
+
+  Trigger di revoca: link "Gestisci preferenze" nel footer
+  (id="eqCookieReset") oppure programmaticamente:
+    window.eqConsent.open()
+  ═══════════════════════════════════════════════════════════
+{%- endcomment -%}
+
+<style>
+  .eq-cb-banner, .eq-cb-modal, .eq-cb-fab { font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif; box-sizing: border-box; }
+  .eq-cb-banner *, .eq-cb-modal * { box-sizing: border-box; }
+
+  /* ─── Banner ─── */
+  .eq-cb-banner {
+    position: fixed; left: 1rem; right: 1rem; bottom: 1rem;
+    max-width: 680px; margin: 0 auto;
+    background: #FDFCFA;
+    border: 1px solid #E8E4DF;
+    border-radius: 8px;
+    padding: 1.4rem 1.5rem;
+    color: #2D2A26;
+    box-shadow: 0 12px 40px rgba(45, 42, 38, 0.18), 0 2px 8px rgba(45, 42, 38, 0.08);
+    z-index: 9998;
+    display: none;
+  }
+  .eq-cb-banner.is-open { display: block; animation: eq-cb-slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+  @keyframes eq-cb-slide-up { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+  .eq-cb-banner h2 {
+    font-family: 'Cormorant', Georgia, serif;
+    font-size: 1.25rem; font-weight: 500;
+    margin: 0 0 0.5rem; color: #2D2A26;
+  }
+  .eq-cb-banner p {
+    font-size: 0.95rem; line-height: 1.6; color: #5C5650;
+    margin: 0 0 1.1rem;
+  }
+  .eq-cb-banner a, .eq-cb-modal a {
+    color: #6B5B4F; text-decoration: underline;
+    text-decoration-color: rgba(107, 91, 79, 0.35);
+    text-underline-offset: 3px;
+  }
+  .eq-cb-banner a:hover, .eq-cb-modal a:hover { text-decoration-color: #6B5B4F; }
+
+  /* ─── Buttons ─── */
+  .eq-cb-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .eq-cb-btn {
+    font-family: inherit; font-size: 0.92rem; font-weight: 500;
+    padding: 0.7rem 1.2rem; border-radius: 6px;
+    border: 1px solid transparent; cursor: pointer;
+    transition: all 0.18s ease; line-height: 1.2;
+  }
+  .eq-cb-btn-primary { background: #2D2A26; color: #FDFCFA; border-color: #2D2A26; }
+  .eq-cb-btn-primary:hover { background: #1f1d1a; border-color: #1f1d1a; }
+  .eq-cb-btn-secondary { background: transparent; color: #2D2A26; border-color: #E8E4DF; }
+  .eq-cb-btn-secondary:hover { background: #F7F5F2; border-color: #A89B8C; }
+  .eq-cb-btn-text { background: transparent; color: #5C5650; border-color: transparent; padding: 0.7rem 0.6rem; }
+  .eq-cb-btn-text:hover { color: #2D2A26; text-decoration: underline; }
+
+  /* ─── Modal ─── */
+  .eq-cb-overlay {
+    position: fixed; inset: 0;
+    background: rgba(45, 42, 38, 0.55);
+    backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+    z-index: 9999; display: none;
+    align-items: center; justify-content: center;
+    padding: 1rem;
+  }
+  .eq-cb-overlay.is-open { display: flex; animation: eq-cb-fade 0.25s ease; }
+  @keyframes eq-cb-fade { from { opacity: 0; } to { opacity: 1; } }
+
+  .eq-cb-modal {
+    background: #FDFCFA; border: 1px solid #E8E4DF; border-radius: 8px;
+    max-width: 540px; width: 100%; max-height: 90vh; overflow-y: auto;
+    padding: 1.8rem;
+    color: #2D2A26;
+  }
+  .eq-cb-modal h2 {
+    font-family: 'Cormorant', Georgia, serif;
+    font-size: 1.5rem; font-weight: 500;
+    margin: 0 0 0.5rem;
+  }
+  .eq-cb-modal > p {
+    font-size: 0.95rem; line-height: 1.6; color: #5C5650;
+    margin: 0 0 1.4rem;
+  }
+
+  /* ─── Categorie ─── */
+  .eq-cb-cat {
+    padding: 1.1rem 0;
+    border-top: 1px solid #E8E4DF;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.7rem 1rem;
+  }
+  .eq-cb-cat:last-of-type { border-bottom: 1px solid #E8E4DF; margin-bottom: 1.4rem; }
+  .eq-cb-cat-name { font-weight: 600; font-size: 1rem; color: #2D2A26; }
+  .eq-cb-cat-desc { grid-column: 1 / -1; font-size: 0.88rem; line-height: 1.55; color: #5C5650; margin: 0; }
+
+  /* ─── Toggle switch ─── */
+  .eq-cb-toggle {
+    position: relative; width: 44px; height: 24px;
+    background: #E8E4DF; border-radius: 12px;
+    cursor: pointer; transition: background 0.2s;
+    flex-shrink: 0; align-self: center;
+  }
+  .eq-cb-toggle::after {
+    content: ''; position: absolute; top: 2px; left: 2px;
+    width: 20px; height: 20px; background: #FDFCFA;
+    border-radius: 50%; transition: transform 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+  .eq-cb-toggle.is-on { background: #6B5B4F; }
+  .eq-cb-toggle.is-on::after { transform: translateX(20px); }
+  .eq-cb-toggle.is-locked { opacity: 0.55; cursor: not-allowed; background: #C8A882; }
+
+  .eq-cb-modal-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: flex-end; }
+
+  /* ─── FAB (floating, post-scelta) ─── */
+  .eq-cb-fab {
+    position: fixed; left: 1rem; bottom: 1rem;
+    width: 38px; height: 38px; border-radius: 50%;
+    background: #FDFCFA; border: 1px solid #E8E4DF;
+    color: #6B5B4F; font-size: 1rem; cursor: pointer;
+    z-index: 9997; display: none;
+    align-items: center; justify-content: center;
+    transition: all 0.18s ease;
+    box-shadow: 0 4px 12px rgba(45, 42, 38, 0.12);
+  }
+  .eq-cb-fab.is-visible { display: flex; }
+  .eq-cb-fab:hover { color: #2D2A26; border-color: #A89B8C; transform: scale(1.06); }
+
+  /* ─── Mobile ─── */
+  @media (max-width: 560px) {
+    .eq-cb-banner { padding: 1.1rem 1.2rem; }
+    .eq-cb-actions { flex-direction: column; }
+    .eq-cb-actions .eq-cb-btn { width: 100%; }
+    .eq-cb-modal { padding: 1.4rem; }
+  }
+</style>
+
+<!-- Banner -->
+<div id="eqCookieBanner" class="eq-cb-banner" role="dialog" aria-live="polite" aria-label="Banner consenso cookie">
+  <h2>Cookie e tracciamento</h2>
+  <p>
+    Uso cookie tecnici (sempre attivi) e, con il tuo consenso, cookie di analisi e marketing
+    per misurare l'efficacia delle campagne pubblicitarie e migliorare il servizio.
+    Puoi accettare tutto, rifiutare tutto o scegliere per categoria.
+    Dettagli nella <a href="{{ site.privacy_url }}" target="_blank" rel="noopener">privacy policy</a>.
+  </p>
+  <div class="eq-cb-actions">
+    <button type="button" class="eq-cb-btn eq-cb-btn-primary" data-eq-action="accept-all">Accetta tutto</button>
+    <button type="button" class="eq-cb-btn eq-cb-btn-secondary" data-eq-action="reject-all">Solo necessari</button>
+    <button type="button" class="eq-cb-btn eq-cb-btn-text" data-eq-action="customize">Personalizza</button>
+  </div>
+</div>
+
+<!-- Modal Personalizza -->
+<div id="eqCookieOverlay" class="eq-cb-overlay" role="dialog" aria-modal="true" aria-label="Preferenze cookie">
+  <div class="eq-cb-modal">
+    <h2>Preferenze cookie</h2>
+    <p>Scegli per categoria. Le tue scelte si applicano a questo sito e sono revocabili in qualsiasi momento dal link "Gestisci preferenze cookie" in fondo alla pagina.</p>
+
+    <div class="eq-cb-cat">
+      <span class="eq-cb-cat-name">Necessari</span>
+      <div class="eq-cb-toggle is-on is-locked" aria-label="Sempre attivi" role="switch" aria-checked="true" aria-disabled="true"></div>
+      <p class="eq-cb-cat-desc">Indispensabili al funzionamento del sito (preferenze, sicurezza, protezione dai bot sul form di iscrizione). Non richiedono consenso.</p>
+    </div>
+
+    <div class="eq-cb-cat">
+      <span class="eq-cb-cat-name">Analitici</span>
+      <div class="eq-cb-toggle" data-eq-cat="analytics" role="switch" aria-checked="false" tabindex="0"></div>
+      <p class="eq-cb-cat-desc">Aiutano a capire quali contenuti funzionano e quali no, in forma aggregata e pseudonima. Senza consenso, Google riceve solo segnali anonimi (Consent Mode v2).</p>
+    </div>
+
+    <div class="eq-cb-cat">
+      <span class="eq-cb-cat-name">Marketing</span>
+      <div class="eq-cb-toggle" data-eq-cat="marketing" role="switch" aria-checked="false" tabindex="0"></div>
+      <p class="eq-cb-cat-desc">Google Ads, misurazione delle conversioni dalle campagne pubblicitarie e remarketing. Senza consenso, le conversioni sono stimate in forma aggregata via conversion modeling.</p>
+    </div>
+
+    <div class="eq-cb-modal-actions">
+      <button type="button" class="eq-cb-btn eq-cb-btn-secondary" data-eq-action="reject-all">Solo necessari</button>
+      <button type="button" class="eq-cb-btn eq-cb-btn-primary" data-eq-action="save-custom">Salva scelte</button>
     </div>
   </div>
 </div>
+
+<!-- FAB visibile dopo la prima scelta -->
+<button type="button" id="eqCookieFab" class="eq-cb-fab" aria-label="Gestisci preferenze cookie" title="Gestisci preferenze cookie">&#9881;</button>
+
 <script>
-  function acceptCookies(){
-    gtag('consent','update',{'ad_storage':'granted','ad_user_data':'granted','ad_personalization':'granted','analytics_storage':'granted'});
-    localStorage.setItem('cookie_consent','granted');
-    document.getElementById('cookieBanner').style.display='none';
+(function() {
+  'use strict';
+
+  var STORAGE_KEY = 'eq_cookie_consent_v2';
+  var VERSION = '2.0.0';
+
+  // Compat: migra eventuale chiave v1 ('cookie_consent' = 'granted' | 'denied')
+  try {
+    var legacy = localStorage.getItem('cookie_consent');
+    if (legacy && !localStorage.getItem(STORAGE_KEY)) {
+      var migrated = {
+        version: VERSION,
+        timestamp: new Date().toISOString(),
+        analytics: legacy === 'granted',
+        marketing: legacy === 'granted',
+        migratedFromV1: true
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+      localStorage.removeItem('cookie_consent');
+    }
+  } catch (e) {}
+
+  function readSaved() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      var data = JSON.parse(raw);
+      if (data.version !== VERSION) return null;
+      return data;
+    } catch (e) { return null; }
   }
-  function denyCookies(){
-    localStorage.setItem('cookie_consent','denied');
-    document.getElementById('cookieBanner').style.display='none';
+
+  function applyConsent(state) {
+    if (typeof gtag !== 'function') return;
+    gtag('consent', 'update', {
+      'ad_storage':         state.marketing ? 'granted' : 'denied',
+      'ad_user_data':       state.marketing ? 'granted' : 'denied',
+      'ad_personalization': state.marketing ? 'granted' : 'denied',
+      'analytics_storage':  state.analytics ? 'granted' : 'denied'
+    });
   }
-  if(!localStorage.getItem('cookie_consent'))document.getElementById('cookieBanner').style.display='block';
+
+  function saveConsent(state) {
+    state.version = VERSION;
+    state.timestamp = new Date().toISOString();
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+    applyConsent(state);
+  }
+
+  // Applica subito stato salvato
+  var saved = readSaved();
+  if (saved) applyConsent(saved);
+
+  var banner  = document.getElementById('eqCookieBanner');
+  var overlay = document.getElementById('eqCookieOverlay');
+  var fab     = document.getElementById('eqCookieFab');
+
+  function openBanner()  { banner.classList.add('is-open'); }
+  function closeBanner() { banner.classList.remove('is-open'); }
+  function openModal() {
+    var current = readSaved() || { analytics: false, marketing: false };
+    overlay.querySelectorAll('[data-eq-cat]').forEach(function(t) {
+      var cat = t.getAttribute('data-eq-cat');
+      if (current[cat]) {
+        t.classList.add('is-on');
+        t.setAttribute('aria-checked', 'true');
+      } else {
+        t.classList.remove('is-on');
+        t.setAttribute('aria-checked', 'false');
+      }
+    });
+    overlay.classList.add('is-open');
+  }
+  function closeModal() { overlay.classList.remove('is-open'); }
+  function showFab() { fab.classList.add('is-visible'); }
+
+  function commit(state) {
+    saveConsent(state);
+    closeBanner();
+    closeModal();
+    showFab();
+  }
+
+  document.addEventListener('click', function(e) {
+    var action = e.target.getAttribute && e.target.getAttribute('data-eq-action');
+    if (!action) return;
+    if (action === 'accept-all')  commit({ analytics: true,  marketing: true });
+    else if (action === 'reject-all') commit({ analytics: false, marketing: false });
+    else if (action === 'customize')  openModal();
+    else if (action === 'save-custom') {
+      var state = { analytics: false, marketing: false };
+      overlay.querySelectorAll('[data-eq-cat]').forEach(function(t) {
+        state[t.getAttribute('data-eq-cat')] = t.classList.contains('is-on');
+      });
+      commit(state);
+    }
+  });
+
+  overlay.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t === overlay) { closeModal(); return; }
+    if (!t.classList || !t.classList.contains('eq-cb-toggle')) return;
+    if (t.classList.contains('is-locked')) return;
+    var on = t.classList.toggle('is-on');
+    t.setAttribute('aria-checked', on ? 'true' : 'false');
+  });
+
+  overlay.addEventListener('keydown', function(e) {
+    if ((e.key === ' ' || e.key === 'Enter') && e.target.classList && e.target.classList.contains('eq-cb-toggle') && !e.target.classList.contains('is-locked')) {
+      e.preventDefault();
+      var on = e.target.classList.toggle('is-on');
+      e.target.setAttribute('aria-checked', on ? 'true' : 'false');
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+  });
+
+  fab.addEventListener('click', openModal);
+
+  // Trigger esterno dal footer
+  document.addEventListener('click', function(e) {
+    if (e.target && e.target.id === 'eqCookieReset') {
+      e.preventDefault();
+      openModal();
+    }
+  });
+
+  // Stato iniziale
+  if (saved) {
+    showFab();
+  } else {
+    setTimeout(openBanner, 350);
+  }
+
+  // API pubblica
+  window.eqConsent = {
+    open: openModal,
+    reset: function() {
+      try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+      location.reload();
+    },
+    get: readSaved
+  };
+})();
 </script>
