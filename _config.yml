@@ -34,3 +34,4 @@ exclude:
   - Gemfile.lock
   - .DS_Store
   - _sources/
+  - CLAUDE.md
