@@ -14,3 +14,5 @@
         <a href="{{ '/autovalutazione/' | relative_url }}" class="btn-outline">Preferisci capire prima? Fai il test (6 minuti) →</a>
     </div>
 </div>
+{% comment %} Tier guida: attivare solo dove on-message (cluster pornografia) con {% raw %}{% include dual-cta.html guida=true %}{% endraw %} {% endcomment %}
+{% if include.guida %}{% include guida-cta.html title="Non sei pronto a scrivermi? Inizia dalla guida." text="Una lettura gratuita per capire cosa ti sta succedendo, a tuo ritmo e in forma riservata. La ricevi via email." %}{% endif %}

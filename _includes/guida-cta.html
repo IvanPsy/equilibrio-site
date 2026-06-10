@@ -1,0 +1,56 @@
+{% comment %}
+  CTA soft-fallback verso il lead magnet "/guida-autovalutazione/".
+  Parametrico per restare on-message per segmento.
+  NB: la guida è materiale del segmento PPU (pornografia). NON usare sulla
+  landing DE /disfunzione-erettile-psicologica/ (entry dal sintomo, mai porno).
+  Parametri opzionali: title, text, btn.
+{% endcomment %}
+{% assign cta_title = include.title | default: "Non te la senti di scrivermi adesso?" %}
+{% assign cta_text  = include.text  | default: "Inizia dalla guida gratuita: capire prima, a tuo ritmo, in forma riservata. La ricevi via email." %}
+{% assign cta_btn   = include.btn   | default: "Scarica la guida gratuita →" %}
+
+<style>
+.guida-cta {
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 28px 28px 30px;
+  border: 1px solid #E4C7AE;
+  border-left: 4px solid #C76F32;
+  border-radius: 8px;
+  background: #FBF6F1;
+  font-family: 'Source Sans 3', sans-serif;
+  text-align: left;
+}
+.guida-cta .guida-cta-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 8px;
+}
+.guida-cta .guida-cta-text {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.55;
+  margin: 0 0 18px;
+}
+.guida-cta a.guida-cta-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #C76F32;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.guida-cta a.guida-cta-btn:hover { background: #b05f27; }
+@media (max-width: 768px) {
+  .guida-cta { margin: 32px 16px; padding: 22px 20px; }
+}
+</style>
+
+<div class="guida-cta">
+  <p class="guida-cta-title">{{ cta_title }}</p>
+  <p class="guida-cta-text">{{ cta_text }}</p>
+  <a href="{{ '/guida-autovalutazione/' | relative_url }}" class="guida-cta-btn">{{ cta_btn }}</a>
+</div>

@@ -61,3 +61,14 @@ body_class: "page-guida-step"
 
   <a href="{{ '/' | relative_url }}" class="back-link">← Torna al sito Equilibrio</a>
 </main>
+
+<!-- Conversione: iscrizione guida CONFERMATA (post double opt-in).
+     TODO Ivan: in Google Ads crea l'azione di conversione "Iscrizione Guida"
+     e sostituisci ABC123placeholder con il label reale (es. AW-1004214539/AbCd...). -->
+<script>
+  gtag('event', 'conversion', {
+    'send_to': '{{ site.gtag_id }}/ABC123placeholder',
+    'value': 1.0,
+    'currency': 'EUR'
+  });
+</script>
