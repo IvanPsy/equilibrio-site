@@ -62,9 +62,9 @@ body_class: "page-guida-step"
   <a href="{{ '/' | relative_url }}" class="back-link">← Torna al sito Equilibrio</a>
 </main>
 
-<!-- Conversione: iscrizione guida CONFERMATA (post double opt-in).
-     Azione "Iscrizione Guida" creata in Google Ads il 10/06/2026.
-     Valore fisso 1 EUR impostato lato Ads (lo snippet non deve inviarlo). -->
-<script>
-  gtag('event', 'conversion', { 'send_to': 'AW-1004214539/elCGCMaHx7wcEIuy7N4D' });
-</script>
+<!-- Nota: il pixel di conversione NON è più qui.
+     Il piano SendFox lifetime non consente il "Custom confirmation redirect URL",
+     quindi l'utente non viene reindirizzato a questa pagina dopo la conferma DOI:
+     il pixel qui non sarebbe mai scattato — probabile causa delle 0 conversioni storiche.
+     Tracking spostato su /guida-autovalutazione/conferma/ (raggiunta dal redirect del form),
+     allineato a quanto fatto per la DE. 18/06/2026. -->
