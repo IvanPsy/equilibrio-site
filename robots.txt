@@ -10,6 +10,10 @@ Allow: /
 # nurture e senza il consenso GDPR alla raccolta dati.
 Disallow: /assets/guida/
 
+# Lead magnet DE ("Quando la testa spegne il corpo") — stessa logica:
+# accessibile solo via link diretto dalla sequenza nurture DE post double-opt-in.
+Disallow: /assets/guida-de/
+
 # Pagine ausiliarie del flusso lead magnet — già in noindex via meta tag,
 # qui rafforzato per i crawler che si basano su robots.txt
 Disallow: /guida-autovalutazione/conferma/
