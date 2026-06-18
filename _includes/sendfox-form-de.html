@@ -1,0 +1,58 @@
+{% comment %}
+  Include: sendfox-form-de.html
+  Form di iscrizione lead magnet DE (SendFox embedded).
+  Form ID: 36gk02 / List: Equilibrio - Guida Autovalutazione DE
+  Lead magnet: "Quando la testa spegne il corpo"
+  Redirect post-submit: configurato lato SendFox (Form settings → URL to redirect)
+                       Atteso: https://equilibrio.ivanferrero.it/guida-de/conferma/
+  Autosufficiente: include il proprio CSS (scoped .sendfox-form*), così funziona
+  su qualunque pagina (landing DE, autovalutazione-de, /guida-de/).
+  Lo script form.js di SendFox è incluso una volta sola alla fine.
+{% endcomment %}
+
+<style>
+.sendfox-form-wrap { background:#faf6f1; border:1px solid #e7dfd2; border-radius:8px; padding:28px 28px 24px; margin:32px auto 16px; max-width:520px; }
+.sendfox-form-wrap .form-intro { font-family:'Source Sans 3', sans-serif; font-size:0.95rem; color:#4a4a4a; margin:0 0 18px; }
+.sendfox-form p { margin:0 0 14px; }
+.sendfox-form label { display:block; font-family:'Source Sans 3', sans-serif; font-size:0.9rem; color:#4a4a4a; margin-bottom:6px; }
+.sendfox-form input[type="text"], .sendfox-form input[type="email"] { width:100%; padding:12px 14px; font-family:'Source Sans 3', sans-serif; font-size:1rem; border:1px solid #c8bfae; border-radius:6px; background:#fff; box-sizing:border-box; }
+.sendfox-form input[type="text"]:focus, .sendfox-form input[type="email"]:focus { outline:none; border-color:#C76F32; box-shadow:0 0 0 3px rgba(199,111,50,0.18); }
+.sendfox-form .consent-label { display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; color:#555; line-height:1.5; cursor:pointer; margin-bottom:0; }
+.sendfox-form .consent-label input[type="checkbox"] { margin-top:3px; flex-shrink:0; }
+.sendfox-form .consent-label a { color:#C76F32; text-decoration:underline; }
+.sendfox-form button { width:100%; padding:14px 20px; font-family:'Source Sans 3', sans-serif; font-size:1.05rem; font-weight:600; color:#fff; background:#C76F32; border:none; border-radius:6px; cursor:pointer; min-height:48px; transition:background 0.15s ease; }
+.sendfox-form button:hover { background:#a85a26; }
+.sendfox-form-wrap .form-reassurance { font-family:'Source Sans 3', sans-serif; font-size:0.85rem; color:#6a6a6a; margin:14px 0 0; text-align:center; }
+</style>
+
+<div class="sendfox-form-wrap">
+  <p class="form-intro">Inserisci nome ed email. Ti arriva subito la guida via email, dopo aver confermato l'iscrizione.</p>
+
+  <form method="post" action="https://sendfox.com/form/3lp080/36gk02" class="sendfox-form" id="36gk02" data-async="true" data-recaptcha="true">
+    <p>
+      <label for="sendfox_form_name">Nome</label>
+      <input type="text" id="sendfox_form_name" placeholder="Il tuo nome" name="first_name" required />
+    </p>
+    <p>
+      <label for="sendfox_form_email">Email</label>
+      <input type="email" id="sendfox_form_email" placeholder="email@esempio.it" name="email" required />
+    </p>
+    <p>
+      <label class="consent-label">
+        <input type="checkbox" name="gdpr" value="1" required />
+        <span>Ho letto la <a href="{{ site.privacy_url }}" target="_blank" rel="noopener">privacy policy</a> e acconsento al trattamento dei miei dati per ricevere la guida e la sequenza di email educative collegata. Posso disiscrivermi in qualsiasi momento.</span>
+      </label>
+    </p>
+    {% comment %} Honeypot anti-bot (campo nascosto, lasciare invariato) {% endcomment %}
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" />
+    </div>
+    <p>
+      <button type="submit">Ricevi la guida</button>
+    </p>
+  </form>
+
+  <p class="form-reassurance">Riceverai una email per confermare l'iscrizione. Niente spam, niente promozioni. Cancellazione in un click in qualunque momento.</p>
+</div>
+
+<script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>

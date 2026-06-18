@@ -19,3 +19,7 @@ Disallow: /assets/guida-de/
 Disallow: /guida-autovalutazione/conferma/
 Disallow: /guida-autovalutazione/grazie/
 Disallow: /guida-autovalutazione/disiscrivi/
+
+# Pagine ausiliarie del flusso lead magnet DE
+Disallow: /guida-de/conferma/
+Disallow: /guida-de/grazie/
