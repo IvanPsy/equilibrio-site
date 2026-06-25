@@ -23,3 +23,7 @@ Disallow: /guida-autovalutazione/disiscrivi/
 # Pagine ausiliarie del flusso lead magnet DE
 Disallow: /guida-de/conferma/
 Disallow: /guida-de/grazie/
+
+# Informativa privacy dell'assessment — già in noindex via meta tag,
+# raggiungibile solo via link diretto dal questionario di valutazione.
+Disallow: /informativa-assessment/
