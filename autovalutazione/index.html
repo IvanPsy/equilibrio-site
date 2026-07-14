@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Assessment Gratuito"
-description: "Assessment gratuito e riservato: 14 domande, 6 minuti. Ottieni un profilo personalizzato su 4 dimensioni con strumenti scientifici validati. Ivan Ferrero, psicoterapeuta."
+title: "Autovalutazione Gratuita"
+description: "Autovalutazione gratuita e riservata: 14 domande, 6 minuti. Ottieni un profilo personalizzato su 4 dimensioni con strumenti scientifici validati. Ivan Ferrero, psicoterapeuta."
 whatsapp_float: true
 ---
 
@@ -10,8 +10,8 @@ whatsapp_float: true
 <div id="assessmentWrapper">
 
 <section class="intro"><div class="container">
-    <h1>Assessment gratuito: scopri il tuo profilo</h1>
-    <p>Non un semplice quiz — un assessment strutturato che analizza la tua situazione su <strong>4 dimensioni</strong> con strumenti utilizzati nella pratica clinica internazionale. Ricevi un report personalizzato con i tuoi risultati incrociati.</p>
+    <h1>Autovalutazione gratuita: scopri il tuo profilo</h1>
+    <p>Non un semplice quiz — una valutazione strutturata che analizza la tua situazione su <strong>4 dimensioni</strong> con strumenti utilizzati nella pratica clinica internazionale. Ricevi un report personalizzato con i tuoi risultati incrociati.</p>
     <div class="intro-dimensions">
         <p><span class="dim-label">Comportamento</span> Il tuo rapporto con la pornografia</p>
         <p><span class="dim-label">Funzione sessuale</span> Come risponde il tuo corpo</p>
@@ -93,9 +93,14 @@ whatsapp_float: true
 
 <!-- CTA -->
 <section class="result-cta" id="resultCta" style="display:none;"><div class="container">
-    <h2>Hai il tuo profilo. Il prossimo passo è parlarne.</h2>
-    <p>Scrivimi direttamente — nessun impegno, nessuna pressione. Mi racconti cosa stai vivendo, io ti dico se posso aiutarti e come. Rispondo personalmente entro 24 ore.</p>
-    <div class="contact-form" id="googleFormCta">
+    <h2>Hai il tuo profilo. Quello che manca è il perché.</h2>
+    <p>Un profilo ti dice dove sei. Non ti dice ancora come ci sei arrivato, né cosa puoi farci. Il passo più leggero, se non te la senti ancora di scrivere a qualcuno, è questo.</p>
+
+    {% include guida-cta.html title="Comincia dalla guida: costa solo un'email" text="«Quando la pornografia smette di essere un passatempo»: una lettura gratuita e riservata per capire con calma cosa il test ha fatto emergere, prima di decidere qualunque cosa. La ricevi via email." btn="Ricevi la guida gratuita →" %}
+
+    <div class="result-cta-contact" style="margin-top: 40px; padding-top: 28px; border-top: 1px solid #E8E4DF;">
+        <p>Se invece preferisci una restituzione personale, scrivimi direttamente — nessun impegno, nessuna pressione. Mi racconti cosa stai vivendo, io ti dico se posso aiutarti e come. Rispondo personalmente entro 24 ore.</p>
+        <div class="contact-form" id="googleFormCta">
         <div class="form-privacy-header">
             <span class="privacy-badge">Più privacy</span>
             <span class="form-privacy-text">Ricevi i risultati commentati direttamente da me (<strong>ivan@ivanferrero.it</strong>). Nessun modulo anonimo, nessun centralino.</span>
@@ -117,8 +122,7 @@ whatsapp_float: true
         <p class="cta-alt-line" style="text-align:center; margin-top: 22px; font-size: 0.95rem; color: #5C5650;">
             Oppure se preferisci, <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20fatto%20il%20test%20sul%20tuo%20sito%20e%20vorrei%20capire%20meglio%20i%20miei%20risultati.%20Puoi%20aiutarmi%3F" class="btn-whatsapp" style="color: #6B5B4F; text-decoration: underline;" target="_blank" rel="noopener">mandami i risultati via WhatsApp →</a>
         </p>
-
-        {% include guida-cta.html title="Vuoi approfondire quello che il test ha fatto emergere?" text="La guida gratuita ti aiuta a leggere il tuo rapporto con la pornografia con più calma, prima di decidere cosa fare. La ricevi via email." btn="Ricevi la guida gratuita →" %}
+    </div>
     </div>
 </div></section>
 

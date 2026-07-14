@@ -98,6 +98,8 @@ extra_css: |
   </div>
 </section>
 
+{% include trust-strip.html %}
+
 <div class="mini-progress" id="miniProgressBar">
   <div class="container">
     <div class="progress-track"><div class="progress-fill" id="miniProgressFill"></div></div>
@@ -199,22 +201,24 @@ extra_css: |
 <!-- CTA post-results -->
 <section class="mini-cta" id="miniCta">
   <div class="container">
-    <h2>Hai un primo quadro. Il prossimo passo è parlarne.</h2>
-    <p>Scrivimi — mi racconti la tua situazione, io ti dico se posso aiutarti e come. Nessun impegno.</p>
+    <h2>Adesso hai un numero. Quello che manca è il perché.</h2>
+    <p id="miniCtaBandNote"></p>
+    <p>Un punteggio ti dice <em>quanto</em>, non <em>perché</em>. La guida <em>«Quando la testa spegne il corpo»</em> è la parte che manca: ti spiega il meccanismo che c'è dietro un risultato come il tuo, perché la pillola spesso non basta, e da dove si comincia. Te la mando via email, gratis, e la leggi con calma quando vuoi.</p>
 
-    {% include contact-form.html source="Mini-Assessment DE (post-risultato)" %}
+    {% include sendfox-form-de.html %}
 
-    <p class="cta-alt-line" style="text-align:center; margin: 24px auto 0; max-width: 520px; font-size: 0.95rem; color: #5C5650;">
-      Oppure se preferisci, <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20fatto%20il%20check-up%20rapido%20sul%20tuo%20sito%20e%20vorrei%20capire%20meglio%20i%20miei%20risultati." style="color: #6B5B4F; text-decoration: underline;" target="_blank" rel="noopener">mandami un messaggio su WhatsApp →</a>
-    </p>
+    <div class="mini-cta-secondary" style="margin-top: 40px; padding-top: 28px; border-top: 1px solid #E8E4DF;">
+      <p id="miniCtaContactLead">Se invece preferisci parlarne direttamente, scrivimi: mi racconti la tua situazione, io ti dico se posso aiutarti e come. Anche solo due righe, anche con un nome di fantasia.</p>
 
-    <div class="mini-guida-link" style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #E8E4DF;">
-      <p>Preferisci capirci di più prima di parlarne? Ricevi la guida gratuita <a href="{{ '/guida-de/' | relative_url }}"><em>«Quando la testa spegne il corpo»</em> via email →</a></p>
-      <p style="font-size:0.9rem; color:#A89B8C; margin-top:4px;">Ti spiega cosa significa davvero il tuo risultato e il meccanismo che c'è sotto.</p>
+      {% include contact-form.html source="Mini-Assessment DE (post-risultato)" %}
+
+      <p class="cta-alt-line" style="text-align:center; margin: 24px auto 0; max-width: 520px; font-size: 0.95rem; color: #5C5650;">
+        Oppure se preferisci, <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20fatto%20il%20check-up%20rapido%20sul%20tuo%20sito%20e%20vorrei%20capire%20meglio%20i%20miei%20risultati." style="color: #6B5B4F; text-decoration: underline;" target="_blank" rel="noopener">mandami un messaggio su WhatsApp →</a>
+      </p>
     </div>
 
     <div class="mini-full-link" style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #E8E4DF;">
-      <p>Vuoi un profilo più completo? <a href="{{ '/autovalutazione/' | relative_url }}">Fai l'assessment completo su 4 dimensioni →</a></p>
+      <p>Vuoi un profilo più completo? <a href="{{ '/autovalutazione/' | relative_url }}">Fai l'autovalutazione completa su 4 dimensioni →</a></p>
     </div>
   </div>
 </section>
@@ -272,7 +276,7 @@ extra_css: |
     } else if (score >= 17) {
       band = 'lieve'; bandLabel = 'Difficoltà lievi'; bandClass = 'band-yellow';
       text = '<p>Il tuo punteggio (' + score + '/25) indica difficoltà erettili di grado lieve. Qualcosa non funziona come vorresti, anche se non in modo costante.</p>' +
-             '<div class="mini-result-highlight">Le difficoltà lievi sono spesso le più frustranti — perché a volte funziona e a volte no, e non capisci perché. Le cause più comuni in questa fascia sono l\'ansia da prestazione, lo stress, e fattori relazionali. Un assessment più approfondito può identificare con precisione cosa sta succedendo.</div>';
+             '<div class="mini-result-highlight">Le difficoltà lievi sono spesso le più frustranti — perché a volte funziona e a volte no, e non capisci perché. Le cause più comuni in questa fascia sono l\'ansia da prestazione, lo stress, e fattori relazionali. Una valutazione più approfondita può identificare con precisione cosa sta succedendo.</div>';
     } else if (score >= 12) {
       band = 'moderata'; bandLabel = 'Difficoltà moderate'; bandClass = 'band-yellow';
       text = '<p>Il tuo punteggio (' + score + '/25) indica difficoltà erettili di grado moderato. Questo ha probabilmente un impatto concreto sulla tua vita intima.</p>' +
@@ -294,6 +298,29 @@ extra_css: |
       '<div class="result-band ' + bandClass + '">' + bandLabel + '</div>' +
       '</div>';
     document.getElementById('miniResultText').innerHTML = '<div class="mini-result-text">' + text + '</div>';
+
+    /* CTA post-risultato calibrata sulla fascia.
+       La guida resta il primo passo per tutti (costa un'email, non una conversazione).
+       Cambia il tono dell'invito a scrivere: più diretto sulle fasce alte, più leggero sulle basse. */
+    var ctaNote, contactLead;
+    if (band === 'severa') {
+      ctaNote = 'Un risultato in questa fascia non è una condanna: è un punto di partenza preciso. Va guardato per intero, componenti mediche comprese, e il modo di guardarlo non è da soli.';
+      contactLead = 'Con un punteggio in questa fascia, ha senso parlarne. Scrivimi anche solo due righe: mi racconti la tua situazione, io ti dico se posso aiutarti e come, e se serve prima un passaggio dal medico te lo dico con chiarezza. Anche con un nome di fantasia.';
+    } else if (band === 'moderata') {
+      ctaNote = 'Un risultato in questa fascia non è una condanna: è un punto di partenza preciso. In questa fascia la componente psicologica pesa quasi sempre, anche quando non è l\'unica in gioco.';
+      contactLead = 'Con un punteggio in questa fascia, ha senso parlarne. Scrivimi anche solo due righe: mi racconti la tua situazione, io ti dico se posso aiutarti e come. Anche con un nome di fantasia.';
+    } else if (band === 'lieve') {
+      ctaNote = 'Le difficoltà lievi sono spesso le più frustranti: a volte funziona e a volte no, e non capisci perché. È esattamente il terreno dove il meccanismo della paura anticipatoria lavora meglio, di nascosto.';
+      contactLead = 'Se preferisci parlarne direttamente, scrivimi: mi racconti la tua situazione, io ti dico se posso aiutarti e come. Anche solo due righe, anche con un nome di fantasia.';
+    } else if (band === 'noactivity') {
+      ctaNote = 'Il test non ha potuto misurare granché, e va bene così: quello che conta è capire perché l\'intimità si è fermata, non quanto.';
+      contactLead = 'Se preferisci parlarne direttamente, scrivimi: anche solo due righe, anche con un nome di fantasia. Ti rispondo personalmente.';
+    } else {
+      ctaNote = 'Il numero è rassicurante. Ma se sei arrivato fin qui, qualcosa ti ha portato a cercare, e quel qualcosa merita comunque una risposta.';
+      contactLead = 'Se invece preferisci parlarne direttamente, scrivimi: mi racconti la tua situazione, io ti dico se posso aiutarti e come. Anche solo due righe, anche con un nome di fantasia.';
+    }
+    document.getElementById('miniCtaBandNote').textContent = ctaNote;
+    document.getElementById('miniCtaContactLead').textContent = contactLead;
 
     /* Conversion tracking */
     if (typeof gtag === 'function') {

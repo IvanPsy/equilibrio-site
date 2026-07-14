@@ -83,8 +83,37 @@
     flex-direction: column;
     align-items: flex-start;
 
+    // La secondaria dell'hero è la porta del lead magnet: deve leggersi come
+    // un'alternativa reale, non come un link di servizio. Bordo sì, riempimento no:
+    // resta subordinata alla primaria, ma visibile.
     .btn-outline {
+        display: inline-block;
         margin-top: 20px;
+        padding: 14px 28px;
+        font-size: 0.95rem;
+        border: 2px solid $color-accent;
+    }
+}
+
+// Nota sotto la CTA primaria dell'hero: abbassa la barriera percepita
+// (durata, anonimato, nessun dato trasmesso) prima del clic.
+.hero-cta-note {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: $color-muted;
+    max-width: 520px;
+}
+
+// Terza opzione dell'hero: il contatto diretto resta raggiungibile,
+// ma scende di gerarchia (è l'ask a massima esposizione).
+.hero-cta-tertiary {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: $color-text-soft;
+
+    a {
+        color: $color-accent;
+        text-decoration: underline;
     }
 }
 

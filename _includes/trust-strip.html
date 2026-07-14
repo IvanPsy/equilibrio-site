@@ -1,0 +1,41 @@
+{% comment %}
+  Include: trust-strip.html
+  Fascia di fiducia verificabile: foto + identità professionale + link all'albo pubblico.
+  Va posizionata SUBITO SOTTO l'hero delle pagine che ricevono traffico freddo
+  (landing DE, landing guida), dove il lettore non sa ancora chi sei e sta per
+  decidere se lasciarti un'email.
+
+  Deontologia OPL: nessuna qualifica auto-attribuita ("esperto", "specialista"),
+  solo fatti verificabili. Il link è il DEEP LINK alla scheda personale nell'albo
+  pubblico dell'Ordine (verificato il 14/07/2026), non alla pagina di ricerca:
+  chi vuole controllare atterra su di te, non su un motore da compilare.
+  ⚠️ Se OPL cambia la struttura degli URL, questo link va ricontrollato.
+
+  Autosufficiente: CSS scoped (.trust-strip*), nessuna dipendenza dal sass globale.
+{% endcomment %}
+
+<style>
+.trust-strip { background:#F7F5F2; border-top:1px solid #E8E4DF; border-bottom:1px solid #E8E4DF; padding:28px 0; }
+.trust-strip .trust-inner { display:flex; align-items:center; gap:24px; max-width:760px; margin:0 auto; padding:0 24px; }
+.trust-strip .trust-photo { width:96px; height:96px; border-radius:50%; object-fit:cover; object-position:center 15%; border:3px solid #E8E4DF; flex-shrink:0; }
+.trust-strip .trust-text { font-family:'Source Sans 3', sans-serif; }
+.trust-strip .trust-name { font-size:1.05rem; font-weight:600; color:#2D2A26; margin:0 0 4px; }
+.trust-strip .trust-role { font-size:0.95rem; color:#5C5650; line-height:1.5; margin:0 0 6px; }
+.trust-strip .trust-verify { font-size:0.85rem; color:#A89B8C; margin:0; }
+.trust-strip .trust-verify a { color:#6B5B4F; text-decoration:underline; }
+@media (max-width: 768px) {
+  .trust-strip .trust-inner { flex-direction:column; text-align:center; gap:16px; }
+  .trust-strip .trust-photo { width:88px; height:88px; }
+}
+</style>
+
+<div class="trust-strip">
+  <div class="trust-inner">
+    <img src="{{ '/assets/img/ivan-ferrero.jpg' | relative_url }}" alt="Ivan Ferrero — Psicologo e Psicoterapeuta" class="trust-photo" width="96" height="96" loading="lazy">
+    <div class="trust-text">
+      <p class="trust-name">Ivan Ferrero</p>
+      <p class="trust-role">Psicologo e psicoterapeuta. Iscritto all'Ordine degli Psicologi della Lombardia, n. 03/16571, dal 2003. Lavoro online, in italiano, e rispondo personalmente alle email.</p>
+      <p class="trust-verify"><a href="https://www.opl.it/psicologi/16571/Ferrero-Ivan" target="_blank" rel="noopener">Vedi la mia scheda nell'albo pubblico dell'Ordine →</a></p>
+    </div>
+  </div>
+</div>

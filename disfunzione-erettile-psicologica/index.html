@@ -11,9 +11,16 @@ whatsapp_float: true
         <p class="hero-eyebrow">{{ site.author }} — Psicoterapeuta</p>
         <h1 class="hero-title">L'urologo dice che è tutto a posto. Ma il problema c'è.</h1>
         <p class="hero-subtitle">Non ti si alza per l'ansia. La paura di fare cilecca arriva prima del desiderio. Più ci pensi, meno funziona. Se ti riconosci in questa scena, il problema ha un nome preciso, un meccanismo documentato, e una soluzione che non passa dai farmaci.</p>
-        <a href="#contatto" class="btn">Parliamone — è gratuito e riservato →</a>
+        <div class="hero-ctas">
+            <a href="{{ '/autovalutazione-de/' | relative_url }}" class="btn">Comincia da un quadro chiaro: il check-up in 2 minuti →</a>
+            <p class="hero-cta-note">5 domande, strumento clinico validato (IIEF-5). Anonimo: il calcolo avviene sul tuo dispositivo, nessun dato viene trasmesso.</p>
+            <a href="#guida" class="btn-outline">Oppure ricevi la guida gratuita via email →</a>
+            <p class="hero-cta-tertiary">Se invece vuoi scrivermi e basta, <a href="#contatto">puoi farlo qui</a>, anche con un nome di fantasia.</p>
+        </div>
     </div>
 </section>
+
+{% include trust-strip.html %}
 
 <section class="recognition">
     <div class="container">
@@ -23,6 +30,14 @@ whatsapp_float: true
         <p>Magari ti è capitato con una nuova partner, e da lì hai iniziato a chiederti se era ansia o se "non ti piaceva abbastanza". Magari ti è capitato dopo un periodo di stress al lavoro, e adesso l'ansia è entrata anche nel letto. Magari ti è capitato con la partner di sempre, e adesso eviti di iniziare per paura di come andrà a finire.</p>
         <p>Hai cercato di correre ai ripari. Hai letto di rimedi online, di tecniche per "calmare l'ansia", di esercizi di respirazione. Magari hai anche preso qualcosa, ansiolitici o farmaci che ti hanno dato temporaneamente un'illusione, ma senza risolvere nulla. Hai fatto visite mediche. Gli esami sono a posto. L'urologo ti ha detto che "è tutto nella testa". E tu sei rimasto lì, con una diagnosi che non ti dà nessuna soluzione concreta.</p>
         <p>Se questo ti suona familiare, sappi due cose. La prima: è molto più comune di quanto pensi, ed è la situazione che vedo più frequentemente nella mia pratica. La seconda: <strong>"è nella testa" non significa che non sia reale</strong>, significa che la soluzione è in un posto diverso da dove stavi cercando.</p>
+    </div>
+</section>
+
+<section class="lead-magnet-de" id="guida">
+    <div class="container" style="max-width:640px;">
+        <h2 style="text-align:center;">Ti ci sei riconosciuto? Allora comincia da qui.</h2>
+        <p style="text-align:center; max-width:560px; margin:0 auto 8px;">La guida è gratuita e te la mando via email. Ti spiega il meccanismo della paura che spegne l'erezione: perché succede, perché la pillola spesso non basta, da dove si comincia. Prima ancora che tu debba dire una parola a qualcuno.</p>
+        {% include sendfox-form-de.html %}
     </div>
 </section>
 
@@ -65,8 +80,11 @@ whatsapp_float: true
     <div class="container">
         <h2>Si può uscirne. Davvero.</h2>
         <p>"Ho sconfitto l'ansia da prestazione". "Ho superato la DE psicologica". Sono tra le cose che più spesso gli uomini cercano online, di solito dopo che hanno già cercato il sintomo. Cercano prove che sia possibile, perché dentro di loro hanno iniziato a dubitarne.</p>
-        <p>La ricerca clinica è chiara: la disfunzione erettile psicogena e l'ansia da prestazione sono tra le problematiche con la risposta al trattamento più alta e più rapida. Non perché siano "meno serie", ma perché la causa è dove possiamo davvero intervenire, nel modo in cui la mente regola l'eccitazione, nel ciclo di auto-monitoraggio, nei significati che hai attribuito al primo episodio.</p>
+        <p>Non te lo sto dicendo per convincerti: te lo dice la letteratura scientifica. Il lavoro psicologico sulla disfunzione erettile è stato studiato da revisioni sistematiche indipendenti, che ne documentano l'efficacia sia rispetto al non trattamento sia, soprattutto, quando affianca il farmaco: la combinazione dei due funziona meglio del solo farmaco. Non perché il problema sia "meno serio", ma perché quando la causa è nel modo in cui la mente regola l'eccitazione, è lì che si può intervenire davvero: sul ciclo di auto-monitoraggio, sull'ansia anticipatoria, sui significati che hai attribuito al primo episodio.</p>
+        <p>Non significa che funzioni sempre, per tutti, allo stesso modo: nessuno può prometterti un esito, e chi lo fa ti sta vendendo qualcosa. Significa che stai guardando un problema su cui la ricerca ha qualcosa di solido da dire, e che vale la pena capire dove ti trovi tu, dentro quel quadro.</p>
         <p>Nella mia pratica, molti uomini notano i primi cambiamenti reali già nelle prime settimane, spesso proprio quando iniziano a capire cosa stava succedendo e smettono di combattere il sintomo con la forza di volontà. Il resto del percorso serve a stabilizzare, a rendere il cambiamento solido, e a lavorare sulle cause che lo hanno innescato, perché non torni a manifestarsi nella stessa forma.</p>
+
+        <p class="proof-sources">Se vuoi controllare tu stesso: Melnik T., Soares B.G., Nasselo A.G., <em>Psychosocial interventions for erectile dysfunction</em>, <a href="https://pubmed.ncbi.nlm.nih.gov/17636774/" target="_blank" rel="noopener">Cochrane Database of Systematic Reviews, 2007</a> · Schmidt H.M., Munder T., Gerger H., Frühauf S., Barth J., <em>Combination of psychological intervention and phosphodiesterase-5 inhibitors for erectile dysfunction: a narrative review and meta-analysis</em>, <a href="https://pubmed.ncbi.nlm.nih.gov/24641632/" target="_blank" rel="noopener">The Journal of Sexual Medicine, 2014</a>.</p>
     </div>
 </section>
 
@@ -187,6 +205,11 @@ whatsapp_float: true
             <h3 class="faq-question">È davvero tutto riservato?</h3>
             <p class="faq-answer">Assolutamente. Sono tenuto al segreto professionale per legge. Non conservo dati non necessari, le videocall avvengono su piattaforme sicure, e nessuno saprà mai che hai fatto questo percorso — a meno che tu non decida di dirlo.</p>
         </div>
+
+        <div class="faq-item">
+            <h3 class="faq-question">E se poi mi trovo incastrato in un percorso lungo?</h3>
+            <p class="faq-answer">Non puoi restare incastrato, perché non c'è niente in cui incastrarsi. Non esistono pacchetti da pagare in blocco né impegni formali: paghi seduta per seduta e ti fermi quando vuoi, senza penali. Se disdici almeno 24 ore prima, la seduta non si paga. Il report della valutazione resta tuo in ogni caso, anche se decidi di non proseguire con me. Le sedute con uno psicoterapeuta iscritto all'albo sono detraibili al 19% come spesa sanitaria. <a href="{{ '/come-funziona/' | relative_url }}">Qui trovi tutti i dettagli su fasi, durata e investimento →</a></p>
+        </div>
     </div>
 </section>
 
@@ -196,19 +219,10 @@ whatsapp_float: true
     </div>
 </section>
 
-<section class="lead-magnet-de" id="guida" style="background:#FBF7F2; padding:56px 0;">
-    <div class="container" style="max-width:640px;">
-        <h2 style="text-align:center;">Non te la senti ancora di scrivermi? Comincia dalla guida.</h2>
-        <p style="text-align:center; max-width:560px; margin:0 auto 8px;">È gratuita e te la mando via email. Ti spiega il meccanismo della paura che spegne l'erezione — perché succede, perché la pillola spesso non basta, da dove si comincia — prima ancora che tu debba dire una parola a qualcuno.</p>
-        {% include sendfox-form-de.html %}
-    </div>
-</section>
-
 <section class="cta-final" id="contatto">
     <div class="container">
-        <h2>Il primo passo è capire cosa sta succedendo</h2>
-        <p>Se sei qui, probabilmente hai già cercato risposte — dall'urologo, su internet, magari da solo di notte. E probabilmente non le hai trovate.</p>
-        <p>Scrivimi — mi racconti la tua situazione, io ti dico se posso aiutarti e come. Nessun impegno, nessuna pressione.</p>
+        <h2>Se sei arrivato fin qui, forse è il momento di scrivermi</h2>
+        <p>Hai già cercato risposte: dall'urologo, su internet, magari da solo di notte. Se quello che hai letto qui ti ha fatto pensare "ecco, è esattamente questo", il passo successivo è semplice: mi racconti la tua situazione, io ti dico se posso aiutarti e come. Nessun impegno, nessuna pressione, nessuna telefonata a sorpresa.</p>
 
         {% include contact-form.html source="Landing DE Psicologica" %}
 
@@ -217,8 +231,8 @@ whatsapp_float: true
         </p>
 
         <div style="margin-top: 40px; padding-top: 28px; border-top: 1px solid #E8E4DF; text-align: center;">
-            <a href="{{ '/autovalutazione-de/' | relative_url }}" class="btn-outline-small">Preferisci capire prima? Fai il check-up rapido (5 domande, 2 minuti) →</a>
-            <p class="cta-note-small" style="margin-top: 8px;">Anonimo. Risultato immediato sul tuo dispositivo.</p>
+            <a href="{{ '/autovalutazione-de/' | relative_url }}" class="btn-outline-small">Non ancora? Comincia dal check-up (5 domande, 2 minuti, anonimo) →</a>
+            <p class="cta-note-small" style="margin-top: 8px;">Oppure <a href="#guida" style="color:#6B5B4F; text-decoration:underline;">ricevi la guida gratuita via email</a>.</p>
         </div>
     </div>
 </section>

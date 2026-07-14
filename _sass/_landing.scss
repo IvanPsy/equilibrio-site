@@ -15,6 +15,32 @@
 .mechanism strong { color: $color-text; }
 .assessment { background-color: $color-bg-alt; }
 
+// Blocco lead magnet DE: sta a ~1/3 pagina, subito dopo la sezione di
+// riconoscimento ("parla di me"), non in fondo. È il secondo gradino della
+// scala dei micro-impegni: costa un'email, non una conversazione.
+.lead-magnet-de {
+    background-color: #FBF7F2;
+    padding: 56px 0;
+    border-top: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+}
+
+// Fonti sotto il claim di efficacia: la bibliografia è la riprova
+// che la deontologia non permette di cercare nelle testimonianze.
+.proof-sources {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid $color-border;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: $color-muted;
+
+    a {
+        color: $color-text-soft;
+        text-decoration: underline;
+    }
+}
+
 // Cycle visual (DE page)
 .cycle-visual {
     background-color: $color-bg-alt;

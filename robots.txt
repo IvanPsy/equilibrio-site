@@ -1,4 +1,4 @@
-# robots.txt per equilibrio.ivanferrero.it (Equilibrio — Dr. Ivan Ferrero)
+# robots.txt per equilibrio.ivanferrero.it (Equilibrio — Ivan Ferrero)
 # Sito Jekyll su GitHub Pages, CNAME equilibrio.ivanferrero.it
 
 User-agent: *
