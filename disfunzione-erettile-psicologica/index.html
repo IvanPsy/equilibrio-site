@@ -17,7 +17,14 @@ whatsapp_float: false
         <p class="hero-subtitle">Non ti si alza per l'ansia. La paura di fare cilecca arriva prima del desiderio. Più ci pensi, meno funziona. Se ti riconosci in questa scena, il problema ha un nome preciso, un meccanismo documentato, e una soluzione che non passa dai farmaci.</p>
         <div class="hero-ctas">
             <a href="{{ '/autovalutazione-de/' | relative_url }}" class="btn">Comincia da un quadro chiaro: il check-up in 2 minuti →</a>
-            <p class="hero-cta-note">5 domande, strumento clinico validato (IIEF-5). Anonimo: il calcolo avviene sul tuo dispositivo, nessun dato viene trasmesso.</p>
+            {% comment %}
+              28/07/2026 — microcopy accorciata (da 135 a ~95 caratteri) per far risalire
+              il bottone della guida sopra la piega su iPhone: su schermo da 6,1" il
+              btn-outline cadeva appena sotto il primo viewport (verificato su iPhone 15 Pro).
+              Contenuto invariato nella sostanza: strumento validato + anonimato restano.
+              La gerarchia test-first (F1 del 14/07) NON è toccata.
+            {% endcomment %}
+            <p class="hero-cta-note">5 domande (IIEF-5, strumento clinico validato). Anonimo: nessun dato lascia il tuo telefono.</p>
             <a href="#guida" class="btn-outline">Oppure ricevi la guida gratuita via email →</a>
             <p class="hero-cta-tertiary">Se invece vuoi scrivermi e basta, <a href="#contatto">puoi farlo qui</a>, anche con un nome di fantasia.</p>
         </div>

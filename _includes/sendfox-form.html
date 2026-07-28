@@ -12,7 +12,22 @@
   quindi il campo era attrito puro. Su questo target ogni campo in meno vale
   un 10-20% di opt-in, e "come ti chiami?" è esattamente la domanda che un uomo
   in vergogna non vuole sentirsi fare alle 23 di sera.
-  `first_name` resta come hidden vuoto per non rompere eventuali attese di SendFox.
+
+  🚨 28/07/2026 — FIX CRITICO (stesso difetto trovato sul form DE, propagato qui).
+  L'hidden `first_name` con value="" NON basta: SendFox valida il campo lato
+  server e risponde "The first name field is required.", bloccando ogni
+  iscrizione. Il form PPU è quindi rotto dal 14/07 sera esattamente come il DE.
+  Sul PPU non c'era un contatore che lo rivelasse (spesa Ads sull'AG1 = €0 da
+  giugno, quindi zero traffico e zero iscritti attesi: il guasto era invisibile).
+
+  Soluzione, a doppia rete, che TIENE il form email-only:
+  1. l'hidden parte con un valore statico non vuoto ("Iscritto") → POST valido
+     anche senza JS;
+  2. uno script lo sovrascrive con la parte locale dell'email mentre l'utente
+     digita → etichetta distinguibile in lista.
+  Il listener sul submit è in fase di CAPTURE per girare prima di form.js.
+
+  ⚠️ Non riportare `value=""`: è esattamente ciò che ha bloccato il funnel.
 {% endcomment %}
 
 <div class="sendfox-form-wrap">
@@ -23,7 +38,8 @@
       <label for="sendfox_form_email">Email</label>
       <input type="email" id="sendfox_form_email" placeholder="email@esempio.it" name="email" required />
     </p>
-    <input type="hidden" name="first_name" value="" />
+    {% comment %} 🚨 Deve restare NON vuoto: SendFox rifiuta il submit senza first_name (fix 28/07/2026) {% endcomment %}
+    <input type="hidden" name="first_name" value="Iscritto" />
     <p>
       <label class="consent-label">
         <input type="checkbox" name="gdpr" value="1" required />
@@ -41,5 +57,31 @@
 
   <p class="form-reassurance">Riceverai una email per confermare l'iscrizione. Niente spam, niente promozioni. Cancellazione in un click in qualunque momento.</p>
 </div>
+
+{% comment %}
+  Fix 28/07/2026 — popola `first_name` (obbligatorio lato SendFox) senza chiederlo
+  all'utente. Va PRIMA di form.js. Vedi nota in testa a questo include.
+{% endcomment %}
+<script>
+(function () {
+  var form = document.getElementById('3l9e90');
+  if (!form) return;
+  var email  = form.querySelector('input[name="email"]');
+  var hidden = form.querySelector('input[name="first_name"]');
+  if (!email || !hidden) return;
+
+  function syncFirstName() {
+    var local = (email.value || '').split('@')[0];
+    local = local.replace(/[^A-Za-z0-9._-]/g, '').slice(0, 40);
+    hidden.value = local || 'Iscritto';   // mai vuoto: SendFox rifiuterebbe il submit
+  }
+
+  email.addEventListener('input',  syncFirstName);
+  email.addEventListener('change', syncFirstName);
+  email.addEventListener('blur',   syncFirstName);
+  form.addEventListener('submit',  syncFirstName, true); // capture: prima di form.js
+  syncFirstName(); // copre l'autofill del browser
+})();
+</script>
 
 <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
