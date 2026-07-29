@@ -94,9 +94,9 @@ extra_css: |
 
 <section class="mini-intro">
   <div class="container">
-    <p class="hero-eyebrow">{{ site.author }} — Psicoterapeuta</p>
+    <p class="hero-eyebrow">{{ site.author }}, Psicoterapeuta</p>
     <h1>Check-up rapido: come sta funzionando il tuo corpo?</h1>
-    <p>Uno strumento clinico validato (IIEF-5) usato da urologi e psicologi in tutto il mondo per valutare la funzione erettile. Ti dà un primo quadro oggettivo — e ti aiuta a capire se serve approfondire.</p>
+    <p>Uno strumento clinico validato (IIEF-5) usato da urologi e psicologi in tutto il mondo per valutare la funzione erettile. Ti dà un primo quadro oggettivo, e ti aiuta a capire se serve approfondire.</p>
     <div class="intro-meta"><span>5 domande</span><span>2 minuti</span><span>Risultato immediato</span></div>
   </div>
 </section>
@@ -185,7 +185,7 @@ extra_css: |
   <div class="container">
     <p class="error-msg" id="miniErrorMsg">Rispondi a tutte le 5 domande per vedere il risultato.</p>
     <button type="button" class="btn-submit" id="miniBtnSubmit">Vedi il tuo risultato →</button>
-    <p class="submit-note">Nessun dato viene trasmesso — il calcolo avviene interamente sul tuo dispositivo.</p>
+    <p class="submit-note">Nessun dato viene trasmesso, il calcolo avviene interamente sul tuo dispositivo.</p>
   </div>
 </div>
 
@@ -270,25 +270,25 @@ extra_css: |
 
     if (allZero) {
       band = 'noactivity'; bandLabel = 'No attività recente'; bandClass = 'band-yellow';
-      text = '<p>Hai indicato di non aver avuto attività sessuale nelle ultime 4 settimane. Questo dato in sé non è un problema — ci possono essere molte ragioni.</p>' +
+      text = '<p>Hai indicato di non aver avuto attività sessuale nelle ultime 4 settimane. Questo dato in sé non è un problema, ci possono essere molte ragioni.</p>' +
              '<div class="mini-result-highlight">In alcuni casi, l\'evitamento dell\'intimità è un segnale importante: può essere legato ad ansia da prestazione, a esperienze passate negative, o ad altri fattori che vale la pena esplorare. Una conversazione riservata può aiutare a capire cosa sta succedendo.</div>';
     } else if (score >= 22) {
       band = 'normale'; bandLabel = 'Nella norma'; bandClass = 'band-green';
       text = '<p>Il tuo punteggio (' + score + '/25) indica un funzionamento erettile nella norma. Questo è un dato positivo.</p>' +
-             '<p>Se però qualcosa ti ha portato a fare questo check-up — un dubbio, un episodio, una preoccupazione — quel segnale merita attenzione. A volte il problema non è nel corpo, ma nell\'ansia che ci costruiamo intorno. Anche su questo si può lavorare.</p>';
+             '<p>Se però qualcosa ti ha portato a fare questo check-up (un dubbio, un episodio, una preoccupazione), quel segnale merita attenzione. A volte il problema non è nel corpo, ma nell\'ansia che ci costruiamo intorno. Anche su questo si può lavorare.</p>';
     } else if (score >= 17) {
       band = 'lieve'; bandLabel = 'Difficoltà lievi'; bandClass = 'band-yellow';
       text = '<p>Il tuo punteggio (' + score + '/25) indica difficoltà erettili di grado lieve. Qualcosa non funziona come vorresti, anche se non in modo costante.</p>' +
-             '<div class="mini-result-highlight">Le difficoltà lievi sono spesso le più frustranti — perché a volte funziona e a volte no, e non capisci perché. Le cause più comuni in questa fascia sono l\'ansia da prestazione, lo stress, e fattori relazionali. Una valutazione più approfondita può identificare con precisione cosa sta succedendo.</div>';
+             '<div class="mini-result-highlight">Le difficoltà lievi sono spesso le più frustranti (perché a volte funziona e a volte no, e non capisci perché). Le cause più comuni in questa fascia sono l\'ansia da prestazione, lo stress, e fattori relazionali. Una valutazione più approfondita può identificare con precisione cosa sta succedendo.</div>';
     } else if (score >= 12) {
       band = 'moderata'; bandLabel = 'Difficoltà moderate'; bandClass = 'band-yellow';
       text = '<p>Il tuo punteggio (' + score + '/25) indica difficoltà erettili di grado moderato. Questo ha probabilmente un impatto concreto sulla tua vita intima.</p>' +
-             '<div class="mini-result-highlight">Le difficoltà in questa fascia hanno quasi sempre una componente psicologica significativa — ansia anticipatoria, auto-monitoraggio durante il rapporto, pensieri intrusivi. Sono meccanismi precisi, conosciuti, e trattabili. Con il percorso giusto, la risposta al trattamento è tra le più rapide.</div>' +
+             '<div class="mini-result-highlight">Le difficoltà in questa fascia hanno quasi sempre una componente psicologica significativa (ansia anticipatoria, auto-monitoraggio durante il rapporto, pensieri intrusivi). Sono meccanismi precisi, conosciuti, e trattabili. Con il percorso giusto, la risposta al trattamento è tra le più rapide.</div>' +
              '<p>Se non hai ancora fatto un controllo urologico, è un buon primo passo per escludere componenti organiche. I due percorsi (medico e psicologico) si completano.</p>';
     } else {
       band = 'severa'; bandLabel = 'Difficoltà significative'; bandClass = 'band-red';
       text = '<p>Il tuo punteggio (' + score + '/25) indica difficoltà erettili significative. Probabilmente questo sta avendo un impatto importante sulla tua vita intima e sulla tua autostima.</p>' +
-             '<div class="mini-result-highlight">Con un punteggio in questa fascia, è importante un approccio completo: escludere componenti organiche (se non l\'hai già fatto) e indagare le componenti psicologiche — ansia da prestazione, stress cronico, dinamiche di coppia, e altri fattori che spesso vengono trascurati. La buona notizia: quando la causa è psicologica, il trattamento funziona.</div>';
+             '<div class="mini-result-highlight">Con un punteggio in questa fascia, è importante un approccio completo: escludere componenti organiche (se non l\'hai già fatto) e indagare le componenti psicologiche (ansia da prestazione, stress cronico, dinamiche di coppia, e altri fattori che spesso vengono trascurati). La buona notizia: quando la causa è psicologica, il trattamento funziona.</div>';
     }
 
     var scoreDisplay = allZero ? '—' : score;
