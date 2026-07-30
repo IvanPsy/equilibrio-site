@@ -13,7 +13,7 @@ albo: "Ordine Psicologi Lombardia n. 03/16571 (dal 2003)"
 whatsapp_number: "393334339624"
 whatsapp_msg_generic: "Ciao%2C%20vorrei%20informazioni%20sulla%20chiamata%20conoscitiva%20gratuita."
 whatsapp_msg_assessment: "Ciao%2C%20ho%20completato%20l%27autovalutazione%20e%20vorrei%20ricevere%20una%20restituzione%20dei%20risultati."
-privacy_url: "https://ivanferrero.it/privacy-policy/"
+privacy_url: "/privacy/"  # policy di Equilibrio (creata 30/07/2026). Prima puntava a ivanferrero.it/privacy-policy/
 
 # Google Ads
 gtag_id: "AW-1004214539"

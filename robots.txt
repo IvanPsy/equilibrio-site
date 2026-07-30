@@ -24,6 +24,9 @@ Disallow: /guida-autovalutazione/disiscrivi/
 Disallow: /guida-de/conferma/
 Disallow: /guida-de/grazie/
 
+# La privacy policy di Equilibrio (/privacy/) e' volutamente indicizzabile:
+# e' una pagina di fiducia, chi la cerca deve trovarla.
+
 # Informativa privacy dell'assessment — già in noindex via meta tag,
 # raggiungibile solo via link diretto dal questionario di valutazione.
 Disallow: /informativa-assessment/
