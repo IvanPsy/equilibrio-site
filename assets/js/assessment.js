@@ -186,13 +186,22 @@ function calculateResults() {
     profilo: 'BPS:' + bps + '(' + bpsBandLabel + ') IIEF:' + (iiefAllZero ? 'N/A' : iief) + '(' + iiefBandLabel + ') PHQ:' + phq + '(' + phqBandLabel + ') GAD:' + gad + '(' + gadBandLabel + ')'
   };
 
-  /* ── Conversion tracking: assessment completato ── */
+  /* ── Conversion tracking: assessment completato ──
+     ATTENZIONE (19/08/2026): questa etichetta e' CONDIVISA con il completamento
+     del test DE (autovalutazione-de/index.html). In Google Ads i due
+     completamenti cadono nella stessa azione di conversione e non sono
+     separabili. La separazione esiste solo in GA4, tramite i due eventi
+     test_ppu_completato e test_de_completato. Se il cancello deve misurare il
+     solo funnel DE, va creata una seconda azione in Ads. */
   if (typeof gtag === 'function') {
     gtag('event', 'conversion', {
       'send_to': 'AW-1004214539/zENhCO3HzoAcEIuy7N4D',
       'value': 1.0,
       'currency': 'EUR'
     });
+    /* Evento GA4 senza parametri: nessun punteggio, nessuna fascia.
+       Serve solo a distinguere questo completamento da quello del test DE. */
+    gtag('event', 'test_ppu_completato');
   }
 
   /* ── UI switch ── */

@@ -185,7 +185,7 @@ extra_css: |
   <div class="container">
     <p class="error-msg" id="miniErrorMsg">Rispondi a tutte le 5 domande per vedere il risultato.</p>
     <button type="button" class="btn-submit" id="miniBtnSubmit">Vedi il tuo risultato →</button>
-    <p class="submit-note">Nessun dato viene trasmesso, il calcolo avviene interamente sul tuo dispositivo.</p>
+    <p class="submit-note">Le tue risposte e il punteggio restano sul tuo dispositivo: non li invio e non li salvo.</p>
   </div>
 </div>
 
@@ -333,8 +333,13 @@ extra_css: |
         'currency': 'EUR'
       });
       /* Evento GA4: risponde alla domanda che Ads non puo' rispondere,
-         cioe' quanti arrivano sul test e quanti lo portano a termine. */
-      gtag('event', 'test_de_completato', { 'fascia': band });
+         cioe' quanti arrivano sul test e quanti lo portano a termine.
+         NESSUN PARAMETRO, deliberatamente. La fascia di punteggio e' stata
+         rimossa il 19/08/2026: la pagina promette che risposte e punteggio
+         non lasciano il dispositivo, e la fascia E' il punteggio in forma
+         categoriale (dato sanitario per inferenza, art. 9 GDPR).
+         Il cancello ha bisogno di un rapporto, non di una distribuzione. */
+      gtag('event', 'test_de_completato');
     }
 
     /* UI switch */

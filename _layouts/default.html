@@ -29,8 +29,12 @@
 <!-- Conversion tracking -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  /* Track: click WhatsApp (conversione primaria) */
-  document.querySelectorAll('a[href*="wa.me"], .btn-whatsapp, .whatsapp-float').forEach(function(el) {
+  /* Track: click WhatsApp (conversione primaria)
+     [data-wa-own] esclude i link che hanno gia' un tracking proprio di pagina
+     (es. il WhatsApp post-test in /autovalutazione/): senza questo filtro un
+     solo clic faceva partire due conversioni, GJyQ dal layout e rjxo dalla
+     pagina, per 10,00 EUR di valore dichiarato su un unico evento reale. */
+  document.querySelectorAll('a[href*="wa.me"]:not([data-wa-own]), .btn-whatsapp:not([data-wa-own]), .whatsapp-float:not([data-wa-own])').forEach(function(el) {
     el.addEventListener('click', function() {
       if (typeof gtag === 'function') {
         gtag('event', 'conversion', {

@@ -34,14 +34,32 @@
      Google stima le conversioni totali basandosi sui dati di chi ha accettato.
      Nessun cookie viene scritto senza consenso — è GDPR-compliant.
      Ref: https://support.google.com/google-ads/answer/10000067 */
-  if (localStorage.getItem('cookie_consent') === 'granted') {
-    gtag('consent', 'update', {
-      'ad_storage': 'granted',
-      'ad_user_data': 'granted',
-      'ad_personalization': 'granted',
-      'analytics_storage': 'granted'
-    });
-  }
+  /* Ripristino del consenso gia' espresso, il prima possibile e senza
+     aspettare il banner che sta in fondo al body.
+     ATTENZIONE: la chiave DEVE restare allineata a _includes/cookie-banner.html
+     (STORAGE_KEY = 'eq_cookie_consent_v2', VERSION = '2.0.0'). Fino al
+     19/08/2026 qui si leggeva 'cookie_consent', cioe' la chiave v1 che il
+     banner migra e poi CANCELLA: questo ramo non poteva mai essere vero.
+     Non faceva danno solo perche' il banner riapplica lo stato per conto suo,
+     ma se un giorno quell'include si sposta o sparisce, il consenso torna
+     negato per sempre e tutte le conversioni passano in cookieless, senza
+     che nessun errore lo segnali. */
+  try {
+    var eqRaw = localStorage.getItem('eq_cookie_consent_v2');
+    var eqSaved = eqRaw ? JSON.parse(eqRaw) : null;
+    if (eqSaved && eqSaved.version !== '2.0.0') { eqSaved = null; }
+    if (!eqSaved && localStorage.getItem('cookie_consent') === 'granted') {
+      eqSaved = { analytics: true, marketing: true };
+    }
+    if (eqSaved) {
+      gtag('consent', 'update', {
+        'ad_storage':         eqSaved.marketing ? 'granted' : 'denied',
+        'ad_user_data':       eqSaved.marketing ? 'granted' : 'denied',
+        'ad_personalization': eqSaved.marketing ? 'granted' : 'denied',
+        'analytics_storage':  eqSaved.analytics ? 'granted' : 'denied'
+      });
+    }
+  } catch (e) {}
 </script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.gtag_id }}"></script>
