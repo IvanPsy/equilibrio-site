@@ -27,6 +27,14 @@ hub_url: "https://www.ivanferrero.it/"
 # Google Ads
 gtag_id: "AW-1004214539"
 
+# Anteprime dei link (Open Graph).
+# Decisione del 19/08: l'anteprima e' SOBRIA di default, perche' su questo target
+# la card compare nella lista chat senza che nessuno apra il link. Una pagina che
+# ha bisogno della descrizione piena la dichiara nel front matter con
+# og_description (e, se serve, og_title). Stessa logica del whatsapp_float
+# spento sul cluster astinenza il 29/07.
+og_description_default: "Ivan Ferrero, psicologo e psicoterapeuta iscritto all'Albo degli Psicologi della Lombardia. Percorsi di psicoterapia online, riservati, su appuntamento."
+
 # GA4 — misura dei comportamenti (il tag Ads misura le conversioni, non il percorso).
 # Vuoto = nessun tag caricato. Incollare qui l'ID G-XXXXXXXXXX della proprieta'.
 ga4_id: ""
