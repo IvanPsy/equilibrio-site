@@ -5,6 +5,19 @@
 <title>{{ page.seo_title | default: page.title }} — {{ site.author }}</title>
 {% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}">{% endif %}
 
+<!-- Open Graph: anteprima quando un link viene incollato in una chat privata,
+     che su questo funnel e' il modo in cui il sito viene passato di mano. -->
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:site_name" content="Equilibrio">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="{{ page.seo_title | default: page.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:url" content="{{ page.canonical | default: page.url | absolute_url }}">
+<meta property="og:image" content="{{ '/assets/img/ivan-ferrero.jpg' | absolute_url }}">
+<meta name="twitter:card" content="summary_large_image">
+
+{% include schema-person.html %}
+
 <!-- Consent Mode v2 Advanced (consente modeling conversioni anche senza consenso) -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -35,6 +48,11 @@
 <script>
   gtag('js', new Date());
   gtag('config', '{{ site.gtag_id }}');
+{%- if site.ga4_id and site.ga4_id != "" %}
+  /* GA4: stessa libreria gtag, seconda destinazione. Rispetta il Consent Mode
+     dichiarato sopra, quindi misura la quota di visitatori che accetta. */
+  gtag('config', '{{ site.ga4_id }}');
+{%- endif %}
   /* Advanced Consent Mode: passa gclid/dclid via URL per attribution senza cookie */
   gtag('set', 'url_passthrough', true);
   gtag('set', 'ads_data_redaction', true);

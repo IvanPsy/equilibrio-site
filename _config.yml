@@ -15,8 +15,21 @@ whatsapp_msg_generic: "Ciao%2C%20vorrei%20informazioni%20sulla%20chiamata%20cono
 whatsapp_msg_assessment: "Ciao%2C%20ho%20completato%20l%27autovalutazione%20e%20vorrei%20ricevere%20una%20restituzione%20dei%20risultati."
 privacy_url: "/privacy/"  # policy di Equilibrio (creata 30/07/2026). Prima puntava a ivanferrero.it/privacy-policy/
 
+# Identita' e superfici esterne (consumate da _includes/schema-person.html)
+# Sostituiscono il Google Business Profile, non idoneo: vedi
+# marketing/profilo-gbp-2026-08-19.md
+opl_url: "https://www.opl.it/psicologi/16571/Ferrero-Ivan"
+linkedin_url: "https://www.linkedin.com/in/ivan-ferrero-psicologo"
+miodottore_url: ""   # <- incollare l'URL pubblico del profilo MioDottore
+youtube_url: ""      # <- quando il canale sara' live
+hub_url: "https://www.ivanferrero.it/"
+
 # Google Ads
 gtag_id: "AW-1004214539"
+
+# GA4 — misura dei comportamenti (il tag Ads misura le conversioni, non il percorso).
+# Vuoto = nessun tag caricato. Incollare qui l'ID G-XXXXXXXXXX della proprieta'.
+ga4_id: ""
 
 # Build
 markdown: kramdown

@@ -332,6 +332,9 @@ extra_css: |
         'value': 1.0,
         'currency': 'EUR'
       });
+      /* Evento GA4: risponde alla domanda che Ads non puo' rispondere,
+         cioe' quanti arrivano sul test e quanti lo portano a termine. */
+      gtag('event', 'test_de_completato', { 'fascia': band });
     }
 
     /* UI switch */

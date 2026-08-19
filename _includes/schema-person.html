@@ -1,0 +1,73 @@
+{%- comment -%}
+  Dati strutturati dell'entita' "Ivan Ferrero".
+  Sostituisce la funzione che avrebbe avuto il Google Business Profile, non idoneo
+  perche' la pratica e' esclusivamente online: vedi marketing/profilo-gbp-2026-08-19.md
+
+  ⚠️ NON aggiungere qui LocalBusiness, MedicalBusiness, Physician o address.
+  Sono tipi che presuppongono una sede dove i pazienti vengono ricevuti.
+  Dichiararla sarebbe la stessa classe di errore della data d'Albo, in codice.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "{{ site.url }}/#ivan",
+      "name": "{{ site.author }}",
+      "givenName": "Ivan",
+      "familyName": "Ferrero",
+      "jobTitle": "{{ site.credentials }}",
+      "url": "{{ site.url }}/",
+      "image": "{{ '/assets/img/ivan-ferrero.jpg' | absolute_url }}",
+      "knowsLanguage": "it",
+      "knowsAbout": [
+        "disfunzione erettile psicogena",
+        "ansia da prestazione sessuale",
+        "uso problematico di pornografia",
+        "dipendenze comportamentali",
+        "analisi bioenergetica",
+        "psicoterapia online"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Iscrizione all'Albo",
+          "identifier": "16571",
+          "url": "{{ site.opl_url }}",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Ordine degli Psicologi della Lombardia",
+            "url": "https://www.opl.it/"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Specializzazione in psicoterapia",
+          "name": "Psicoterapia ad indirizzo bioenergetico, diploma 2012",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "SIAB — Societa' Italiana di Analisi Bioenergetica"
+          }
+        }
+      ],
+      "sameAs": [
+        "{{ site.opl_url }}"{% if site.miodottore_url and site.miodottore_url != "" %},
+        "{{ site.miodottore_url }}"{% endif %}{% if site.linkedin_url and site.linkedin_url != "" %},
+        "{{ site.linkedin_url }}"{% endif %}{% if site.youtube_url and site.youtube_url != "" %},
+        "{{ site.youtube_url }}"{% endif %}{% if site.hub_url and site.hub_url != "" %},
+        "{{ site.hub_url }}"{% endif %}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}/",
+      "name": "Equilibrio",
+      "description": "{{ site.description }}",
+      "inLanguage": "it-IT",
+      "publisher": { "@id": "{{ site.url }}/#ivan" }
+    }
+  ]
+}
+</script>
