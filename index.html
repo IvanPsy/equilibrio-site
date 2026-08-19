@@ -39,7 +39,16 @@ whatsapp_float: true
         <p>Non è un difetto del tuo corpo. È un condizionamento, e come tutto ciò che si impara, <strong>si può dis-imparare</strong>. La disfunzione erettile psicologica e l'ansia da prestazione sono tra le problematiche più responsive al trattamento clinico, proprio perché la causa è comportamentale e cognitiva, non organica.</p>
         <p>Nel percorso che propongo, la valutazione diagnostica distingue con precisione le componenti psicologiche da quelle che richiedono un approfondimento medico. Così sai esattamente su cosa stai lavorando, e perché funziona. Se vuoi approfondire il meccanismo specifico dell'ansia da prestazione e della DE psicogena, <a href="{{ '/disfunzione-erettile-psicologica/' | relative_url }}" style="color: #6B5B4F; text-decoration: underline;">c'è una pagina dedicata qui</a>.</p>
 
-        {% include inline-cta.html href="/autovalutazione/" text="Fai il test di autovalutazione →" note="14 domande, 6 minuti, risultato immediato" %}
+        {% comment %}
+          19/08/2026 — gerarchia invertita, il DE viene per primo.
+          Motivo: il report pagine di destinazione (20/07-18/08) mostra 95 clic
+          a pagamento atterrati su questa ancora #pied con intento DE e ansia da
+          prestazione, e la CTA li mandava sul test PPU a 14 domande. Il check-up
+          DE diventa il primo passo; l'assessment completo resta come seconda
+          strada, per chi si riconosce nel quadro pornografia.
+        {% endcomment %}
+        {% include inline-cta.html href="/autovalutazione-de/" text="Comincia dal check-up della funzione erettile →" note="5 domande, 2 minuti, anonimo. Non sostituisce il medico, ti dice da dove partire." %}
+        <p class="inline-cta-note" style="text-align: center; margin-top: 16px;">Se il nodo è la pornografia, c'è anche <a href="{{ '/autovalutazione/' | relative_url }}" style="color: #6B5B4F; text-decoration: underline;">l'assessment completo</a>: 14 domande, 6 minuti, quattro dimensioni.</p>
     </div>
 </section>
 
