@@ -24,6 +24,16 @@ miodottore_url: ""   # <- incollare l'URL pubblico del profilo MioDottore
 youtube_url: ""      # <- quando il canale sara' live
 hub_url: "https://www.ivanferrero.it/"
 
+# Modulo di contatto: endpoint dello script Google (Apps Script Web App).
+# Vuoto = il modulo non prova nemmeno a inviare e mostra subito le vie dirette
+# (email e WhatsApp), invece di dire "ricevuto" senza aver ricevuto niente.
+# Lo script sta in de_cartella_lavoro/sito/equilibrio-contatti.gs, con le
+# istruzioni di installazione in testa. Incollare qui l'URL che finisce in /exec.
+# 21/08/2026: sostituisce il POST al Google Form, che puntava al modulo
+# dell'assessment (nove campi obbligatori) e veniva rifiutato da Google a ogni
+# invio, in silenzio, da quando il modulo esiste.
+contact_endpoint: "https://script.google.com/macros/s/AKfycbxTh7Ny9BqsWV4TPbgWJlF25nKJPHC_rzHaqXvOgsbHeQmak_xcbKWY5u78-W_WiZE/exec"
+
 # Google Ads
 gtag_id: "AW-1004214539"
 

@@ -7,6 +7,24 @@
     qualify: passare qualify=false per nascondere il pre-form di qualificazione
              (default: mostrato)
 
+  🚨 21/08/2026 - IL MODULO NON HA MAI CONSEGNATO NIENTE. Fino a oggi il submit
+  faceva POST su https://docs.google.com/forms/d/e/1FAIpQLSffFim5dy.../formResponse
+  passando tre soli campi. Quel modulo Google pero' e' "Equilibrio - Restituzione
+  primo assessment", che ha NOVE campi obbligatori (Nome, Cognome, Eta, Stato
+  relazionale, Partner, Aiuto, Perche ora, Punteggi, Risposte, Profilo). Google
+  rifiuta un formResponse incompleto con un 400 e non registra niente. Il POST
+  girava in `mode: no-cors`, che rende invisibile qualunque errore, e il blocco
+  di successo stava dentro un `.finally()`, che scatta anche quando la richiesta
+  fallisce: la pagina scriveva "Messaggio ricevuto" su un messaggio buttato via.
+  Anche la conversione Ads `rjxo` (5,00 EUR, "Lead form email") partiva prima
+  della richiesta, quindi l'account contava lead che non sono mai esistiti.
+  Da oggi: si posta su un Apps Script che manda una email vera e RISPONDE
+  {"ok":true}. Il successo si dichiara solo su risposta verificata, il pixel
+  scatta li' dentro, e se la consegna fallisce la pagina lo dice e offre le due
+  vie dirette (email e WhatsApp) con il testo gia' pronto.
+  ⚠️ Regola che ne discende: nessun canale di contatto puo' dichiarare successo
+  su una richiesta di cui non ha letto la risposta.
+
   21/08/2026 (prompt-02, Binario A) - PRE-FORM DI QUALIFICAZIONE.
   Tre scelte rapide sopra il messaggio. Quando l'utente ne seleziona una, la riga
   corrispondente viene PREPOSTA nel textarea del messaggio: la vede, la puo'
@@ -54,7 +72,16 @@
 <div class="contact-form-success" id="contactFormSuccess" style="display:none;">
   <div class="success-icon">✓</div>
   <h3>Messaggio ricevuto</h3>
-  <p>Ti rispondo personalmente entro 24 ore. Controlla anche la cartella spam.</p>
+  <p>Ti rispondo personalmente entro 24 ore lavorative, con due possibilità di orario. Controlla anche la cartella spam.</p>
+</div>
+
+{% comment %} Mostrato solo se la consegna NON e' stata confermata dal server. {% endcomment %}
+<div class="contact-form-fallback" id="contactFormFallback" style="display:none;">
+  <h3>Il messaggio non è partito</h3>
+  <p>È un problema mio, non tuo, e non voglio che vada perso. Il testo che hai scritto è già pronto qui sotto: ti basta un clic.</p>
+  <a href="#" id="cfMailtoLink" class="btn-form-submit">Mandalo dalla tua email →</a>
+  <p class="cf-fallback-alt">Oppure <a href="https://wa.me/{{ site.whatsapp_number }}" id="cfWaLink" target="_blank" rel="noopener">mandamelo su WhatsApp</a>.</p>
+  <p class="form-note">Il mio indirizzo è <strong>ivan@ivanferrero.it</strong>. Scrivo io personalmente, non c'è nessun centralino in mezzo.</p>
 </div>
 
 <script>
@@ -106,42 +133,97 @@ function submitContactForm(e) {
   var email = document.getElementById('cfEmail').value.trim();
   var messaggio = document.getElementById('cfMessaggio').value.trim();
   var source = document.getElementById('cfSource').value;
+  var btn = document.getElementById('cfSubmitBtn');
 
   if (!email || !email.includes('@')) {
     document.getElementById('cfError').style.display = 'block';
     return false;
   }
   document.getElementById('cfError').style.display = 'none';
-  document.getElementById('cfSubmitBtn').disabled = true;
-  document.getElementById('cfSubmitBtn').textContent = 'Invio in corso…';
+  btn.disabled = true;
+  btn.textContent = 'Invio in corso…';
 
-  /* Enhanced Conversions: passa email per attribuzione */
-  if (typeof gtag === 'function') {
-    gtag('set', 'user_data', { 'email': email });
-    gtag('event', 'conversion', {
-      'send_to': 'AW-1004214539/rjxoCOrHzoAcEIuy7N4D',
-      'value': 5.0,
-      'currency': 'EUR'
-    });
-    gtag('event', 'richiesta_contatto');
-  }
+  var ENDPOINT = '{{ site.contact_endpoint }}';
+  var chiuso = false;
 
-  /* Invio a Google Form (no-cors = fire-and-forget) */
-  var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSffFim5dyVsnQRzrU5jARNDuFFkJAJSiwt3RJsAzDrm3Q5URg/formResponse';
-  var params = new URLSearchParams();
-  params.append('entry.165398742', email);
-  params.append('entry.1497780864', messaggio);
-  params.append('entry.499482887', source);
-
-  fetch(formUrl, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: params.toString()
-  }).finally(function() {
+  /* Successo: si dichiara SOLO qui, cioe' solo dopo che il server ha risposto
+     ok. Il pixel Ads sta dentro questo ramo per la stessa ragione: una
+     conversione e' un messaggio consegnato, non un bottone premuto. */
+  function consegnato() {
+    if (typeof gtag === 'function') {
+      gtag('set', 'user_data', { 'email': email });
+      gtag('event', 'conversion', {
+        'send_to': 'AW-1004214539/rjxoCOrHzoAcEIuy7N4D',
+        'value': 5.0,
+        'currency': 'EUR'
+      });
+      gtag('event', 'richiesta_contatto');
+    }
     document.getElementById('contactFormBlock').style.display = 'none';
     document.getElementById('contactFormSuccess').style.display = 'block';
-  });
+  }
+
+  /* Fallimento: si dice, non si nasconde. Il testo che la persona ha scritto
+     viene passato alle due vie dirette, cosi' non deve riscriverlo. */
+  function nonConsegnato(motivo) {
+    if (window.console && console.warn) console.warn('[contact-form] consegna non confermata:', motivo);
+    var oggetto = 'Richiesta dal sito (' + source + ')';
+    var corpo = messaggio ? messaggio : '';
+    var mail = document.getElementById('cfMailtoLink');
+    if (mail) {
+      mail.href = 'mailto:ivan@ivanferrero.it'
+        + '?subject=' + encodeURIComponent(oggetto)
+        + '&body=' + encodeURIComponent(corpo);
+    }
+    var wa = document.getElementById('cfWaLink');
+    if (wa && corpo) {
+      wa.href = 'https://wa.me/{{ site.whatsapp_number }}?text=' + encodeURIComponent(corpo);
+    }
+    document.getElementById('contactFormBlock').style.display = 'none';
+    document.getElementById('contactFormFallback').style.display = 'block';
+  }
+
+  function concludi(fn, motivo) {
+    if (chiuso) return;
+    chiuso = true;
+    fn(motivo);
+  }
+
+  if (!ENDPOINT) {
+    concludi(nonConsegnato, 'contact_endpoint non configurato in _config.yml');
+    return false;
+  }
+
+  var corpo = new URLSearchParams();
+  corpo.append('email', email);
+  corpo.append('messaggio', messaggio);
+  corpo.append('source', source);
+  corpo.append('pagina', window.location.href);
+
+  /* Rete di sicurezza: se il server non risponde entro 15 secondi si passa
+     alle vie dirette invece di lasciare la persona su un bottone bloccato. */
+  var timer = setTimeout(function () { concludi(nonConsegnato, 'timeout'); }, 15000);
+
+  /* application/x-www-form-urlencoded tiene la richiesta "semplice": niente
+     preflight CORS, che gli Apps Script non gestiscono. */
+  fetch(ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+    body: corpo.toString()
+  })
+    .then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    })
+    .then(function (testo) {
+      if (testo.indexOf('"ok":true') === -1) throw new Error('risposta inattesa: ' + testo.slice(0, 120));
+      clearTimeout(timer);
+      concludi(consegnato);
+    })
+    .catch(function (err) {
+      clearTimeout(timer);
+      concludi(nonConsegnato, (err && err.message) || err);
+    });
 
   return false;
 }
