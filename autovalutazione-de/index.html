@@ -44,6 +44,21 @@ extra_css: |
   .mini-submit .btn-submit:hover { background: #6B5B4F; }
   .mini-submit .submit-note { font-size: 0.85rem; color: #A89B8C; margin-top: 10px; }
 
+  /* Domande di qualificazione Q6/Q7 (21/08/2026, prompt-02).
+     Non sono cliniche e non entrano nel punteggio IIEF-5: servono solo a
+     ramificare la UI dei risultati. Restano on-device come tutto il resto. */
+  .mini-qual { padding-top: 8px; }
+  .mini-question .check-options { display: flex; flex-direction: column; gap: 8px; }
+  .mini-question .qual-option, .mini-question .qual-check { display: flex; align-items: flex-start; gap: 12px; padding: 10px 14px; border: 1px solid #E8E4DF; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+  .mini-question .qual-option:hover, .mini-question .qual-check:hover { border-color: #A89B8C; background: #FDFCFA; }
+  .mini-question .qual-option.selected, .mini-question .qual-check.selected { border-color: #2D2A26; background: #F7F5F2; }
+  .mini-question .qual-option.selected .radio-dot { border-color: #2D2A26; background: #2D2A26; box-shadow: inset 0 0 0 3px #FDFCFA; }
+  .mini-question .check-box { width: 18px; height: 18px; border-radius: 3px; border: 2px solid #A89B8C; flex-shrink: 0; margin-top: 1px; transition: all 0.2s; }
+  .mini-question .qual-check.selected .check-box { border-color: #2D2A26; background: #2D2A26; box-shadow: inset 0 0 0 2px #FDFCFA; }
+  .mini-question .q-optional { text-transform: none; letter-spacing: 0; color: #A89B8C; }
+  .mini-cta #miniCtaGuida > p { color: #5C5650; margin-bottom: 24px; line-height: 1.6; }
+  .mini-cta #miniCtaBinarioA a { color: #6B5B4F; text-decoration: underline; }
+
   /* Results */
   .mini-results { display: none; padding: 60px 0 40px; background: #FDFCFA; }
   .mini-results .container { max-width: 640px; }
@@ -181,9 +196,39 @@ extra_css: |
   </div>
 </section>
 
+<section class="mini-section mini-qual">
+  <div class="container">
+    <p class="section-instruction">Ancora due domande, e non sono cliniche: non entrano nel punteggio e non misurano niente. Servono a capire a che punto sei del percorso, così quello che leggi dopo è calibrato su di te. Restano sul tuo dispositivo come le altre.</p>
+
+    <div class="mini-question" id="miniQ6">
+      <div class="q-number">Prima del risultato · 1 di 2</div>
+      <div class="q-text">Hai già fatto controlli medici per questo problema?</div>
+      <div class="radio-options">
+        <div class="qual-option" data-q6="no"><div class="radio-dot"></div><div class="radio-text">No, non ancora</div></div>
+        <div class="qual-option" data-q6="emerso"><div class="radio-dot"></div><div class="radio-text">Sì, ed è emerso qualcosa</div></div>
+        <div class="qual-option" data-q6="aposto"><div class="radio-dot"></div><div class="radio-text">Sì, e gli esami sono a posto</div></div>
+      </div>
+    </div>
+
+    <div class="mini-question" id="miniQ7">
+      <div class="q-number">Prima del risultato · 2 di 2 <span class="q-optional">(facoltativa, più risposte possibili)</span></div>
+      <div class="q-text">Cosa hai già provato?</div>
+      <div class="check-options">
+        <div class="qual-check" data-q7="farmaci"><div class="check-box"></div><div class="radio-text">Farmaci per l'erezione</div></div>
+        <div class="qual-check" data-q7="integratori"><div class="check-box"></div><div class="radio-text">Integratori</div></div>
+        <div class="qual-check" data-q7="astinenza"><div class="check-box"></div><div class="radio-text">Un periodo di astinenza, NoFap o simili</div></div>
+        <div class="qual-check" data-q7="esercizi"><div class="check-box"></div><div class="radio-text">Esercizi o app trovati online</div></div>
+        <div class="qual-check" data-q7="psicologo"><div class="check-box"></div><div class="radio-text">Uno psicologo o uno psicoterapeuta</div></div>
+        <div class="qual-check" data-q7="niente"><div class="check-box"></div><div class="radio-text">Niente di strutturato, finora</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="mini-submit">
   <div class="container">
     <p class="error-msg" id="miniErrorMsg">Rispondi a tutte le 5 domande per vedere il risultato.</p>
+    <p class="error-msg" id="miniErrorQual">Manca la domanda sui controlli medici: serve a capire cosa ha senso proporti dopo.</p>
     <button type="button" class="btn-submit" id="miniBtnSubmit">Vedi il tuo risultato →</button>
     <p class="submit-note">Le tue risposte e il punteggio restano sul tuo dispositivo: non li invio e non li salvo.</p>
   </div>
@@ -204,13 +249,17 @@ extra_css: |
 <!-- CTA post-results -->
 <section class="mini-cta" id="miniCta">
   <div class="container">
-    <h2>Adesso hai un numero. Quello che manca è il perché.</h2>
+    <h2 id="miniCtaTitle">Adesso hai un numero. Quello che manca è il perché.</h2>
     <p id="miniCtaBandNote"></p>
-    <p>Un punteggio ti dice <em>quanto</em>, non <em>perché</em>. La guida <em>«Quando la testa spegne il corpo»</em> è la parte che manca: ti spiega il meccanismo che c'è dietro un risultato come il tuo, perché la pillola spesso non basta, e da dove si comincia. Te la mando via email, gratis, e la leggi con calma quando vuoi.</p>
+    <p id="miniCtaBinarioA" style="display:none;">Se hai già fatto visite e tentativi, c'è una pagina scritta per quel punto esatto: <a href="{{ '/disfunzione-erettile-esami-a-posto/' | relative_url }}">la disfunzione erettile con esami a posto</a>, dove trovi anche come funziona il percorso, quanto dura e quanto costa.</p>
 
-    {% include sendfox-form-de.html %}
+    <div id="miniCtaGuida">
+      <p id="miniCtaGuidaLead">Un punteggio ti dice <em>quanto</em>, non <em>perché</em>. La guida <em>«Quando la testa spegne il corpo»</em> è la parte che manca: ti spiega il meccanismo che c'è dietro un risultato come il tuo, perché la pillola spesso non basta, e da dove si comincia. Te la mando via email, gratis, e la leggi con calma quando vuoi.</p>
 
-    <div class="mini-cta-secondary" style="margin-top: 40px; padding-top: 28px; border-top: 1px solid #E8E4DF;">
+      {% include sendfox-form-de.html %}
+    </div>
+
+    <div class="mini-cta-secondary" id="miniCtaContatto" style="margin-top: 40px; padding-top: 28px; border-top: 1px solid #E8E4DF;">
       <p id="miniCtaContactLead">Se invece preferisci parlarne direttamente, scrivimi: mi racconti la tua situazione, io ti dico se posso aiutarti e come. Anche solo due righe, anche con un nome di fantasia.</p>
 
       {% include contact-form.html source="Mini-Assessment DE (post-risultato)" %}
@@ -232,8 +281,16 @@ extra_css: |
   var TOTAL = 5;
   var qs = ['c1','c2','c3','c4','c5'];
 
+  /* 21/08/2026 (prompt-02): `answers` ospita adesso anche q6 (stringa) e q7
+     (array), che NON sono domande cliniche e non entrano nel punteggio.
+     Per questo il conteggio non usa piu' Object.keys(answers).length ma
+     l'elenco `qs`: la barra di avanzamento resta quella delle 5 IIEF-5. */
+  function answeredIIEF() {
+    return qs.filter(function(k) { return k in answers; }).length;
+  }
+
   function updateProgress() {
-    var n = Object.keys(answers).length;
+    var n = answeredIIEF();
     document.getElementById('miniProgressFill').style.width = ((n / TOTAL) * 100) + '%';
     document.getElementById('miniProgressText').textContent = n + ' di ' + TOTAL;
   }
@@ -249,8 +306,39 @@ extra_css: |
     });
   });
 
+  /* Q6: una sola risposta. Non e' clinica, ma e' obbligatoria: e' la domanda che
+     decide se dopo il risultato proporre la guida o il contatto clinico. */
+  document.querySelectorAll('.qual-option').forEach(function(opt) {
+    opt.addEventListener('click', function() {
+      answers.q6 = this.dataset.q6;
+      document.querySelectorAll('.qual-option').forEach(function(o) { o.classList.remove('selected'); });
+      this.classList.add('selected');
+      document.getElementById('miniErrorQual').style.display = 'none';
+    });
+  });
+
+  /* Q7: risposte multiple, facoltativa. "Niente di strutturato" esclude le altre. */
+  document.querySelectorAll('.qual-check').forEach(function(opt) {
+    opt.addEventListener('click', function() {
+      var v = this.dataset.q7;
+      var list = answers.q7 || [];
+      var wasOn = this.classList.contains('selected');
+      if (v === 'niente') {
+        document.querySelectorAll('.qual-check').forEach(function(o) { if (o !== opt) o.classList.remove('selected'); });
+        list = wasOn ? [] : ['niente'];
+      } else {
+        var none = document.querySelector('.qual-check[data-q7="niente"]');
+        if (none) none.classList.remove('selected');
+        list = list.filter(function(x) { return x !== 'niente' && x !== v; });
+        if (!wasOn) list.push(v);
+      }
+      this.classList.toggle('selected', !wasOn);
+      answers.q7 = list;
+    });
+  });
+
   document.getElementById('miniBtnSubmit').addEventListener('click', function() {
-    if (Object.keys(answers).length < TOTAL) {
+    if (answeredIIEF() < TOTAL) {
       document.getElementById('miniErrorMsg').style.display = 'block';
       for (var i = 0; i < qs.length; i++) {
         if (!(qs[i] in answers)) {
@@ -259,6 +347,13 @@ extra_css: |
           break;
         }
       }
+      return;
+    }
+
+    if (!('q6' in answers)) {
+      document.getElementById('miniErrorMsg').style.display = 'none';
+      document.getElementById('miniErrorQual').style.display = 'block';
+      document.getElementById('miniQ6').scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
@@ -288,7 +383,7 @@ extra_css: |
     } else {
       band = 'severa'; bandLabel = 'Difficoltà significative'; bandClass = 'band-red';
       text = '<p>Il tuo punteggio (' + score + '/25) indica difficoltà erettili significative. Probabilmente questo sta avendo un impatto importante sulla tua vita intima e sulla tua autostima.</p>' +
-             '<div class="mini-result-highlight">Con un punteggio in questa fascia, è importante un approccio completo: escludere componenti organiche (se non l\'hai già fatto) e indagare le componenti psicologiche (ansia da prestazione, stress cronico, dinamiche di coppia, e altri fattori che spesso vengono trascurati). La buona notizia: quando la causa è psicologica, il trattamento funziona.</div>';
+             '<div class="mini-result-highlight">Con un punteggio in questa fascia, è importante un approccio completo: escludere componenti organiche (se non l\'hai già fatto) e indagare le componenti psicologiche (ansia da prestazione, stress cronico, dinamiche di coppia, e altri fattori che spesso vengono trascurati). Quando la componente psicologica pesa, si lavora su meccanismi descritti e documentati, non su impressioni.</div>';
     }
 
     var scoreDisplay = allZero ? '—' : score;
@@ -302,9 +397,13 @@ extra_css: |
       '</div>';
     document.getElementById('miniResultText').innerHTML = '<div class="mini-result-text">' + text + '</div>';
 
-    /* CTA post-risultato calibrata sulla fascia.
-       La guida resta il primo passo per tutti (costa un'email, non una conversazione).
-       Cambia il tono dell'invito a scrivere: più diretto sulle fasce alte, più leggero sulle basse. */
+    /* CTA post-risultato calibrata sulla fascia E sulla qualificazione (Q6/Q7).
+       Fino al 20/08/2026 la guida era il primo passo per tutti. Dal 21/08 non lo e'
+       piu': chi ha gia' fatto controlli medici con esami a posto, oppure ha gia'
+       provato qualcosa, e ha un punteggio in fascia moderata o severa, e' oltre il
+       punto in cui serve un'altra lettura. Per lui la CTA primaria diventa il
+       contatto clinico (Binario A) e la guida scende a secondaria.
+       Nessun dato di Q6/Q7 lascia la pagina: servono solo a ordinare la UI. */
     var ctaNote, contactLead;
     if (band === 'severa') {
       ctaNote = 'Un risultato in questa fascia non è una condanna: è un punto di partenza preciso. Va guardato per intero, componenti mediche comprese, e il modo di guardarlo non è da soli.';
@@ -322,6 +421,34 @@ extra_css: |
       ctaNote = 'Il numero è rassicurante. Ma se sei arrivato fin qui, qualcosa ti ha portato a cercare, e quel qualcosa merita comunque una risposta.';
       contactLead = 'Se invece preferisci parlarne direttamente, scrivimi: mi racconti la tua situazione, io ti dico se posso aiutarti e come. Anche solo due righe, anche con un nome di fantasia.';
     }
+    /* Biforcazione B4: qualificato + fascia che pesa = Binario A. */
+    var q6 = answers.q6 || '';
+    var q7 = answers.q7 || [];
+    var tentativi = q7.filter(function(v) { return v !== 'niente'; }).length > 0;
+    var binarioA = (band === 'moderata' || band === 'severa') && (q6 === 'aposto' || tentativi);
+
+    if (binarioA) {
+      var contatto = document.getElementById('miniCtaContatto');
+      var guida = document.getElementById('miniCtaGuida');
+      if (contatto && guida && guida.parentNode) {
+        guida.parentNode.insertBefore(contatto, guida);
+        contatto.style.marginTop = '0';
+        contatto.style.paddingTop = '0';
+        contatto.style.borderTop = 'none';
+        guida.style.marginTop = '40px';
+        guida.style.paddingTop = '28px';
+        guida.style.borderTop = '1px solid #E8E4DF';
+      }
+      document.getElementById('miniCtaTitle').textContent = 'Con questo quadro, il passo utile non è un\'altra guida.';
+      document.getElementById('miniCtaBinarioA').style.display = 'block';
+      var guidaLead = document.getElementById('miniCtaGuidaLead');
+      if (guidaLead) {
+        guidaLead.innerHTML = 'Se preferisci comunque partire da una lettura, la guida <em>«Quando la testa spegne il corpo»</em> resta qui: spiega il meccanismo che sta dietro un risultato come il tuo. La ricevi via email.';
+      }
+      ctaNote = 'Hai indicato di aver già fatto controlli medici o di aver già provato qualcosa, e il punteggio è in una fascia che pesa. Messe insieme, le due cose dicono una cosa sola: sei oltre il punto in cui serve un\'altra spiegazione. Il passo utile adesso è parlarne con un clinico.';
+      contactLead = 'Scrivimi cosa hai già provato e come è andata: bastano tre righe, anche con un nome di fantasia. Ti rispondo io, con due possibilità di orario per una chiamata di 15 minuti.';
+    }
+
     document.getElementById('miniCtaBandNote').textContent = ctaNote;
     document.getElementById('miniCtaContactLead').textContent = contactLead;
 
