@@ -252,6 +252,7 @@ extra_css: |
     <h2 id="miniCtaTitle">Adesso hai un numero. Quello che manca è il perché.</h2>
     <p id="miniCtaBandNote"></p>
     <p id="miniCtaBinarioA" style="display:none;">Se hai già fatto visite e tentativi, c'è una pagina scritta per quel punto esatto: <a href="{{ '/disfunzione-erettile-esami-a-posto/' | relative_url }}">la disfunzione erettile con esami a posto</a>, dove trovi anche come funziona il percorso, quanto dura e quanto costa.</p>
+    <p id="miniCtaPercorso" style="display:none;">Se prima di decidere qualsiasi cosa vuoi vedere com'è fatto il percorso, fasi, strumenti, durata e costi sono scritti per intero nella pagina su <a href="{{ '/come-funziona/' | relative_url }}">come funziona il percorso</a>.</p>
 
     <div id="miniCtaGuida">
       <p id="miniCtaGuidaLead">Un punteggio ti dice <em>quanto</em>, non <em>perché</em>. La guida <em>«Quando la testa spegne il corpo»</em> è la parte che manca: ti spiega il meccanismo che c'è dietro un risultato come il tuo, perché la pillola spesso non basta, e da dove si comincia. Te la mando via email, gratis, e la leggi con calma quando vuoi.</p>
@@ -451,6 +452,14 @@ extra_css: |
 
     document.getElementById('miniCtaBandNote').textContent = ctaNote;
     document.getElementById('miniCtaContactLead').textContent = contactLead;
+
+    /* 22/08/2026 (prompt-04): /come-funziona/ resta noindex, ma diventa
+       raggiungibile da ogni superficie DE calda. Qui si mostra alle fasce che
+       pesano, dove la trasparenza su fasi, durata e prezzi e' un asset di
+       conversione e non piu' un rischio. */
+    if (band === 'moderata' || band === 'severa') {
+      document.getElementById('miniCtaPercorso').style.display = 'block';
+    }
 
     /* Conversion tracking */
     if (typeof gtag === 'function') {
