@@ -23,7 +23,7 @@ extra_css: |
     <div class="container">
 
         <h1>Privacy e trattamento dei dati</h1>
-        <p class="updated">Informativa per il sito Equilibrio, ai sensi degli artt. 13 e 14 del Regolamento UE 2016/679 (GDPR) · Ultimo aggiornamento: 21 agosto 2026</p>
+        <p class="updated">Informativa per il sito Equilibrio, ai sensi degli artt. 13 e 14 del Regolamento UE 2016/679 (GDPR) · Ultimo aggiornamento: {% if site.ga4_id and site.ga4_id != "" %}25 agosto 2026{% else %}21 agosto 2026{% endif %}</p>
 
         <p class="lead">Chi arriva su questo sito lo fa quasi sempre per un motivo che non ha ancora raccontato a nessuno. Per questo la pagina che stai leggendo non è un adempimento: è il posto dove ti dico, in modo verificabile, cosa succede ai tuoi dati se ti iscrivi a una guida, se fai un test o se mi scrivi. Se dopo averla letta ti resta un dubbio, scrivimi e ti rispondo io.</p>
 
@@ -83,15 +83,23 @@ extra_css: |
             <li><strong>cookie tecnici</strong>: memoria della tua scelta sui cookie e reCAPTCHA invisibile di Google sui moduli di iscrizione, per fermare i bot. Non richiedono consenso;</li>
             <li><strong>Google Ads</strong> (identificativo <code>AW-1004214539</code>): misurazione delle conversioni delle campagne. Richiede il tuo consenso di marketing;</li>
             <li><strong>Google Fonts</strong>: i caratteri tipografici del sito sono caricati dai server di Google, che quindi vedono il tuo indirizzo IP.</li>
+{% if site.ga4_id and site.ga4_id != "" %}
+            <li><strong>Google Analytics 4</strong>: misura in forma aggregata quali pagine vengono lette e quali passaggi del sito funzionano. Richiede il tuo consenso di analisi. Non raccoglie il tuo indirizzo IP in forma leggibile, non costruisce profili pubblicitari e non riceve nulla di quello che rispondi ai test o mi scrivi nei moduli.</li>
+{% endif %}
         </ul>
+{% if site.ga4_id and site.ga4_id != "" %}
+        <p>Su questo sito c'è <strong>Google Analytics 4</strong>, e vale la pena dire con precisione che cosa fa e che cosa non fa. Conta le visite alle pagine e alcuni passaggi del percorso, per esempio quante persone completano un test o inviano un messaggio, e lo fa come numero complessivo. <strong>Quello che il test dice di te non gli arriva mai</strong>: nessun punteggio, nessuna fascia, nessuna risposta, nessun contenuto dei messaggi. L'indirizzo IP non viene conservato in forma leggibile e i dati aggregati sono tenuti per il tempo minimo previsto dallo strumento.</p>
+        <p>Restano fuori, e restano fuori per scelta: pixel di Facebook o di altri social, remarketing basato sulle pagine che leggi, liste di pubblico costruite a partire da chi visita Equilibrio. Su un sito come questo, il retargeting sarebbe un modo per far comparire il tuo problema sullo schermo di chi ti sta accanto, e questo non deve poter succedere.</p>
+{% else %}
         <p>Su questo sito <strong>non c'è Google Analytics</strong>, non ci sono pixel di Facebook o di altri social, non c'è remarketing basato sulle pagine che leggi, e non esistono liste di pubblico costruite a partire da chi visita Equilibrio. Su un sito come questo, il retargeting sarebbe un modo per far comparire il tuo problema sullo schermo di chi ti sta accanto, e questo non deve poter succedere.</p>
+{% endif %}
         <p>Puoi cambiare idea in qualsiasi momento dal pulsante con l'ingranaggio in basso, o dal link "Gestisci preferenze cookie" in fondo a ogni pagina.</p>
 
         <h2>6. Chi tratta i dati per me, e dove finiscono</h2>
         <p>Mi appoggio a questi fornitori, che agiscono come responsabili del trattamento ai sensi dell'art. 28 GDPR:</p>
         <ul>
             <li><strong>SendFox</strong> (Stati Uniti): gestione delle iscrizioni e invio delle sequenze email;</li>
-            <li><strong>Google</strong> (Google Ireland Ltd. e Google LLC): moduli Google per le richieste di contatto, Google Ads per la misurazione delle campagne, reCAPTCHA, Google Fonts;</li>
+            <li><strong>Google</strong> (Google Ireland Ltd. e Google LLC): uno script Google riservato che mi recapita le richieste inviate dal modulo di contatto, Google Ads per la misurazione delle campagne, {% if site.ga4_id and site.ga4_id != "" %}Google Analytics 4 per la misura aggregata delle visite, {% endif %}reCAPTCHA, Google Fonts;</li>
             <li><strong>GitHub Inc.</strong> (Stati Uniti): hosting delle pagine del sito;</li>
             <li><strong>Meta Platforms Ireland</strong>: solo per le conversazioni WhatsApp che sei tu ad avviare.</li>
         </ul>
@@ -105,7 +113,7 @@ extra_css: |
         <ul>
             <li><strong>Iscrizioni alle guide e alle sequenze email:</strong> i dati sono conservati per tutto il tempo in cui l'iscrizione resta attiva, cioè fino alla revoca del consenso tramite il link "Cancella iscrizione" presente in ogni email. In assenza di revoca, l'indirizzo è cancellato dopo <strong>24 mesi di completa inattività</strong> (nessuna apertura e nessun click). La documentazione del consenso (data, ora, indirizzo IP) è conservata per il tempo necessario a dimostrarne la validità. La conservazione dell'indirizzo non comporta l'invio di comunicazioni ulteriori rispetto a quelle descritte al punto 3.1: qualsiasi comunicazione diversa richiede un nuovo consenso esplicito.</li>
             <li><strong>Richieste di contatto e risultati dei test che mi invii:</strong> conservati per il tempo necessario a risponderti e, se non ne nasce un percorso, cancellati entro dodici mesi.</li>
-            <li><strong>Dati di navigazione:</strong> secondo i tempi tecnici dei fornitori, in forma aggregata.</li>
+            <li><strong>Dati di navigazione:</strong> secondo i tempi tecnici dei fornitori, in forma aggregata.{% if site.ga4_id and site.ga4_id != "" %} I dati di Google Analytics 4 sono conservati per il periodo più breve previsto dallo strumento, due mesi, dopodiché restano solo i totali.{% endif %}</li>
             <li><strong>Documentazione clinica</strong>, se un percorso comincia: dieci anni dalla conclusione, come previsto dal Codice Deontologico degli Psicologi e dalla normativa fiscale. Questo trattamento è descritto nell'<a href="/informativa-assessment/">informativa dedicata</a>.</li>
         </ul>
         <div class="box">

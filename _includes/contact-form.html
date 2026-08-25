@@ -25,6 +25,15 @@
   ⚠️ Regola che ne discende: nessun canale di contatto puo' dichiarare successo
   su una richiesta di cui non ha letto la risposta.
 
+  25/08/2026 (prompt-07, misurazione) - CONVERSIONE SEPARATA PER IL BINARIO A.
+  Un contatto consegnato dalla landing "Binario A - Esami a posto" vale
+  un'azione di conversione propria da 10,00 EUR ("Contatto landing resistente"),
+  invece della `rjxo` generica da 5,00 EUR. Serve a leggere in Google Ads che
+  cosa produce la landing resistente senza confonderla con le altre superfici.
+  La conversione resta UNA sola per contatto: o l'una o l'altra, mai entrambe.
+  Finche' l'etichetta nuova e' un segnaposto, il codice manda `rjxo` come prima.
+  Nessun dato personale e nessun dato di salute entra negli eventi.
+
   21/08/2026 (prompt-02, Binario A) - PRE-FORM DI QUALIFICAZIONE.
   Tre scelte rapide sopra il messaggio. Quando l'utente ne seleziona una, la riga
   corrispondente viene PREPOSTA nel textarea del messaggio: la vede, la puo'
@@ -146,18 +155,48 @@ function submitContactForm(e) {
   var ENDPOINT = '{{ site.contact_endpoint }}';
   var chiuso = false;
 
+  /* Azione di conversione "Contatto landing resistente" (prompt-07, 25/08/2026).
+     ATTENZIONE: finche' qui sotto resta il segnaposto XXXX_DA_CREARE l'azione
+     NON esiste ancora in Google Ads, e il codice se ne accorge da solo: manda
+     la conversione storica `rjxo`, cosi' nessun contatto consegnato resta senza
+     segnale. Ivan sostituisce SOLO la parte dopo la barra con l'etichetta vera
+     che Google gli mostra alla creazione dell'azione (task Things 07).
+     Dove sostituire: questa riga, in `_includes/contact-form.html`.
+     Il giorno della sostituzione i contatti dal Binario A smettono di comparire
+     sotto `rjxo` e cominciano a comparire sotto l'azione nuova: le due serie non
+     si sommano, e la data va annotata nel piano di misura. */
+  var ETICHETTA_BINARIO_A = 'AW-1004214539/XXXX_DA_CREARE';
+  var SOURCE_BINARIO_A = 'Binario A - Esami a posto';
+
   /* Successo: si dichiara SOLO qui, cioe' solo dopo che il server ha risposto
      ok. Il pixel Ads sta dentro questo ramo per la stessa ragione: una
      conversione e' un messaggio consegnato, non un bottone premuto. */
   function consegnato() {
     if (typeof gtag === 'function') {
       gtag('set', 'user_data', { 'email': email });
-      gtag('event', 'conversion', {
-        'send_to': 'AW-1004214539/rjxoCOrHzoAcEIuy7N4D',
-        'value': 5.0,
-        'currency': 'EUR'
-      });
+      /* Un messaggio consegnato produce UNA conversione sola. Dalla landing del
+         Binario A vale 10,00 EUR sull'azione dedicata, da ogni altra superficie
+         vale 5,00 EUR su `rjxo`. Mandarle entrambe rifarebbe il doppio conteggio
+         che il 19/08 ha reso illeggibile la colonna Conversioni. */
+      var suBinarioA = (source === SOURCE_BINARIO_A)
+        && ETICHETTA_BINARIO_A.indexOf('XXXX_DA_CREARE') === -1;
+      if (suBinarioA) {
+        gtag('event', 'conversion', {
+          'send_to': ETICHETTA_BINARIO_A,
+          'value': 10.0,
+          'currency': 'EUR'
+        });
+      } else {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-1004214539/rjxoCOrHzoAcEIuy7N4D',
+          'value': 5.0,
+          'currency': 'EUR'
+        });
+      }
       gtag('event', 'richiesta_contatto');
+      /* Evento GA4 di sola lettura, senza parametri e senza valore: dice da
+         quale superficie e' partito il contatto senza toccare le conversioni. */
+      if (source === SOURCE_BINARIO_A) gtag('event', 'contatto_binario_a');
     }
     document.getElementById('contactFormBlock').style.display = 'none';
     document.getElementById('contactFormSuccess').style.display = 'block';

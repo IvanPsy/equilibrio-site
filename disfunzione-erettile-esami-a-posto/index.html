@@ -191,3 +191,20 @@ extra_css: |
 </section>
 
 <p class="uscita-guida">Se in questo momento vuoi solo leggere qualcosa, c'è la guida <a href="{{ '/guida-de/' | relative_url }}">«Quando la testa spegne il corpo»</a>, che spiega il meccanismo. La ricevi per email.</p>
+
+<!-- 25/08/2026 (prompt-07) - LETTURA DEL CANALE WHATSAPP DI QUESTA PAGINA.
+     Evento GA4 puro, senza parametri, senza valore e senza nessuna azione di
+     conversione dietro: serve solo a sapere quanti, dal Binario A, scelgono
+     WhatsApp invece del modulo. La conversione `GJyQ` del layout continua a
+     scattare come prima e non viene toccata (nessun `data-wa-own` qui).
+     ⚠️ Un clic su WhatsApp NON e' un contatto e non e' un CCQ: e' intenzione.
+     Il contatto lo si vede solo quando il messaggio arriva davvero. -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      if (typeof gtag === 'function') gtag('event', 'clic_whatsapp_binario_a');
+    });
+  });
+});
+</script>

@@ -62,7 +62,27 @@ body_class: "page-guida-step"
      ai contatti confermati. Incrociare con il dato reale degli iscritti CONFERMATI
      letto da SendFox (lista "Equilibrio - Guida Autovalutazione DE").
      Riusa l'azione "Iscrizione Guida" di Google Ads (label del 10/06/2026). -->
+<!-- 25/08/2026 (prompt-07) - AZIONE DI CONVERSIONE PROPRIA PER LA GUIDA DE.
+     Fino a oggi questa pagina e quella della guida PPU mandavano la stessa
+     etichetta `elCG`, quindi in Google Ads le due iscrizioni erano un numero
+     solo e la lettura per verticale era cieca. Da qui in avanti la guida DE ha
+     l'azione "Iscrizione guida DE" e `elCG` resta alla guida PPU.
+     ATTENZIONE: finche' qui sotto resta il segnaposto XXXX_DA_CREARE l'azione
+     non esiste ancora in Google Ads, e il codice manda `elCG` come prima, cosi'
+     non si apre un buco nella serie. Ivan sostituisce SOLO la parte dopo la
+     barra con l'etichetta vera (task Things 07).
+     Dove sostituire: la riga ETICHETTA_GUIDA_DE qui sotto.
+     Il giorno della sostituzione separa le due serie: prima `elCG` contava
+     DE piu' PPU, dopo conta solo PPU. I due periodi non si sommano. -->
 <script>
-  gtag('event', 'conversion', { 'send_to': 'AW-1004214539/elCGCMaHx7wcEIuy7N4D' });
-  gtag('event', 'iscrizione_guida_de');
+  (function () {
+    var ETICHETTA_GUIDA_DE = 'AW-1004214539/XXXX_DA_CREARE';
+    var ETICHETTA_CONDIVISA = 'AW-1004214539/elCGCMaHx7wcEIuy7N4D';
+    var creata = ETICHETTA_GUIDA_DE.indexOf('XXXX_DA_CREARE') === -1;
+    if (typeof gtag !== 'function') return;
+    gtag('event', 'conversion', {
+      'send_to': creata ? ETICHETTA_GUIDA_DE : ETICHETTA_CONDIVISA
+    });
+    gtag('event', 'iscrizione_guida_de');
+  })();
 </script>
