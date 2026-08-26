@@ -47,7 +47,7 @@ og_description_default: "Ivan Ferrero, psicologo e psicoterapeuta iscritto all'A
 
 # GA4 — misura dei comportamenti (il tag Ads misura le conversioni, non il percorso).
 # Vuoto = nessun tag caricato. Incollare qui l'ID G-XXXXXXXXXX della proprieta'.
-ga4_id: ""
+ga4_id: "G-918RBZWRGV"
 
 # Build
 markdown: kramdown
