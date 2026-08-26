@@ -173,7 +173,13 @@ function submitContactForm(e) {
      conversione e' un messaggio consegnato, non un bottone premuto. */
   function consegnato() {
     if (typeof gtag === 'function') {
-      gtag('set', 'user_data', { 'email': email });
+      /* 26/08/2026 (prompt-08): rimosse le conversioni migliorate.
+         Mandavano l'indirizzo email a Google insieme a una conversione che,
+         dal 25/08, parte SOLO dalla landing del Binario A: la coppia
+         identificativo piu' azione dedicata equivale a comunicare a un terzo
+         che quella persona ha chiesto aiuto per una difficolta' erettile.
+         Beneficio di attribuzione trascurabile a questo volume, rischio art. 9
+         no. `/privacy/` e' stata allineata nello stesso lavoro. */
       /* Un messaggio consegnato produce UNA conversione sola. Dalla landing del
          Binario A vale 10,00 EUR sull'azione dedicata, da ogni altra superficie
          vale 5,00 EUR su `rjxo`. Mandarle entrambe rifarebbe il doppio conteggio

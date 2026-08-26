@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
 <meta name="description" content="{{ page.description | default: site.description }}">
-<title>{{ page.seo_title | default: page.title }} — {{ site.author }}</title>
+<title>{{ page.seo_title | default: page.title }} · {{ site.author }}</title>
 {% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}">{% endif %}
 
 <!-- Open Graph: anteprima quando un link viene incollato in una chat privata,

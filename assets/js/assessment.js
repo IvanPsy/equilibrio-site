@@ -223,14 +223,15 @@ function sendToGoogleForm() {
   }
   document.getElementById('ctaError').style.display = 'none';
 
-  /* ── Enhanced Conversions: passa email per attribuzione ──
-     Google hasha automaticamente l'email prima di inviarla.
-     Questo permette di attribuire la conversione al clic sull'annuncio
-     anche quando il gclid si perde o il cookie consent è negato. */
+  /* ── 26/08/2026 (prompt-08): rimosse le conversioni migliorate. ──
+     Mandavano l'indirizzo email a Google insieme a una conversione che parte
+     da un percorso su uso problematico di pornografia: un identificativo
+     legato a un dato di salute. Il commento precedente dichiarava anche di
+     voler attribuire "anche quando il cookie consent è negato", che è
+     esattamente la cosa che il consenso serve a impedire.
+     `/privacy/` dichiara dal 26/08 che l'email non viene trasmessa a Google:
+     questa riga la renderebbe falsa. */
   if (typeof gtag === 'function') {
-    gtag('set', 'user_data', {
-      'email': email
-    });
     gtag('event', 'conversion', {
       'send_to': 'AW-1004214539/rjxoCOrHzoAcEIuy7N4D',
       'value': 5.0,

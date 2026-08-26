@@ -379,7 +379,7 @@ extra_css: |
     } else if (score >= 12) {
       band = 'moderata'; bandLabel = 'Difficoltà moderate'; bandClass = 'band-yellow';
       text = '<p>Il tuo punteggio (' + score + '/25) indica difficoltà erettili di grado moderato. Questo ha probabilmente un impatto concreto sulla tua vita intima.</p>' +
-             '<div class="mini-result-highlight">Le difficoltà in questa fascia hanno quasi sempre una componente psicologica significativa (ansia anticipatoria, auto-monitoraggio durante il rapporto, pensieri intrusivi). Sono meccanismi precisi, conosciuti, e trattabili. Con il percorso giusto, la risposta al trattamento è tra le più rapide.</div>' +
+             '<div class="mini-result-highlight">Le difficoltà in questa fascia hanno quasi sempre una componente psicologica significativa (ansia anticipatoria, auto-monitoraggio durante il rapporto, pensieri intrusivi). Sono meccanismi precisi, conosciuti, e descritti dalla ricerca. Su questi si lavora in modo strutturato, con una valutazione iniziale e fasi definite.</div>' +
              '<p>Se non hai ancora fatto un controllo urologico, è un buon primo passo per escludere componenti organiche. I due percorsi (medico e psicologico) si completano.</p>';
     } else {
       band = 'severa'; bandLabel = 'Difficoltà significative'; bandClass = 'band-red';
@@ -387,7 +387,7 @@ extra_css: |
              '<div class="mini-result-highlight">Con un punteggio in questa fascia, è importante un approccio completo: escludere componenti organiche (se non l\'hai già fatto) e indagare le componenti psicologiche (ansia da prestazione, stress cronico, dinamiche di coppia, e altri fattori che spesso vengono trascurati). Quando la componente psicologica pesa, si lavora su meccanismi descritti e documentati, non su impressioni.</div>';
     }
 
-    var scoreDisplay = allZero ? '—' : score;
+    var scoreDisplay = allZero ? '·' : score;
     var maxDisplay = allZero ? '' : '<span> / 25</span>';
 
     document.getElementById('miniResultCard').innerHTML =
