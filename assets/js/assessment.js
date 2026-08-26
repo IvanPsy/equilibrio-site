@@ -223,7 +223,7 @@ function sendToGoogleForm() {
   }
   document.getElementById('ctaError').style.display = 'none';
 
-  /* ── 26/08/2026 (prompt-08): rimosse le conversioni migliorate. ──
+  /* ── 26/08/2026 (prompt-08): rimosse le conversioni avanzate. ──
      Mandavano l'indirizzo email a Google insieme a una conversione che parte
      da un percorso su uso problematico di pornografia: un identificativo
      legato a un dato di salute. Il commento precedente dichiarava anche di
