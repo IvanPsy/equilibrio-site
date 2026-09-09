@@ -4,6 +4,8 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://equilibrio.ivanferrero.it/sitemap.xml
+
 # Lead magnet PDF — accessibile solo via link diretto dalla sequenza
 # email post double-opt-in. Non indicizzare per evitare che il PDF
 # compaia nei risultati di ricerca senza il contesto della sequenza
