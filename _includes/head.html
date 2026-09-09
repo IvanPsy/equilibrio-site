@@ -60,6 +60,44 @@
       });
     }
   } catch (e) {}
+
+  /* ── 09/09/2026 · RIPRISTINO DEI PARAMETRI DI ATTRIBUZIONE SULLA URL CORRENTE ──
+     PROBLEMA CHE RISOLVE. Le pagine di conferma delle due guide si raggiungono
+     solo dopo un rimbalzo su sendfox.com (submit del form, poi redirect di
+     ritorno). Un redirect di terze parti NON riporta la query string, quindi su
+     /guida-de/conferma/ e /guida-autovalutazione/conferma/ il `gclid` non c'e'
+     piu'. Senza `gclid` nella URL e senza cookie `_gcl_aw` (che non viene
+     scritto finche' il consenso marketing e' negato), la conversione parte e
+     non ha niente a cui attribuirsi: Google la scarta.
+     📊 Il sintomo, letto il 09/09/2026 in Google Ads: le uniche due azioni di
+     conversione con stato `Configurazione errata` sono esattamente le due che
+     scattano dopo il giro esterno (`Iscrizione guida DE` a zero, `Iscrizione
+     Guida` a 2). Tutte le altre, che scattano sulla stessa pagina di
+     atterraggio, sono `Attivo` e contano.
+     ⚠️ DEVE STARE PRIMA di gtag('config', ...): il tag legge la URL in quel
+     momento, e `url_passthrough` non puo' passare un parametro che non c'e'.
+     Lo script gemello piu' in basso salva i parametri e decora i link interni;
+     questo li rimette sulla URL quando la pagina e' stata raggiunta da fuori.
+     I due si completano: senza questo, il salvataggio non serviva a niente
+     proprio sulle due pagine che contano.
+     GDPR: sessionStorage effimero, stesso visitatore, stessa scheda, nessun
+     dato nuovo raccolto. E' lo stesso meccanismo di `url_passthrough`. */
+  (function () {
+    try {
+      var eqAttr = ['gclid', 'dclid', 'gclsrc', 'utm_source', 'utm_medium',
+                    'utm_campaign', 'utm_term', 'utm_content'];
+      var eqUrl = new URL(window.location.href);
+      var eqCambiata = false;
+      eqAttr.forEach(function (p) {
+        if (eqUrl.searchParams.has(p)) return;
+        var v = sessionStorage.getItem('_eq_' + p);
+        if (v) { eqUrl.searchParams.set(p, v); eqCambiata = true; }
+      });
+      if (eqCambiata && window.history && history.replaceState) {
+        history.replaceState(null, '', eqUrl.toString());
+      }
+    } catch (e) {}
+  })();
 </script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.gtag_id }}"></script>
@@ -76,6 +114,11 @@
   gtag('set', 'ads_data_redaction', true);
 
   /* ── Preserva gclid/utm tra navigazioni interne ──
+     ⚠️ Questo e' il GEMELLO del blocco di ripristino che sta piu' in alto, nel
+     primo script del head. Quello rimette i parametri sulla URL quando la
+     pagina e' stata raggiunta da un rimbalzo esterno; questo li salva e decora
+     i link interni. Se ne tocchi uno, guarda anche l'altro: la lista `params`
+     deve restare identica nei due.
      Quando ad_storage è denied, il cookie _gcl_aw non viene scritto.
      url_passthrough funziona solo per link cross-domain.
      Questo script salva i parametri di attribuzione in sessionStorage
