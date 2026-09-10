@@ -59,6 +59,23 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+# Fuori dalla sitemap: i due PDF lead magnet (gia' Disallow in robots.txt)
+# e il file di verifica di Search Console. Una sitemap che propone URL
+# bloccati da robots.txt genera errori in Search Console.
+defaults:
+  - scope:
+      path: "assets/guida"
+    values:
+      sitemap: false
+  - scope:
+      path: "assets/guida-de"
+    values:
+      sitemap: false
+  - scope:
+      path: "googled29362825b2f1d97.html"
+    values:
+      sitemap: false
+
 # Exclude from build
 exclude:
   - README.md
