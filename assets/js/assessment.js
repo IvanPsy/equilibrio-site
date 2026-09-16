@@ -51,6 +51,12 @@ function calculateResults() {
   const bps = answers.b1 + answers.b2 + answers.b3 + answers.b4 + answers.b5;
   const iiefItems = [answers.c1, answers.c2, answers.c3, answers.c4, answers.c5];
   const iiefAllZero = iiefItems.every(v => v === 0);
+  /* 16/09/2026: bastano zeri parziali ("non ho avuto attivita'" / "non ho tentato rapporti")
+     per rendere l'IIEF-5 non classificabile. Prima solo il caso tutti-zero era gestito:
+     con zeri parziali la somma scendeva sotto il minimo teorico di 5 e il report
+     dichiarava "difficolta' significative", PIED compresa. */
+  const iiefPartialZero = !iiefAllZero && iiefItems.some(v => v === 0);
+  const iiefNA = iiefAllZero || iiefPartialZero;
   const iief = iiefItems.reduce((s, v) => s + v, 0);
   const phq = answers.d1 + answers.d2;
   const gad = answers.e1 + answers.e2;
@@ -63,6 +69,7 @@ function calculateResults() {
   /* ── Bande IIEF-5 ── */
   let iiefBand, iiefBandLabel, iiefBandClass;
   if (iiefAllZero) { iiefBand = 'noactivity'; iiefBandLabel = 'No attività recente'; iiefBandClass = 'band-yellow'; }
+  else if (iiefPartialZero) { iiefBand = 'nonclassificabile'; iiefBandLabel = 'Non classificabile'; iiefBandClass = 'band-yellow'; }
   else if (iief >= 22) { iiefBand = 'normale'; iiefBandLabel = 'Nella norma'; iiefBandClass = 'band-green'; }
   else if (iief >= 17) { iiefBand = 'lieve'; iiefBandLabel = 'Difficoltà lievi'; iiefBandClass = 'band-yellow'; }
   else if (iief >= 12) { iiefBand = 'moderata'; iiefBandLabel = 'Difficoltà moderate'; iiefBandClass = 'band-yellow'; }
@@ -76,8 +83,8 @@ function calculateResults() {
   const gadBandLabel = gadFlag ? 'Segnale presente' : 'Nella norma';
   const gadBandClass = gadFlag ? 'band-yellow' : 'band-green';
 
-  const iiefDisplay = iiefAllZero ? '\u2014' : iief;
-  const iiefMaxDisplay = iiefAllZero ? '' : '/ 25';
+  const iiefDisplay = iiefNA ? '\u2014' : iief;
+  const iiefMaxDisplay = iiefNA ? '' : '/ 25';
 
   /* ── Score cards ── */
   document.getElementById('scoresGrid').innerHTML =
@@ -113,6 +120,8 @@ function calculateResults() {
     if (bpsBand !== 'basso') {
       r += '<div class="report-highlight"><p>In alcuni casi, l\'evitamento dell\'attività sessuale con un partner può essere collegato proprio al pattern di consumo di pornografia, una sorta di sostituzione che nel tempo modifica le preferenze del sistema di eccitazione. È un aspetto che vale la pena esplorare.</p></div>';
     }
+  } else if (iiefBand === 'nonclassificabile') {
+    r += '<p>Hai indicato che in parte del periodo non ci sono stati rapporti o tentativi. Il questionario sull\'erezione, per come è costruito, misura cosa succede quando si prova: con queste risposte non produce un punteggio affidabile, e per questo non te ne mostro uno.</p><p>Non è un dato negativo né rassicurante: è una domanda aperta. Capire perché i tentativi si sono diradati (desiderio, tensione, evitamento, fattori di coppia o medici) conta più di qualunque numero.</p>';
   } else if (iiefBand === 'normale') {
     r += '<p>Il tuo punteggio (' + iief + '/25) indica un funzionamento erettile nella norma. Questo è un dato positivo.</p>';
     if (bpsBand !== 'basso') {
@@ -150,7 +159,7 @@ function calculateResults() {
     }
   } else if (!phqFlag && gadFlag) {
     r += '<p>Il tuo punteggio nell\'area dell\'ansia (' + gad + '/6) indica un livello di tensione e preoccupazione sopra la norma nelle ultime settimane.</p>';
-    if (iiefBand !== 'normale' && iiefBand !== 'noactivity') {
+    if (iiefBand !== 'normale' && iiefBand !== 'noactivity' && iiefBand !== 'nonclassificabile') {
       r += '<div class="report-highlight"><p>Ansia e funzione erettile sono strettamente collegate. L\'ansia da prestazione può sia causare che mantenere le difficoltà erettili, creando un ciclo in cui la paura del fallimento produce il fallimento stesso. Questo ciclo si può interrompere, ma serve un approccio mirato.</p></div>';
     }
   } else {
@@ -168,7 +177,7 @@ function calculateResults() {
     r += '<p>Le tue risposte mostrano difficoltà erettili significative senza un uso problematico della pornografia. Questo suggerisce che le cause vadano cercate altrove (ansia da prestazione, stress, dinamiche relazionali, o fattori medici). Un assessment più approfondito può identificare con precisione le componenti in gioco.</p>';
   } else if (bpsBand !== 'basso' && iiefBand === 'normale') {
     r += '<p>Il tuo profilo mostra un rapporto problematico con la pornografia ma una funzione erettile ancora nella norma. Il pattern che emerge merita attenzione, perché tende a evolvere nel tempo se non affrontato.</p>';
-  } else if (bpsBand === 'basso' && (iiefBand === 'normale' || iiefBand === 'noactivity')) {
+  } else if (bpsBand === 'basso' && (iiefBand === 'normale' || iiefBand === 'noactivity' || iiefBand === 'nonclassificabile')) {
     r += '<p>Dai punteggi non emergono criticità evidenti. Se hai fatto questo assessment, però, è perché qualcosa ti ha portato a cercare (e questo merita rispetto e attenzione, indipendentemente dai numeri).</p>';
   } else {
     r += '<p>Il tuo profilo presenta elementi su più dimensioni che meritano un\'analisi più approfondita. I numeri da soli raccontano una parte della storia (quello che manca è il contesto: la tua storia, la tua situazione attuale, cosa funziona e cosa no).</p>';
@@ -181,9 +190,9 @@ function calculateResults() {
 
   /* ── Store data for Google Form ── */
   window._assessmentData = {
-    punteggi: 'BPS:' + bps + '/20 IIEF:' + (iiefAllZero ? 'N/A' : iief + '/25') + ' PHQ:' + phq + '/6 GAD:' + gad + '/6',
+    punteggi: 'BPS:' + bps + '/20 IIEF:' + (iiefNA ? 'N/A' : iief + '/25') + ' PHQ:' + phq + '/6 GAD:' + gad + '/6',
     risposte: JSON.stringify(answers),
-    profilo: 'BPS:' + bps + '(' + bpsBandLabel + ') IIEF:' + (iiefAllZero ? 'N/A' : iief) + '(' + iiefBandLabel + ') PHQ:' + phq + '(' + phqBandLabel + ') GAD:' + gad + '(' + gadBandLabel + ')'
+    profilo: 'BPS:' + bps + '(' + bpsBandLabel + ') IIEF:' + (iiefNA ? 'N/A' : iief) + '(' + iiefBandLabel + ') PHQ:' + phq + '(' + phqBandLabel + ') GAD:' + gad + '(' + gadBandLabel + ')'
   };
 
   /* ── Conversion tracking: assessment completato ──

@@ -360,6 +360,8 @@ extra_css: |
 
     var items = [answers.c1, answers.c2, answers.c3, answers.c4, answers.c5];
     var allZero = items.every(function(v) { return v === 0; });
+    /* 16/09/2026: zeri parziali = IIEF-5 non classificabile (prima finivano in fascia severa). */
+    var partialZero = !allZero && items.some(function(v) { return v === 0; });
     var score = items.reduce(function(s, v) { return s + v; }, 0);
 
     var band, bandLabel, bandClass, text;
@@ -368,6 +370,10 @@ extra_css: |
       band = 'noactivity'; bandLabel = 'No attività recente'; bandClass = 'band-yellow';
       text = '<p>Hai indicato di non aver avuto attività sessuale nelle ultime 4 settimane. Questo dato in sé non è un problema, ci possono essere molte ragioni.</p>' +
              '<div class="mini-result-highlight">In alcuni casi, l\'evitamento dell\'intimità è un segnale importante: può essere legato ad ansia da prestazione, a esperienze passate negative, o ad altri fattori che vale la pena esplorare. Una conversazione riservata può aiutare a capire cosa sta succedendo.</div>';
+    } else if (partialZero) {
+      band = 'nonclassificabile'; bandLabel = 'Non classificabile'; bandClass = 'band-yellow';
+      text = '<p>Hai indicato che in parte delle ultime settimane non ci sono stati rapporti o tentativi. Il questionario misura cosa succede quando si prova: con queste risposte non produce un punteggio affidabile, e per questo non te ne mostro uno.</p>' +
+             '<div class="mini-result-highlight">Non è un dato negativo né rassicurante: è una domanda aperta. Quando i tentativi si diradano, spesso è proprio lì che lavora l\'ansia anticipatoria, ma possono esserci anche ragioni di desiderio, di coppia o mediche. Capire quale conta più di un numero.</div>';
     } else if (score >= 22) {
       band = 'normale'; bandLabel = 'Nella norma'; bandClass = 'band-green';
       text = '<p>Il tuo punteggio (' + score + '/25) indica un funzionamento erettile nella norma. Questo è un dato positivo.</p>' +
@@ -387,8 +393,8 @@ extra_css: |
              '<div class="mini-result-highlight">Con un punteggio in questa fascia, è importante un approccio completo: escludere componenti organiche (se non l\'hai già fatto) e indagare le componenti psicologiche (ansia da prestazione, stress cronico, dinamiche di coppia, e altri fattori che spesso vengono trascurati). Quando la componente psicologica pesa, si lavora su meccanismi descritti e documentati, non su impressioni.</div>';
     }
 
-    var scoreDisplay = allZero ? '·' : score;
-    var maxDisplay = allZero ? '' : '<span> / 25</span>';
+    var scoreDisplay = (allZero || partialZero) ? '·' : score;
+    var maxDisplay = (allZero || partialZero) ? '' : '<span> / 25</span>';
 
     document.getElementById('miniResultCard').innerHTML =
       '<div class="mini-result-card">' +
@@ -415,7 +421,7 @@ extra_css: |
     } else if (band === 'lieve') {
       ctaNote = 'Le difficoltà lievi sono spesso le più frustranti: a volte funziona e a volte no, e non capisci perché. È esattamente il terreno dove il meccanismo della paura anticipatoria lavora meglio, di nascosto.';
       contactLead = 'Se preferisci parlarne direttamente, scrivimi: mi racconti la tua situazione, io ti dico se posso aiutarti e come. Anche solo due righe, anche con un nome di fantasia.';
-    } else if (band === 'noactivity') {
+    } else if (band === 'noactivity' || band === 'nonclassificabile') {
       ctaNote = 'Il test non ha potuto misurare granché, e va bene così: quello che conta è capire perché l\'intimità si è fermata, non quanto.';
       contactLead = 'Se preferisci parlarne direttamente, scrivimi: anche solo due righe, anche con un nome di fantasia. Ti rispondo personalmente.';
     } else {
