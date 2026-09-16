@@ -456,6 +456,11 @@ extra_css: |
       contactLead = 'Scrivimi cosa hai già provato e come è andata: bastano tre righe, anche con un nome di fantasia. Ti rispondo io, con due possibilità di orario per una chiamata di 15 minuti.';
     }
 
+    /* 16/09/2026: senza punteggio il titolo "Adesso hai un numero" era falso. */
+    if (band === 'noactivity' || band === 'nonclassificabile') {
+      document.getElementById('miniCtaTitle').textContent = 'Il test non ti ha dato un numero. Quello che manca è il perché.';
+    }
+
     document.getElementById('miniCtaBandNote').textContent = ctaNote;
     document.getElementById('miniCtaContactLead').textContent = contactLead;
 

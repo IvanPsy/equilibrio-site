@@ -184,7 +184,7 @@ function calculateResults() {
   }
   r += '<p>Questo assessment ti dà un primo quadro. Un colloquio approfondito permette di leggere questi dati alla luce della tua esperienza concreta, e capire con precisione cosa sta succedendo e cosa si può fare.</p></div>';
 
-  r += '<div class="report-source"><p>Strumenti utilizzati: <em>Brief Pornography Screen</em> (Kraus et al., 2017), <em>International Index of Erectile Function-5</em> (Rosen et al., 1999), <em>Patient Health Questionnaire-2</em> (Kroenke et al., 2003), <em>Generalized Anxiety Disorder-2</em> (Kroenke et al., 2007). Questo assessment non sostituisce una valutazione clinica.</p></div>';
+  r += '<div class="report-source"><p>Strumenti utilizzati: <em>Brief Pornography Screen</em> (Kraus et al., 2020), <em>International Index of Erectile Function-5</em> (Rosen et al., 1999), <em>Patient Health Questionnaire-2</em> (Kroenke et al., 2003), <em>Generalized Anxiety Disorder-2</em> (Kroenke et al., 2007). Questo assessment non sostituisce una valutazione clinica.</p></div>';
 
   document.getElementById('reportBody').innerHTML = r;
 
