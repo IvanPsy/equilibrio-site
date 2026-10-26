@@ -3,7 +3,7 @@ layout: default
 title: "Problemi di erezione: cosa ti sta succedendo davvero"
 description: "Problemi di erezione e gli esami sono a posto? Cosa succede nel corpo e nella mente quando l'erezione non arriva, e perché si può affrontare."
 permalink: /problemi-di-erezione/
-whatsapp_float: true
+whatsapp_float: false  # tragitto DE, una regola sola: bolla spenta come sulle landing (il numero è più esposizione, non meno)
 extra_css: |
   .article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
   .article-content h1 { font-family: 'Cormorant', Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 500; line-height: 1.25; color: #2D2A26; margin-bottom: 24px; margin-top: 60px; }
@@ -73,6 +73,8 @@ La volta dopo, la paura arriva prima ancora di iniziare</div>
 
 <p>Qui serve una precisazione onesta, perché io sono uno psicologo-psicoterapeuta, non un medico: la valutazione medica conta, e va fatta. Escludere o identificare una componente fisica non è un dettaglio, è il primo passo, soprattutto dopo i 50 anni, dove il quadro è spesso misto. Il medico guarda l'hardware, io lavoro sul software. Se vuoi capire come si distingue una difficoltà psicogena da una organica, con i segnali concreti da osservare, l'ho spiegato qui: <a href="{{ '/disfunzione-erettile-psicologica-cause/' | relative_url }}">disfunzione erettile psicologica, cause e segnali</a>. E se hai meno di quarant'anni e ti chiedi se sia normale così presto, <a href="{{ '/disfunzione-erettile-giovani/' | relative_url }}">la risposta, quasi sempre rassicurante, è in questo articolo</a>.</p>
 
+{% include inline-cta.html href="/disfunzione-erettile-esami-a-posto/" text="Se gli esami sono a posto, c'è una pagina scritta per quel punto esatto →" note="La valutazione, le fasi e i costi, scritti prima" %}
+
 <h2>Il sintomo non è il nemico</h2>
 
 <p>C'è un modo diverso di guardare quello che ti sta succedendo, ed è il modo con cui lo guardo io. Il sintomo non è il problema da spegnere il più in fretta possibile. È una radiografia. Ti sta mostrando qualcosa che, in condizioni normali, resterebbe invisibile. Il corpo, in queste cose, capisce prima della testa. Reagisce a una tensione, a una distanza, a una stanchezza, a una pressione che la mente magari non ha ancora messo a fuoco.</p>
@@ -95,33 +97,15 @@ La volta dopo, la paura arriva prima ancora di iniziare</div>
 
 <p>Quello che posso dirti è come si comincia: con una fase in cui si guarda insieme cosa sta succedendo, quale delle strade è la tua, cosa il sintomo sta provando a mostrarti. Da lì il lavoro prende una direzione, e gli strumenti cambiano a seconda di quello che emerge. Molti uomini, semplicemente capendo il meccanismo, sentono già allentarsi la morsa, perché gran parte della stretta era la paura di essere irreparabili. E tu, fin qui, hai già fatto la cosa più difficile: hai smesso di far finta di niente e hai cominciato a guardarci dentro.</p>
 
-<p>È un percorso, non un interruttore. Non devi avere tutte le risposte adesso. Quello che conta è il primo passo, e ci sono tre modi per farlo, dal più leggero al più diretto.</p>
-
-<p><em>Se vuoi capire meglio prima di parlare con chiunque, ho scritto una guida gratuita e riservata, <strong>"Quando la testa spegne il corpo"</strong>, che entra nel dettaglio di questi meccanismi e di cosa puoi iniziare a fare. La ricevi via email, a tuo ritmo. <a href="{{ '/guida-de/' | relative_url }}">Scarica la guida →</a></em></p>
-
-<p><em>Se invece vuoi una bussola rapida per orientarti tra le possibili cause nel tuo caso, c'è un questionario di autovalutazione gratuito e anonimo (5 minuti) che usa uno strumento validato dalla ricerca. Non è una diagnosi, è un punto di partenza. <a href="{{ '/autovalutazione-de/' | relative_url }}">Fai il test →</a></em></p>
+<p>È un percorso, non un interruttore, e non serve avere tutte le risposte adesso: il primo passo dipende da dove sei già arrivato.</p>
 
 <div class="article-bivio">
     <p><strong>Se hai già fatto visite ed esami e non hanno trovato niente, oppure hai già provato farmaci o altre strade senza un risultato stabile</strong>, il passo utile non è un'altra lettura. C'è una pagina scritta per questa situazione, con la valutazione, le fasi, i costi e come si comincia: <a href="{{ '/disfunzione-erettile-esami-a-posto/' | relative_url }}">la disfunzione erettile con esami a posto</a>.</p>
-    <p>Se invece è la prima volta che ci guardi davvero, il punto di partenza più leggero è il <a href="{{ '/autovalutazione-de/' | relative_url }}">check-up della funzione erettile</a>: cinque domande, nessun dato lascia il tuo telefono.</p>
 </div>
 
 <div class="article-cta">
-    <div class="dual-cta">
-        <div class="dual-cta-primary">
-            <a href="{{ '/contatto/' | relative_url }}#formContatto" class="btn-contact-primary">Scrivimi via email, ti rispondo entro 24 ore</a>
-            <p class="dual-cta-privacy">
-                <span class="privacy-badge">Più privacy</span>
-                La mail arriva direttamente a me (<strong>ivan@ivanferrero.it</strong>). Niente moduli anonimi, niente filtri. Ti rispondo personalmente.
-            </p>
-        </div>
-        <p class="dual-cta-alt">
-            Oppure se preferisci, <a href="https://wa.me/{{ site.whatsapp_number }}?text={{ site.whatsapp_msg_generic }}" class="dual-cta-alt-link" target="_blank" rel="noopener">mandami un messaggio su WhatsApp →</a>
-        </p>
-    </div>
+    {% include dual-cta.html de=true %}
 </div>
-
-<p>Il primo contatto non è un impegno. È solo uno spazio per capire insieme se la strada ha senso, senza giudizio e in piena riservatezza.</p>
 
         <div class="article-signature">
             <p><strong>Ivan Ferrero</strong></p>
