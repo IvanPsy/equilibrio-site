@@ -2,10 +2,14 @@
 sitemap: false
 layout: default
 title: "Come funziona il percorso: fasi, durata, investimento"
-description: "Dettaglio completo del percorso psicologico per la difficoltà di erezione su base psicologica e l'ansia da prestazione: valutazione in due tempi, otto sedute con revisione alla quarta e all'ottava, due richiami. Metodo, misure, costi dichiarati."
+description: "Il percorso psicologico per la difficoltà di erezione su base psicologica e l'ansia da prestazione, passo per passo: la chiamata di 15 minuti che non si paga, la valutazione in due tempi, otto sedute con revisione alla quarta e all'ottava (alcuni percorsi ne chiedono quattro in più), due richiami. Metodo, misure, costi dichiarati."
 canonical: "https://equilibrio.ivanferrero.it/come-funziona/"
 noindex: true
-whatsapp_float: true
+# Smontaggio del 26/10/2026 (modifica 4): bolla WhatsApp spenta come sulle landing DE.
+# Chi legge questa pagina la sera, prima di decidere, è lo stesso uomo delle landing:
+# per lui il numero di telefono è PIÙ esposizione, non meno (nome vero, foto profilo,
+# una chat che la partner può vedere). WhatsApp resta come riga piccola sotto il modulo.
+whatsapp_float: false
 ---
 
 <section class="hero">
@@ -15,6 +19,8 @@ whatsapp_float: true
         <p class="hero-subtitle">Qui c'è tutto il dettaglio: come è fatta la valutazione, quante sedute sono, dove ci si ferma a decidere, quanto costa in tutto. È la pagina per chi sta valutando concretamente se questo è il percorso giusto, e vuole i numeri prima di decidere.</p>
     </div>
 </section>
+
+{% include trust-strip.html %}
 
 <section class="recognition">
     <div class="container">
@@ -26,10 +32,19 @@ whatsapp_float: true
 
 <section class="steps">
     <div class="container">
-        <h2>Le tre parti del percorso</h2>
+        <h2>Le quattro parti del percorso</h2>
 
         <div class="step">
             <div class="step-number">1</div>
+            <div class="step-content">
+                <h3 class="step-title">Una chiamata di 15 minuti</h3>
+                <p class="step-price">Non si paga. La fissiamo dopo il tuo primo messaggio, scegliendo fra i due orari che ti propongo</p>
+                <p class="step-description">Prima di tutto il resto c'è una chiamata di quindici minuti, che non è una seduta e non si paga, perché serve a due cose che vanno fatte prima di cominciare: a me per sentire da te, in poche frasi, che cosa hai già provato e come è andato, e a te per farmi le domande che una pagina scritta non può sciogliere. Così, quando prenoti la valutazione, sai già come si lavora, quanto costa e che cosa ti porti a casa, e la prima seduta parte da quello che hai già fatto invece che da zero.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
             <div class="step-content">
                 <h3 class="step-title">Valutazione in due tempi</h3>
                 <p class="step-price">€230, una volta sola. Comprende i questionari che compili da solo, 75 minuti in videocall e la mappa del percorso</p>
@@ -38,16 +53,16 @@ whatsapp_float: true
         </div>
 
         <div class="step">
-            <div class="step-number">2</div>
+            <div class="step-number">3</div>
             <div class="step-content">
                 <h3 class="step-title">Otto sedute, con revisione alla quarta e all'ottava</h3>
                 <p class="step-price">€120 a seduta, 50 minuti, in genere settimanali</p>
-                <p class="step-description">Otto sedute non è una previsione di quando le cose andranno meglio: è la dose su cui il percorso è costruito, e viene dagli studi che hanno misurato percorsi di questo tipo. Ogni seduta ha la stessa forma: i primi dieci minuti si guardano il compito della settimana e il grafico delle misure, poi c'è un bersaglio solo, poi esce un compito con giorno, ora e luogo, e una previsione scritta di come pensi che andrà, che alla seduta dopo si confronta con quello che è successo davvero. <strong>Alla quarta e all'ottava seduta una parte del tempo non serve a lavorare, serve a decidere</strong>, con i numeri sul tavolo. Le uscite possibili sono tre, le stesse in entrambi i punti: si continua come previsto; si cambia bersaglio, perché quello scelto non era quello giusto; oppure ci si ferma, con un invio a un altro professionista se serve. Se all'ottava i numeri lo indicano si possono aggiungere quattro sedute, ma solo se ricorrono condizioni dichiarate in anticipo, mai perché sembra giusto.</p>
+                <p class="step-description">Otto sedute non è una previsione di quando le cose andranno meglio: è la dose su cui il percorso è costruito, e viene dagli studi che hanno misurato percorsi di questo tipo. Ogni seduta ha la stessa forma: i primi dieci minuti si guardano il compito della settimana e il grafico delle misure, poi c'è un bersaglio solo, poi esce un compito con giorno, ora e luogo, e una previsione scritta di come pensi che andrà, che alla seduta dopo si confronta con quello che è successo davvero. <strong>Alla quarta e all'ottava seduta una parte del tempo non serve a lavorare, serve a decidere</strong>, con i numeri sul tavolo. Le uscite possibili sono tre, le stesse in entrambi i punti: si continua come previsto; si cambia bersaglio, perché quello scelto non era quello giusto; oppure ci si ferma, e in quel caso la mappa e i numeri raccolti restano tuoi, insieme a una nota per il tuo medico se è emerso qualcosa che merita di essere riguardato da lui. Se all'ottava i numeri lo indicano si possono aggiungere quattro sedute, ma solo se ricorrono condizioni dichiarate in anticipo, mai perché sembra giusto.</p>
             </div>
         </div>
 
         <div class="step">
-            <div class="step-number">3</div>
+            <div class="step-number">4</div>
             <div class="step-content">
                 <h3 class="step-title">Due richiami</h3>
                 <p class="step-price">€120 ciascuno. Uno fra quattro e otto settimane dalla fine, uno a tre mesi</p>
@@ -75,7 +90,7 @@ whatsapp_float: true
             </div>
             <div class="pillar">
                 <h3 class="pillar-title">Il lavoro sta fuori dalla stanza</h3>
-                <p class="pillar-text">La seduta serve a capire cosa è successo e a decidere il passo dopo. Il lavoro succede negli esercizi fra una seduta e l'altra, e negli studi il modo in cui vengono fatti pesa sull'esito più di quasi tutto il resto. Ogni compito ha una versione da cinque minuti per le settimane storte, e quella versione conta come compito fatto.</p>
+                <p class="pillar-text">La seduta serve a capire cosa è successo e a decidere il passo dopo. Il lavoro succede nei compiti fra una seduta e l'altra, e negli studi il modo in cui vengono fatti pesa sull'esito più di quasi tutto il resto. Ogni compito ha una versione da cinque minuti per le settimane storte, e quella versione conta come compito fatto.</p>
             </div>
             <div class="pillar">
                 <h3 class="pillar-title">I numeri si guardano insieme</h3>
@@ -90,9 +105,9 @@ whatsapp_float: true
 <section class="recognition">
     <div class="container">
         <h2>Se c'è un farmaco, e se c'è una partner</h2>
-        <p><strong>Il farmaco.</strong> Non è un concorrente di questo lavoro e non è una stampella da smontare. Fa quello che sa fare, che è metà del lavoro: agisce sull'idraulica, per qualche ora. L'altra metà è il motivo per cui l'allarme si accende prima ancora che l'idraulica entri in gioco, e lì il farmaco non arriva. Le revisioni disponibili non dicono che il lavoro psicologico batte il farmaco: dicono che insieme reggono meglio di ciascuno da solo, e le linee guida europee del 2025 raccomandano di combinarli. Ogni decisione sulla terapia resta del tuo medico: io non prescrivo e non suggerisco di sospendere niente. Se serve, scrivo al tuo medico una nota che dice cosa stiamo facendo, e gliela porti tu.</p>
+        <p><strong>Il farmaco.</strong> Non è un concorrente di questo lavoro e non è qualcosa da togliere di mezzo. Fa quello che sa fare, che è metà del lavoro: agisce sull'idraulica, per qualche ora. L'altra metà è il motivo per cui l'allarme si accende prima ancora che l'idraulica entri in gioco, e lì il farmaco non arriva. Le revisioni disponibili non dicono che il lavoro psicologico batte il farmaco: dicono che insieme reggono meglio di ciascuno da solo, e le linee guida europee del 2025 raccomandano di combinarli. Ogni decisione sulla terapia resta del tuo medico: io non prescrivo e non suggerisco di sospendere niente. Se serve, scrivo al tuo medico una nota che dice cosa stiamo facendo, e gliela porti tu.</p>
         <p><strong>La partner, se c'è.</strong> Entra alla terza seduta, e prima riceve una lettera che le spiega cosa succede, cosa aiuta e cosa non aiuta anche quando viene naturale. La lettera passa da te, non da me. Il suo posto è preciso: non è la paziente e non è la terapeuta, e il suo compito non è far andare le cose più in fretta. Il lavoro insieme serve a due cose che si vedono nei dati: che quello che si ottiene regga nel tempo, e che la relazione ne guadagni.</p>
-        <p><strong>Se non c'è.</strong> Il percorso funziona lo stesso, e i protocolli che hanno misurato risultati in questo campo esistono anche in versione individuale. Cambia una cosa sola: la parte relazionale non diventa facoltativa, diventa una scala di situazioni costruita insieme, con giorni e orari. Renderla facoltativa significherebbe dare ragione all'evitamento, che è esattamente il meccanismo su cui si lavora.</p>
+        <p><strong>Se non c'è.</strong> Il percorso regge lo stesso, perché i protocolli studiati in questo campo esistono anche in versione individuale. Cambia una cosa sola: la parte relazionale non diventa facoltativa, diventa una scala di situazioni costruita insieme, con giorni e orari. Renderla facoltativa significherebbe dare ragione all'evitamento, che è esattamente il meccanismo su cui si lavora.</p>
     </div>
 </section>
 
@@ -139,7 +154,7 @@ whatsapp_float: true
 
         <div class="faq-item">
             <h3 class="faq-question">Cosa succede se devo cancellare una seduta?</h3>
-            <p class="faq-answer">Cancellazione gratuita con almeno 24 ore di preavviso. Meno di 24 ore, la seduta viene addebitata come da prassi clinica condivisa. Questo non per rigidità, ma perché quello slot era riservato a te e non è rimpiazzabile in tempi brevi.</p>
+            <p class="faq-answer">Se cancelli con almeno 24 ore di preavviso non si paga niente. Meno di 24 ore, la seduta viene addebitata come da prassi clinica condivisa. Questo non per rigidità, ma perché quello slot era riservato a te e non è rimpiazzabile in tempi brevi.</p>
         </div>
 
         <div class="faq-item">
@@ -149,7 +164,7 @@ whatsapp_float: true
 
         <div class="faq-item">
             <h3 class="faq-question">E se dopo la valutazione decido di non proseguire?</h3>
-            <p class="faq-answer">Nessun problema, e nessuna penale. La mappa del percorso è tua e puoi portarla a un altro professionista se decidi di cercare un'altra strada: è scritta per essere leggibile anche fuori da qui, non è un documento che vale solo dentro il mio percorso.</p>
+            <p class="faq-answer">Non c'è nessuna penale, perché si paga incontro per incontro e non c'è niente da impegnare in anticipo. La mappa del percorso è tua e resta tua: è scritta con le tue parole e in modo che si legga anche fuori dalla stanza in cui l'abbiamo costruita, tanto che se nel frattempo ti serve il parere del tuo medico puoi portarla a lui, e in due pagine ci trova quello che è emerso e da dove ripartire.</p>
         </div>
 
         <div class="faq-item">
@@ -159,21 +174,29 @@ whatsapp_float: true
 
         <div class="faq-item">
             <h3 class="faq-question">Si può usare il Bonus Psicologo?</h3>
-            <p class="faq-answer">Sì. Sono iscritto all'elenco dei professionisti aderenti al Bonus Psicologo, il contributo pubblico INPS per le sessioni di psicoterapia: se la tua domanda viene accolta, puoi usarlo direttamente nel nostro percorso e alleggerire la quota dei primi mesi. Ho preparato <a href="{{ '/bonus-psicologo/' | relative_url }}">una pagina che spiega come si incastra nel percorso</a>; i numeri sul tuo caso li vediamo quando ci scriviamo.</p>
+            <p class="faq-answer">Sì. Sono iscritto all'elenco dei professionisti aderenti al Bonus Psicologo, il contributo pubblico INPS per le sessioni di psicoterapia: se la tua domanda viene accolta, puoi usarlo direttamente nel nostro percorso, ed è un contributo che ti accompagna seduta dopo seduta. Ho preparato <a href="{{ '/bonus-psicologo/' | relative_url }}">una pagina che spiega come si incastra nel percorso</a>; i numeri sul tuo caso li vediamo quando ci scriviamo.</p>
         </div>
 
         <div class="faq-item">
             <h3 class="faq-question">Prima di prenotare posso farti qualche domanda?</h3>
-            <p class="faq-answer">Sì. Scrivimi quello che ti serve sapere, rispondo io. Le domande sulla struttura, sui costi e su cosa succede se non funziona sono le domande giuste da fare prima, non dopo.</p>
+            <p class="faq-answer">Sì, ed è proprio a questo che serve la chiamata di 15 minuti: <a href="#richiesta">scrivimi qui sotto</a> quello che ti serve sapere e ti rispondo io, perché le domande sulla struttura, sui costi e su che cosa succede se le cose non si muovono sono quelle giuste da fare prima, non dopo.</p>
         </div>
     </div>
 </section>
 
-<section class="cta-final">
+<section class="cta-final" id="richiesta">
     <div class="container">
         <h2>Il passo successivo è la richiesta di valutazione</h2>
-        <p>Se la difficoltà di cui parliamo dura da un po', i controlli medici li hai già fatti e quello che hai provato non ha tenuto, il punto di partenza è <a href="{{ '/disfunzione-erettile-esami-a-posto/' | relative_url }}">la pagina sulla disfunzione erettile con esami a posto</a>: la richiesta di valutazione si fa direttamente da lì, e la prima cosa che ti chiedo è di raccontarmi in tre righe cosa hai già provato.</p>
-        <p>Se preferisci scrivermi da qui, va bene lo stesso: rispondo io, di solito entro 24 ore lavorative, con due possibilità di orario.</p>
-        {% include dual-cta.html %}
+        <p>Raccontami in tre righe che cosa hai già provato e come è andata, anche con un nome di fantasia: ti rispondo io, di solito entro 24 ore lavorative, con due possibilità di orario per la chiamata di 15 minuti, che non si paga e serve a capire insieme da dove partire prima che tu prenoti la valutazione.</p>
+
+        {% include contact-form.html source="Come funziona" qualify=true %}
+
+        <p class="cta-alt-line" style="text-align:center; margin: 24px auto 0; max-width: 520px; font-size: 0.95rem; color: #5C5650;">
+            Oppure se preferisci, <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20letto%20come%20funziona%20il%20percorso%20e%20vorrei%20capire%20come%20funziona%20la%20prima%20chiamata%20di%2015%20minuti." style="color: #6B5B4F; text-decoration: underline;" target="_blank" rel="noopener">mandami un messaggio su WhatsApp →</a>
+        </p>
+
+        <div style="margin-top: 40px; padding-top: 28px; border-top: 1px solid #E8E4DF; text-align: center;">
+            <p class="cta-note-small">Se vuoi prima mettere a fuoco a che punto è la difficoltà, <a href="{{ '/autovalutazione-de/' | relative_url }}" style="color:#6B5B4F; text-decoration:underline;">il check-up della funzione erettile</a> sono sette domande, e le risposte restano sul tuo telefono; se invece vuoi leggere da dove parte chi ha già fatto visite ed esami, c'è <a href="{{ '/disfunzione-erettile-esami-a-posto/' | relative_url }}" style="color:#6B5B4F; text-decoration:underline;">la pagina sulla disfunzione erettile con esami a posto</a>.</p>
+        </div>
     </div>
 </section>
