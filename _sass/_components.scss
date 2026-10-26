@@ -1097,6 +1097,18 @@
     }
 }
 
+// 26/10/2026: negli articoli la regola `.article-content a { color: #6B5B4F }` (extra_css dei post)
+// vinceva sul bottone e il testo spariva nel fondo dello stesso colore: il bottone email
+// era un rettangolo vuoto in tutti gli articoli con dual-cta. Specificità più alta qui.
+.article-content .btn-contact-primary,
+.article-content .btn-contact-primary:visited {
+    color: $color-bg;
+    text-decoration: none;
+}
+.article-content .btn-contact-primary:hover {
+    color: $color-accent;
+}
+
 .dual-cta-tertiary {
     margin-top: 28px;
     padding-top: 22px;
