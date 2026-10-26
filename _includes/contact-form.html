@@ -89,7 +89,19 @@
       <textarea id="cfMessaggio" name="messaggio" rows="3" placeholder="Anche solo due righe, mi aiutano a prepararmi per risponderti al meglio. Puoi usare anche un nome di fantasia."></textarea>
     </div>
     <input type="hidden" id="cfSource" value="{{ form_source }}" />
+    {%- comment -%}
+      26/10/2026, decisione di Ivan: casella di consenso obbligatoria (art. 9 GDPR, quello che la persona
+      scrive nel messaggio può riguardare la salute; /privacy/ §3.3 dichiara il consenso esplicito).
+      Non precompilata. Se manca, l'invio si ferma con un messaggio inequivocabile e il fuoco va sulla casella.
+    {%- endcomment -%}
+    <div class="form-consent" id="cfConsentBox">
+      <label for="cfConsenso" class="form-consent-label">
+        <input type="checkbox" id="cfConsenso" name="consenso" value="si" />
+        <span>Acconsento al trattamento di quello che scrivo qui, compresi eventuali dati sulla mia salute, per ricevere una risposta da Ivan Ferrero. <a href="{{ site.privacy_url }}" target="_blank" rel="noopener">Come tratto i tuoi dati</a>. <span class="required">*</span></span>
+      </label>
+    </div>
     <p class="form-error" id="cfError" style="display:none;">Inserisci un indirizzo email valido.</p>
+    <p class="form-error form-error-consent" id="cfErrorConsenso" style="display:none;" role="alert">Per inviare il messaggio devi spuntare anche la casella del consenso qui sopra: senza quella spunta non posso leggere quello che mi scrivi.</p>
     <button type="submit" class="btn-form-submit" id="cfSubmitBtn">Scrivimi, ti rispondo entro 24 ore lavorative</button>
     <p class="form-note">Ti rispondo io, per email, con due orari per la chiamata di 15 minuti. Niente telefonate a sorpresa, niente newsletter.</p>
   </form>
@@ -162,6 +174,17 @@
   });
 })();
 
+(function () {
+  var c = document.getElementById('cfConsenso');
+  if (!c) return;
+  c.addEventListener('change', function () {
+    if (c.checked) {
+      document.getElementById('cfErrorConsenso').style.display = 'none';
+      document.getElementById('cfConsentBox').classList.remove('is-missing');
+    }
+  });
+})();
+
 function submitContactForm(e) {
   e.preventDefault();
   var email = document.getElementById('cfEmail').value.trim();
@@ -174,6 +197,19 @@ function submitContactForm(e) {
     return false;
   }
   document.getElementById('cfError').style.display = 'none';
+
+  var consenso = document.getElementById('cfConsenso');
+  var consensoBox = document.getElementById('cfConsentBox');
+  var consensoErr = document.getElementById('cfErrorConsenso');
+  if (!consenso.checked) {
+    consensoErr.style.display = 'block';
+    consensoBox.classList.add('is-missing');
+    consenso.focus();
+    if (consensoBox.scrollIntoView) consensoBox.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    return false;
+  }
+  consensoErr.style.display = 'none';
+  consensoBox.classList.remove('is-missing');
   btn.disabled = true;
   btn.textContent = 'Invio in corso…';
 
