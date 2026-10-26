@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Check-up Rapido: Funzionamento Sessuale | Ivan Ferrero"
-description: "5 domande, 2 minuti. Scopri se le tue difficoltà erettili hanno una componente psicologica. Anonimo, risultato immediato. Strumento clinico validato (IIEF-5)."
+title: "Check-up Rapido: Funzionamento Sessuale"
+description: "Sette domande, due minuti: cinque cliniche (IIEF-5, strumento validato che misura la gravità della difficoltà erettile) e due sul percorso già fatto. Anonimo, risultato immediato, nulla lascia il dispositivo."
 canonical: "https://equilibrio.ivanferrero.it/autovalutazione-de/"
 # F8 (audit 13/07): bolla WhatsApp rimossa. È la pagina dove si chiede l'email dopo il test:
 # la promessa di riservatezza ("il calcolo resta sul tuo dispositivo") e una bolla che chiede
@@ -112,7 +112,7 @@ extra_css: |
     <p class="hero-eyebrow">{{ site.author }}, Psicoterapeuta</p>
     <h1>Check-up rapido: come sta funzionando il tuo corpo?</h1>
     <p>Uno strumento clinico validato (IIEF-5) usato da urologi e psicologi in tutto il mondo per valutare la funzione erettile. Ti dà un primo quadro oggettivo, e ti aiuta a capire se serve approfondire.</p>
-    <div class="intro-meta"><span>5 domande</span><span>2 minuti</span><span>Risultato immediato</span></div>
+    <div class="intro-meta"><span>7 domande: 5 cliniche e 2 sulla tua storia</span><span>2 minuti</span><span>Risultato immediato</span></div>
   </div>
 </section>
 
@@ -227,7 +227,7 @@ extra_css: |
 
 <div class="mini-submit">
   <div class="container">
-    <p class="error-msg" id="miniErrorMsg">Rispondi a tutte le 5 domande per vedere il risultato.</p>
+    <p class="error-msg" id="miniErrorMsg">Rispondi a tutte e cinque le domande cliniche per vedere il risultato.</p>
     <p class="error-msg" id="miniErrorQual">Manca la domanda sui controlli medici: serve a capire cosa ha senso proporti dopo.</p>
     <button type="button" class="btn-submit" id="miniBtnSubmit">Vedi il tuo risultato →</button>
     <p class="submit-note">Le tue risposte e il punteggio restano sul tuo dispositivo: non li invio e non li salvo.</p>
@@ -251,11 +251,11 @@ extra_css: |
   <div class="container">
     <h2 id="miniCtaTitle">Adesso hai un numero. Quello che manca è il perché.</h2>
     <p id="miniCtaBandNote"></p>
-    <p id="miniCtaBinarioA" style="display:none;">Se hai già fatto visite e tentativi, c'è una pagina scritta per quel punto esatto: <a href="{{ '/disfunzione-erettile-esami-a-posto/' | relative_url }}">la disfunzione erettile con esami a posto</a>, dove trovi anche come funziona il percorso, quanto dura e quanto costa.</p>
+    <p id="miniCtaBinarioA" style="display:none;">Se hai già fatto visite o tentativi, c'è una pagina scritta per quel punto esatto: <a href="{{ '/disfunzione-erettile-esami-a-posto/' | relative_url }}">la disfunzione erettile con esami a posto</a>, dove trovi anche come funziona il percorso, quanto dura e quanto costa.</p>
     <p id="miniCtaPercorso" style="display:none;">Se prima di decidere qualsiasi cosa vuoi vedere com'è fatto il percorso, fasi, strumenti, durata e costi sono scritti per intero nella pagina su <a href="{{ '/come-funziona/' | relative_url }}">come funziona il percorso</a>.</p>
 
     <div id="miniCtaGuida">
-      <p id="miniCtaGuidaLead">Un punteggio ti dice <em>quanto</em>, non <em>perché</em>. La guida <em>«Quando la testa spegne il corpo»</em> è la parte che manca: ti spiega il meccanismo che c'è dietro un risultato come il tuo, perché la pillola spesso non basta, e da dove si comincia. Te la mando via email, gratis, e la leggi con calma quando vuoi.</p>
+      <p id="miniCtaGuidaLead">Un punteggio ti dice <em>quanto</em>, non <em>perché</em>. La guida <em>«Quando la testa spegne il corpo»</em> è la parte che manca: ti spiega il meccanismo che c'è dietro un risultato come il tuo, perché la pillola spesso non basta, e da dove si comincia. Te la mando via email.</p>
 
       {% include sendfox-form-de.html %}
     </div>
@@ -270,9 +270,12 @@ extra_css: |
       </p>
     </div>
 
-    <div class="mini-full-link" style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #E8E4DF;">
-      <p>Vuoi un profilo più completo? <a href="{{ '/autovalutazione/' | relative_url }}">Fai l'autovalutazione completa su 4 dimensioni →</a></p>
-    </div>
+    <!-- 26/10/2026 (report di smontaggio, modifica 9): nel Binario A la guida
+         si riduce a questa riga, senza il modulo SendFox in pagina. Fuori dal
+         Binario A resta nascosta e la guida si offre per intero sopra. -->
+    <p class="mini-guida-riga" id="miniCtaGuidaRiga" style="display:none; text-align:center; margin: 32px auto 0; padding-top: 24px; border-top: 1px solid #E8E4DF; font-size: 0.9rem; color: #A89B8C;">Se preferisci partire da una lettura, <a href="{{ '/guida-de/' | relative_url }}" style="color: #6B5B4F; text-decoration: underline;">la guida è qui →</a></p>
+    <!-- 26/10/2026: tolto il rimando finale al test sulla pornografia
+         (/autovalutazione/), in tutti e due i rami. Resta raggiungibile dal menu. -->
   </div>
 </section>
 
@@ -366,6 +369,14 @@ extra_css: |
 
     var band, bandLabel, bandClass, text;
 
+    /* Qualificazione (Q6/Q7), letta qui perche' serve gia' ai testi di esito:
+       a chi ha dichiarato esami a posto non si consiglia il controllo urologico
+       che ha appena detto di aver fatto (26/10/2026, modifica 9). */
+    var q6 = answers.q6 || '';
+    var q7 = answers.q7 || [];
+    var esamiAPosto = (q6 === 'aposto');
+    var tentativi = q7.filter(function(v) { return v !== 'niente'; }).length > 0;
+
     if (allZero) {
       band = 'noactivity'; bandLabel = 'No attività recente'; bandClass = 'band-yellow';
       text = '<p>Hai indicato di non aver avuto attività sessuale nelle ultime 4 settimane. Questo dato in sé non è un problema, ci possono essere molte ragioni.</p>' +
@@ -386,11 +397,13 @@ extra_css: |
       band = 'moderata'; bandLabel = 'Difficoltà moderate'; bandClass = 'band-yellow';
       text = '<p>Il tuo punteggio (' + score + '/25) indica difficoltà erettili di grado moderato. Questo ha probabilmente un impatto concreto sulla tua vita intima.</p>' +
              '<div class="mini-result-highlight">Le difficoltà in questa fascia hanno quasi sempre una componente psicologica significativa (ansia anticipatoria, auto-monitoraggio durante il rapporto, pensieri intrusivi). Sono meccanismi precisi, conosciuti, e descritti dalla ricerca. Su questi si lavora in modo strutturato, con una valutazione iniziale e fasi definite.</div>' +
-             '<p>Se non hai ancora fatto un controllo urologico, è un buon primo passo per escludere componenti organiche. I due percorsi (medico e psicologico) si completano.</p>';
+             (esamiAPosto ? '' : '<p>Se non hai ancora fatto un controllo urologico, è un buon primo passo per escludere componenti organiche. I due percorsi (medico e psicologico) si completano.</p>');
     } else {
       band = 'severa'; bandLabel = 'Difficoltà significative'; bandClass = 'band-red';
       text = '<p>Il tuo punteggio (' + score + '/25) indica difficoltà erettili significative. Probabilmente questo sta avendo un impatto importante sulla tua vita intima e sulla tua autostima.</p>' +
-             '<div class="mini-result-highlight">Con un punteggio in questa fascia, è importante un approccio completo: escludere componenti organiche (se non l\'hai già fatto) e indagare le componenti psicologiche (ansia da prestazione, stress cronico, dinamiche di coppia, e altri fattori che spesso vengono trascurati). Quando la componente psicologica pesa, si lavora su meccanismi descritti e documentati, non su impressioni.</div>';
+             (esamiAPosto
+               ? '<div class="mini-result-highlight">Con un punteggio in questa fascia è importante un approccio completo, e la parte medica l\'hai già fatta: gli esami a posto sono la premessa che permette di guardare alle componenti psicologiche (ansia da prestazione, stress cronico, dinamiche di coppia, e altri fattori che spesso vengono trascurati). Quando la componente psicologica pesa, si lavora su meccanismi descritti e documentati, non su impressioni.</div>'
+               : '<div class="mini-result-highlight">Con un punteggio in questa fascia, è importante un approccio completo: escludere componenti organiche (se non l\'hai già fatto) e indagare le componenti psicologiche (ansia da prestazione, stress cronico, dinamiche di coppia, e altri fattori che spesso vengono trascurati). Quando la componente psicologica pesa, si lavora su meccanismi descritti e documentati, non su impressioni.</div>');
     }
 
     var scoreDisplay = (allZero || partialZero) ? '·' : score;
@@ -407,10 +420,12 @@ extra_css: |
     /* CTA post-risultato calibrata sulla fascia E sulla qualificazione (Q6/Q7).
        Fino al 20/08/2026 la guida era il primo passo per tutti. Dal 21/08 non lo e'
        piu': chi ha gia' fatto controlli medici con esami a posto, oppure ha gia'
-       provato qualcosa, e ha un punteggio in fascia moderata o severa, e' oltre il
-       punto in cui serve un'altra lettura. Per lui la CTA primaria diventa il
-       contatto clinico (Binario A) e la guida scende a secondaria.
-       Nessun dato di Q6/Q7 lascia la pagina: servono solo a ordinare la UI. */
+       provato qualcosa, e' oltre il punto in cui serve un'altra lettura (fino al
+       26/10/2026 valeva solo con fascia moderata o severa). Per lui la CTA
+       primaria diventa il contatto clinico (Binario A) e la guida si riduce a
+       una riga.
+       Q6/Q7 non lasciano la pagina da sole: ordinano la UI e accendono i chip
+       del modulo, che diventano testo del messaggio solo se la persona invia. */
     var ctaNote, contactLead;
     if (band === 'severa') {
       ctaNote = 'Un risultato in questa fascia non è una condanna: è un punto di partenza preciso. Va guardato per intero, componenti mediche comprese, e il modo di guardarlo non è da soli.';
@@ -422,17 +437,18 @@ extra_css: |
       ctaNote = 'Le difficoltà lievi sono spesso le più frustranti: a volte funziona e a volte no, e non capisci perché. È esattamente il terreno dove il meccanismo della paura anticipatoria lavora meglio, di nascosto.';
       contactLead = 'Se preferisci parlarne direttamente, scrivimi: mi racconti la tua situazione, io ti dico se posso aiutarti e come. Anche solo due righe, anche con un nome di fantasia.';
     } else if (band === 'noactivity' || band === 'nonclassificabile') {
-      ctaNote = 'Il test non ha potuto misurare granché, e va bene così: quello che conta è capire perché l\'intimità si è fermata, non quanto.';
+      ctaNote = 'Il test non ha potuto misurare granché, e non è questo il punto: quello che conta è capire perché l\'intimità si è fermata, non quanto.';
       contactLead = 'Se preferisci parlarne direttamente, scrivimi: anche solo due righe, anche con un nome di fantasia. Ti rispondo personalmente.';
     } else {
       ctaNote = 'Il numero è rassicurante. Ma se sei arrivato fin qui, qualcosa ti ha portato a cercare, e quel qualcosa merita comunque una risposta.';
       contactLead = 'Se invece preferisci parlarne direttamente, scrivimi: mi racconti la tua situazione, io ti dico se posso aiutarti e come. Anche solo due righe, anche con un nome di fantasia.';
     }
-    /* Biforcazione B4: qualificato + fascia che pesa = Binario A. */
-    var q6 = answers.q6 || '';
-    var q7 = answers.q7 || [];
-    var tentativi = q7.filter(function(v) { return v !== 'niente'; }).length > 0;
-    var binarioA = (band === 'moderata' || band === 'severa') && (q6 === 'aposto' || tentativi);
+    /* Biforcazione B4. Dal 26/10/2026 (report di smontaggio, modifica 9) il
+       Binario A scatta su QUALUNQUE fascia, lieve e nella norma comprese,
+       quando la persona dichiara esami a posto o almeno un tentativo: la
+       regola della strategia non distingue per punteggio, e chi ha gia' fatto
+       visite o tentativi non va rimesso in coda dietro una guida. */
+    var binarioA = esamiAPosto || tentativi;
 
     if (binarioA) {
       var contatto = document.getElementById('miniCtaContatto');
@@ -448,16 +464,17 @@ extra_css: |
       }
       document.getElementById('miniCtaTitle').textContent = 'Con questo quadro, il passo utile non è un\'altra guida.';
       document.getElementById('miniCtaBinarioA').style.display = 'block';
-      var guidaLead = document.getElementById('miniCtaGuidaLead');
-      if (guidaLead) {
-        guidaLead.innerHTML = 'Se preferisci comunque partire da una lettura, la guida <em>«Quando la testa spegne il corpo»</em> resta qui: spiega il meccanismo che sta dietro un risultato come il tuo. La ricevi via email.';
-      }
-      ctaNote = 'Hai indicato di aver già fatto controlli medici o di aver già provato qualcosa, e il punteggio è in una fascia che pesa. Messe insieme, le due cose dicono una cosa sola: sei oltre il punto in cui serve un\'altra spiegazione. Il passo utile adesso è parlarne con un clinico.';
+      /* La guida si riduce a una riga, senza il modulo SendFox in pagina. */
+      if (guida) guida.style.display = 'none';
+      var guidaRiga = document.getElementById('miniCtaGuidaRiga');
+      if (guidaRiga) guidaRiga.style.display = 'block';
+      ctaNote = 'Hai indicato di aver già fatto controlli medici o di aver già provato qualcosa, e questo conta più del numero qui sopra, qualunque sia: vuol dire che la parte del lavoro che si fa da soli l\'hai già fatta, e che quello che hai provato è informazione da leggere insieme, non un\'altra spiegazione da aggiungere. Il passo utile adesso è parlarne.';
       contactLead = 'Scrivimi cosa hai già provato e come è andata: bastano tre righe, anche con un nome di fantasia. Ti rispondo io, con due possibilità di orario per una chiamata di 15 minuti.';
     }
 
-    /* 16/09/2026: senza punteggio il titolo "Adesso hai un numero" era falso. */
-    if (band === 'noactivity' || band === 'nonclassificabile') {
+    /* 16/09/2026: senza punteggio il titolo "Adesso hai un numero" era falso.
+       26/10/2026: nel Binario A resta il titolo del Binario A. */
+    if (!binarioA && (band === 'noactivity' || band === 'nonclassificabile')) {
       document.getElementById('miniCtaTitle').textContent = 'Il test non ti ha dato un numero. Quello che manca è il perché.';
     }
 
@@ -468,9 +485,33 @@ extra_css: |
        raggiungibile da ogni superficie DE calda. Qui si mostra alle fasce che
        pesano, dove la trasparenza su fasi, durata e prezzi e' un asset di
        conversione e non piu' un rischio. */
-    if (band === 'moderata' || band === 'severa') {
+    if (binarioA || band === 'moderata' || band === 'severa') {
       document.getElementById('miniCtaPercorso').style.display = 'block';
     }
+
+    /* 26/10/2026 (modifica 9): con il Binario A attivo il contatto parte con
+       un source che comincia per "Binario A", cosi' contact-form.html manda la
+       conversione da 10 EUR ("Contatto landing resistente") invece di `rjxo`,
+       e l'evento GA4 contatto_binario_a. Un solo include in pagina: cambia
+       solo il valore del campo nascosto. Il source arriva anche nell'email di
+       avviso e nel registro, come superficie. */
+    if (binarioA) {
+      var cfSource = document.getElementById('cfSource');
+      if (cfSource) cfSource.value = 'Binario A - Mini-Assessment DE';
+    }
+
+    /* 26/10/2026 (modifica 9): i chip del modulo partono gia' attivi quando la
+       risposta c'e' gia' stata alla sesta o alla settima domanda. Si simula il
+       clic, cosi' il chip passa dalla stessa logica del modulo (classe
+       `selected`, aria-pressed, riga preposta al messaggio una volta sola) e la
+       persona vede e puo' togliere la riga come se l'avesse scelta lei.
+       Nessun dato lascia la pagina finche' non preme invio. */
+    function attivaChip(q) {
+      var chip = document.querySelector('.cf-chip[data-cf-q="' + q + '"]');
+      if (chip && !chip.classList.contains('selected')) chip.click();
+    }
+    if (esamiAPosto) attivaChip('medici');
+    if (tentativi) attivaChip('tentativi');
 
     /* Conversion tracking */
     if (typeof gtag === 'function') {

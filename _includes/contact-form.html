@@ -43,6 +43,22 @@
   il contatto SENZA nuovi entry ID del Google Form e SENZA nuovi trattamenti dati
   (stessi tre campi di prima: email, messaggio, pagina di provenienza), quindi
   senza toccare /privacy/.
+
+  26/10/2026 (report di smontaggio, modifica 9 e sezione 2) - TRE COSE.
+  1. Quarto chip, per la partner: "Scrivo per il mio compagno." Non esclude
+     gli altri e non e' escluso da "prima volta": chi scrive per lui puo'
+     anche dire cosa lui ha gia' fatto. La sua riga va in testa alle altre.
+     Non contiene le parole che l'Apps Script cerca per il marcatore
+     [Equilibrio CCQ] ("esami sono a posto", "senza un risultato stabile"),
+     quindi non fa scattare ne' spegne il CCQ: lo decidono le altre righe.
+  2. Il Binario A si riconosce dal PREFISSO del source: ogni source che
+     comincia con "Binario A" vale la conversione da 10,00 EUR e l'evento
+     contatto_binario_a. Serve al check-up DE, che con il Binario A attivo
+     cambia via JS il valore di #cfSource in "Binario A - Mini-Assessment DE"
+     (un secondo include nella stessa pagina duplicherebbe tutti gli id).
+  3. La nota sotto il bottone non dice piu' "Niente telefonate": la risposta
+     propone una chiamata di 15 minuti, e la nota lo dice.
+  Campi raccolti ed endpoint invariati.
 {% endcomment %}
 {% assign form_source = include.source | default: "Pagina generica" %}
 
@@ -63,6 +79,7 @@
         <button type="button" class="cf-chip" data-cf-q="medici" aria-pressed="false" data-cf-line="Ho già fatto visite mediche e gli esami sono a posto.">Ho già fatto visite mediche: esami a posto</button>
         <button type="button" class="cf-chip" data-cf-q="tentativi" aria-pressed="false" data-cf-line="Ho già provato farmaci o altre strade, senza un risultato stabile.">Ho già provato farmaci o altre strade, senza risultato stabile</button>
         <button type="button" class="cf-chip" data-cf-q="prima" aria-pressed="false" data-cf-line="È la prima volta che mi muovo per questa difficoltà.">È la prima volta che mi muovo</button>
+        <button type="button" class="cf-chip" data-cf-q="partner" aria-pressed="false" data-cf-line="Scrivo per il mio compagno.">Scrivo per il mio compagno</button>
       </div>
       <p class="cf-qualify-note">Quello che scegli viene scritto qui sotto, nel messaggio: puoi modificarlo o cancellarlo prima di inviare.</p>
     </div>
@@ -74,7 +91,7 @@
     <input type="hidden" id="cfSource" value="{{ form_source }}" />
     <p class="form-error" id="cfError" style="display:none;">Inserisci un indirizzo email valido.</p>
     <button type="submit" class="btn-form-submit" id="cfSubmitBtn">Scrivimi, ti rispondo entro 24 ore</button>
-    <p class="form-note">Solo email. Niente telefonate, niente newsletter, niente spam. Rispondo personalmente, in prima persona.</p>
+    <p class="form-note">Ti rispondo io, per email, con due orari per la chiamata di 15 minuti. Niente telefonate a sorpresa, niente newsletter.</p>
   </form>
 </div>
 
@@ -108,7 +125,10 @@
   function rebuild() {
     var lines = [];
     chips.forEach(function (c) {
-      if (c.classList.contains('selected')) lines.push(c.getAttribute('data-cf-line'));
+      if (!c.classList.contains('selected')) return;
+      /* la riga della partner va in testa: dice chi sta scrivendo */
+      if (c.getAttribute('data-cf-q') === 'partner') lines.unshift(c.getAttribute('data-cf-line'));
+      else lines.push(c.getAttribute('data-cf-line'));
     });
     var next = lines.length ? lines.join('\n') + '\n\n' : '';
     var rest = ta.value;
@@ -120,10 +140,15 @@
   chips.forEach(function (c) {
     c.addEventListener('click', function () {
       var isPrima = c.getAttribute('data-cf-q') === 'prima';
-      if (!c.classList.contains('selected')) {
-        /* "prima volta" e le altre due si escludono a vicenda */
+      var isPartner = c.getAttribute('data-cf-q') === 'partner';
+      if (!c.classList.contains('selected') && !isPartner) {
+        /* "prima volta" e le altre due si escludono a vicenda;
+           il chip della partner non esclude e non viene escluso */
         if (isPrima) {
-          chips.forEach(function (o) { o.classList.remove('selected'); o.setAttribute('aria-pressed', 'false'); });
+          chips.forEach(function (o) {
+            if (o.getAttribute('data-cf-q') === 'partner') return;
+            o.classList.remove('selected'); o.setAttribute('aria-pressed', 'false');
+          });
         } else {
           var pr = box.querySelector('.cf-chip[data-cf-q="prima"]');
           if (pr) { pr.classList.remove('selected'); pr.setAttribute('aria-pressed', 'false'); }
@@ -166,7 +191,12 @@ function submitContactForm(e) {
      sotto `rjxo` e cominciano a comparire sotto l'azione nuova: le due serie non
      si sommano, e la data va annotata nel piano di misura. */
   var ETICHETTA_BINARIO_A = 'AW-1004214539/D59tCOfjlegcEIuy7N4D';
-  var SOURCE_BINARIO_A = 'Binario A - Esami a posto';
+  /* 26/10/2026: il Binario A si riconosce dal prefisso, non da un valore
+     solo. Oggi i source che cominciano cosi' sono due: "Binario A - Esami a
+     posto" (landing) e "Binario A - Mini-Assessment DE" (check-up DE, ramo
+     Binario A). Un source nuovo che deve valere 10 EUR comincia con "Binario A". */
+  var PREFISSO_BINARIO_A = 'Binario A';
+  var sorgenteBinarioA = source.indexOf(PREFISSO_BINARIO_A) === 0;
 
   /* Successo: si dichiara SOLO qui, cioe' solo dopo che il server ha risposto
      ok. Il pixel Ads sta dentro questo ramo per la stessa ragione: una
@@ -184,7 +214,7 @@ function submitContactForm(e) {
          Binario A vale 10,00 EUR sull'azione dedicata, da ogni altra superficie
          vale 5,00 EUR su `rjxo`. Mandarle entrambe rifarebbe il doppio conteggio
          che il 19/08 ha reso illeggibile la colonna Conversioni. */
-      var suBinarioA = (source === SOURCE_BINARIO_A)
+      var suBinarioA = sorgenteBinarioA
         && ETICHETTA_BINARIO_A.indexOf('XXXX_DA_CREARE') === -1;
       if (suBinarioA) {
         gtag('event', 'conversion', {
@@ -202,7 +232,7 @@ function submitContactForm(e) {
       gtag('event', 'richiesta_contatto');
       /* Evento GA4 di sola lettura, senza parametri e senza valore: dice da
          quale superficie e' partito il contatto senza toccare le conversioni. */
-      if (source === SOURCE_BINARIO_A) gtag('event', 'contatto_binario_a');
+      if (sorgenteBinarioA) gtag('event', 'contatto_binario_a');
     }
     document.getElementById('contactFormBlock').style.display = 'none';
     document.getElementById('contactFormSuccess').style.display = 'block';
