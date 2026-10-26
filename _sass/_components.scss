@@ -46,6 +46,21 @@
     .site-nav-links a { font-size: 0.85rem; }
 }
 
+// 26/10/2026: con quattro voci il menu non sta su una riga da telefono.
+// Sotto i 600px il nome va sopra e le voci vanno a capo, senza scorrimento orizzontale.
+@media (max-width: 600px) {
+    .site-nav .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .site-nav-links {
+        flex-wrap: wrap;
+        gap: 8px 18px;
+    }
+    .site-nav-links a { white-space: nowrap; }
+}
+
 // --- Buttons ---
 
 .btn {
