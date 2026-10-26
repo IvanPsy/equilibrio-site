@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Problemi di Erezione Psicologici | Causa Reale, Soluzione Concreta"
+title: "Problemi di erezione psicologici, con gli esami a posto"
 description: "Esami ok ma il problema c'è? Quando la causa è psicologica serve un percorso mirato. Valutazione diagnostica con uno psicologo-psicoterapeuta. Online, riservato, basato su evidenze scientifiche."
 canonical: "https://equilibrio.ivanferrero.it/disfunzione-erettile-psicologica/"
 # F8 (audit 13/07): bolla WhatsApp RIMOSSA dalle landing fredde. Per questo target
@@ -11,6 +11,9 @@ whatsapp_float: false
 # 21/08/2026 (prompt-02): bivio dei due binari subito sotto l'hero. La gerarchia
 # CTA per il traffico freddo resta quella del 14/07 (test primario, guida
 # secondaria, contatto terziario): il bivio non la sostituisce, smista prima.
+# 26/10/2026 (report di smontaggio, modifica 8): nell'hero il contatto sale a
+# secondaria (forma della primaria del Binario A), la guida scende a terziaria;
+# il modulo SendFox (#guida) passa in coda, sotto il modulo di contatto.
 extra_css: |
   .bivio-binari {
     background-color: #FDFCFA;
@@ -47,19 +50,20 @@ extra_css: |
     <div class="container">
         <p class="hero-eyebrow">{{ site.author }}, Psicoterapeuta</p>
         <h1 class="hero-title">L'urologo dice che è tutto a posto. Ma il problema c'è.</h1>
-        <p class="hero-subtitle">Non ti si alza per l'ansia. La paura di fare cilecca arriva prima del desiderio. Più ci pensi, meno funziona. Se ti riconosci in questa scena, il problema ha un nome preciso, un meccanismo documentato, e una soluzione che non passa dai farmaci.</p>
+        <p class="hero-subtitle">Quando la paura di non farcela arriva prima del desiderio, e più ci si pensa meno il corpo risponde, la difficoltà ha un nome preciso e un meccanismo che la ricerca conosce bene. Se la pillola ha aiutato solo in parte non è un fallimento di nessuno: il farmaco faceva metà del lavoro, quella sul corpo, e l'altra metà sta dove l'allarme si accende prima ancora di cominciare.</p>
         <div class="hero-ctas">
             <a href="{{ '/autovalutazione-de/' | relative_url }}" class="btn">Comincia da un quadro chiaro: il check-up in 2 minuti →</a>
             {% comment %}
-              28/07/2026 — microcopy accorciata (da 135 a ~95 caratteri) per far risalire
+              28/07/2026, microcopy accorciata (da 135 a ~95 caratteri) per far risalire
               il bottone della guida sopra la piega su iPhone: su schermo da 6,1" il
               btn-outline cadeva appena sotto il primo viewport (verificato su iPhone 15 Pro).
               Contenuto invariato nella sostanza: strumento validato + anonimato restano.
               La gerarchia test-first (F1 del 14/07) NON è toccata.
             {% endcomment %}
-            <p class="hero-cta-note">5 domande (IIEF-5, strumento clinico validato). Anonimo: le tue risposte restano sul tuo telefono.</p>
-            <a href="#guida" class="btn-outline">Oppure ricevi la guida gratuita via email →</a>
-            <p class="hero-cta-tertiary">Se invece vuoi scrivermi e basta, <a href="#contatto">puoi farlo qui</a>, anche con un nome di fantasia.</p>
+            <p class="hero-cta-note">Le 5 domande dell'IIEF-5, strumento clinico validato, più 2 su cosa hai già fatto. Anonimo: le tue risposte restano sul tuo telefono.</p>
+            <a href="#contatto" class="btn-outline">Oppure raccontami in tre righe cosa hai già provato →</a>
+            <p class="hero-cta-note">Ti rispondo io, con due orari per una chiamata di 15 minuti che non si paga. Va bene anche un nome di fantasia.</p>
+            <p class="hero-cta-tertiary">Se prima vuoi capire il meccanismo, c'è una guida che lo spiega: <a href="#guida">te la mando per email</a>.</p>
         </div>
     </div>
 </section>
@@ -71,7 +75,7 @@ extra_css: |
         <p class="bivio-title">Due strade, a seconda di dove sei arrivato</p>
         <div class="bivio-grid">
             <p><strong>Hai già fatto visite e tentativi?</strong> Allora non serve ricominciare da capo: <a href="{{ '/disfunzione-erettile-esami-a-posto/' | relative_url }}">c'è una pagina sulla disfunzione erettile con esami a posto</a>, con percorso, durata e costi scritti in chiaro.</p>
-            <p><strong>Vuoi prima capirci qualcosa?</strong> Comincia dal <a href="{{ '/autovalutazione-de/' | relative_url }}">check-up della funzione erettile</a>: 5 domande, 2 minuti, e le risposte restano sul tuo telefono.</p>
+            <p><strong>Vuoi prima capirci qualcosa?</strong> Comincia dal <a href="{{ '/autovalutazione-de/' | relative_url }}">check-up della funzione erettile</a>: 7 domande, 2 minuti, e le risposte restano sul tuo telefono.</p>
         </div>
     </div>
 </section>
@@ -82,16 +86,14 @@ extra_css: |
         <p>Tutto è cominciato con un episodio. Forse eri stanco, stressato, avevi bevuto un bicchiere di troppo. Succede a tutti. Ma quella volta non ha funzionato, e qualcosa è cambiato nella tua testa.</p>
         <p>Da quel momento hai iniziato a pensarci prima. A chiederti <em>se funzionerà</em>. A osservarti, controllarti, monitorare ogni segnale del tuo corpo durante l'intimità. E più ci pensi, meno funziona. Più ti sforzi, più il tuo corpo sembra andare nella direzione opposta.</p>
         <p>Magari ti è capitato con una nuova partner, e da lì hai iniziato a chiederti se era ansia o se "non ti piaceva abbastanza". Magari ti è capitato dopo un periodo di stress al lavoro, e adesso l'ansia è entrata anche nel letto. Magari ti è capitato con la partner di sempre, e adesso eviti di iniziare per paura di come andrà a finire.</p>
-        <p>Hai cercato di correre ai ripari. Hai letto di rimedi online, di tecniche per "calmare l'ansia", di esercizi di respirazione. Magari hai anche preso qualcosa, ansiolitici o farmaci che ti hanno dato temporaneamente un'illusione, ma senza risolvere nulla. Hai fatto visite mediche. Gli esami sono a posto. L'urologo ti ha detto che "è tutto nella testa". E tu sei rimasto lì, con una diagnosi che non ti dà nessuna soluzione concreta.</p>
-        <p>Se questo ti suona familiare, sappi due cose. La prima: è molto più comune di quanto pensi, ed è la situazione che vedo più frequentemente nella mia pratica. La seconda: <strong>"è nella testa" non significa che non sia reale</strong>, significa che la soluzione è in un posto diverso da dove stavi cercando.</p>
+        <p>Hai cercato di correre ai ripari, leggendo consigli online, tecniche per "calmare l'ansia", la respirazione, e magari hai anche preso qualcosa, con la pillola che ha aiutato una sera e non quella dopo. Hai fatto visite mediche, gli esami sono a posto, e l'urologo ti ha detto che "è tutto nella testa", così sei rimasto lì con una risposta che dice dove il problema non è, ma non dove è.</p>
+        <p>Se questo ti suona familiare, sappi due cose. La prima: è molto più comune di quanto pensi, ed è la situazione che vedo più frequentemente nella mia pratica. La seconda: <strong>"è nella testa" non significa che non sia reale</strong>, e non significa che sia colpa tua: significa che il punto in cui intervenire è un altro rispetto a quello dove stavi cercando.</p>
     </div>
 </section>
 
-<section class="lead-magnet-de" id="guida">
+<section class="lead-magnet-de-rimando" style="padding:8px 0 32px;">
     <div class="container" style="max-width:640px;">
-        <h2 style="text-align:center;">Ti ci sei riconosciuto? Allora comincia da qui.</h2>
-        <p style="text-align:center; max-width:560px; margin:0 auto 8px;">La guida è gratuita e te la mando via email. Ti spiega il meccanismo della paura che spegne l'erezione: perché succede, perché la pillola spesso non basta, da dove si comincia. Prima ancora che tu debba dire una parola a qualcuno.</p>
-        {% include sendfox-form-de.html %}
+        <p style="text-align:center; max-width:560px; margin:0 auto; font-size:0.95rem; color:#5C5650;">C'è anche una guida che spiega il meccanismo della paura che spegne l'erezione, e perché la pillola da sola spesso non basta: <a href="#guida" style="color:#6B5B4F; text-decoration:underline;">te la mando per email, il modulo è in fondo alla pagina</a>.</p>
     </div>
 </section>
 
@@ -116,7 +118,7 @@ extra_css: |
         </div>
 
         <p>È un po' come cercare di addormentarsi: più ti concentri sul voler dormire, meno ci riesci. L'eccitazione sessuale funziona allo stesso modo, è una risposta involontaria che <strong>non può coesistere con il monitoraggio ansioso</strong>.</p>
-        <p>Il tuo corpo funziona. Il meccanismo è intatto. Il problema è che la tua mente sta interferendo, e lo sta facendo in modi che la sola forza di volontà non può risolvere.</p>
+        <p>Quando gli esami sono a posto, vuol dire che il corpo ha quello che serve e che a interferire è la mente, in modi che la sola forza di volontà non riesce a sciogliere, perché è proprio lo sforzo di controllare a tenere acceso l'allarme.</p>
         <p>Ma le cause specifiche variano da persona a persona. Ansia da prestazione, stress cronico, dinamiche di coppia, eventi di vita, e a volte fattori legati alle proprie abitudini sessuali che non si è mai considerato. Per questo serve una valutazione che cerchi davvero in tutti i posti giusti.</p>
     </div>
 </section>
@@ -126,15 +128,15 @@ extra_css: |
         <h2>E se è il tuo compagno che ha questo problema?</h2>
         <p>Succede spesso che siano le compagne a cercare per prime. A digitare su Google <em>"come aiutare il mio partner con l'ansia da prestazione"</em> alle due di notte, mentre lui dorme accanto e pensa di non essere capito.</p>
         <p>La prima cosa da sapere è che, nella gran parte dei casi, il problema non ha niente a che fare con te, con quanto ti trova attraente, o con quanto vi amate. È un meccanismo che si è innescato dentro di lui, e che si autoalimenta ogni volta che lui pensa "stavolta devo riuscire". La rassicurazione ("non fa niente, rilassati") spesso peggiora, perché conferma che c'era qualcosa di cui preoccuparsi.</p>
-        <p>Quello che aiuta davvero è togliere la pressione dalla performance e riportare l'intimità su un terreno dove l'obiettivo non è "riuscire". Nel percorso clinico questo lavoro si fa in modo graduale e strutturato, con esercizi che coinvolgono anche la coppia quando ha senso. Se sei qui perché stai cercando informazioni per lui, ho scritto una pagina apposta su <a href="{{ '/mio-marito-non-ha-erezioni/' | relative_url }}">cosa c'entra la partner quando il compagno non ha erezioni</a>: cosa dire, cosa non dire, e cosa dicono i dati sul ruolo di chi sta accanto.</p>
+        <p>Quello che aiuta davvero è togliere la pressione dalla performance e riportare l'intimità su un terreno dove l'obiettivo non è "riuscire". Nel percorso clinico questo lavoro si fa in modo graduale e strutturato, con compiti fuori seduta che coinvolgono anche la coppia quando ha senso. Se sei qui perché stai cercando informazioni per lui, ho scritto una pagina apposta su <a href="{{ '/mio-marito-non-ha-erezioni/' | relative_url }}">cosa c'entra la partner quando il compagno non ha erezioni</a>: cosa dire, cosa non dire, e cosa dicono i dati sul ruolo di chi sta accanto.</p>
     </div>
 </section>
 
 <section class="proof">
     <div class="container">
-        <h2>Si può uscirne. Davvero.</h2>
-        <p>"Ho sconfitto l'ansia da prestazione". "Ho superato la DE psicologica". Sono tra le cose che più spesso gli uomini cercano online, di solito dopo che hanno già cercato il sintomo. Cercano prove che sia possibile, perché dentro di loro hanno iniziato a dubitarne.</p>
-        <p>Non te lo sto dicendo per convincerti: te lo dice la letteratura scientifica. Il lavoro psicologico sulla disfunzione erettile è stato studiato da revisioni sistematiche indipendenti, che ne documentano l'efficacia sia rispetto al non trattamento sia, soprattutto, quando affianca il farmaco: la combinazione dei due funziona meglio del solo farmaco. Non perché il problema sia "meno serio", ma perché quando la causa è nel modo in cui la mente regola l'eccitazione, è lì che si può intervenire davvero: sul ciclo di auto-monitoraggio, sull'ansia anticipatoria, sui significati che hai attribuito al primo episodio.</p>
+        <h2>Cosa dice la ricerca, e cosa non può dire</h2>
+        <p>"Ho sconfitto l'ansia da prestazione". "Ho superato la DE psicologica". Sono tra le cose che più spesso gli uomini cercano online, di solito dopo che hanno già cercato il sintomo, e le cercano perché vogliono una prova che qualcosa si possa muovere, dopo aver cominciato a dubitarne.</p>
+        <p>La prova onesta che si può dare non è una storia, sono gli studi. Una revisione Cochrane su undici studi e 398 uomini ha confrontato il lavoro psicologico con l'assenza di trattamento e con il solo farmaco, e una meta-analisi del 2014 su otto studi e 562 pazienti ha guardato che cosa succede quando le due strade si affiancano: nei dati, il gruppo che riceve lavoro psicologico tende a stare meglio di quello che non riceve nulla, e chi affronta insieme farmaco e lavoro psicologico tende a stare meglio, e ad abbandonare meno, di chi prende soltanto il farmaco. Non perché la difficoltà sia "meno seria", ma perché quando il meccanismo sta nel modo in cui la mente regola l'eccitazione, il lavoro si fa lì: sul ciclo di auto-monitoraggio, sull'ansia anticipatoria, sui significati che si sono attaccati al primo episodio.</p>
         <p>Non significa che funzioni sempre, per tutti, allo stesso modo: nessuno può prometterti un esito, e chi lo fa ti sta vendendo qualcosa. Significa che stai guardando un problema su cui la ricerca ha qualcosa di solido da dire, e che vale la pena capire dove ti trovi tu, dentro quel quadro.</p>
         <p>Il lavoro comincia dal capire cosa stava succedendo, e dallo smettere di combattere il sintomo con la forza di volontà, che è la strada che lo alimenta. Da lì il percorso procede per fasi: stabilizzare, rendere solido quello che cambia, e lavorare sulle cause che hanno innescato il circolo. Quanto tempo serva, e quanto si muova, non è una cosa che si possa dire in anticipo a chi non si è ancora visto.</p>
 
@@ -161,7 +163,7 @@ extra_css: |
             </div>
             <div class="pillar">
                 <h3 class="pillar-title">Fattori comportamentali</h3>
-                <p class="pillar-text">Abitudini, pattern, stile di vita (incluse le abitudini digitali e sessuali che molti professionisti non indagano, ma che la ricerca scientifica mostra essere rilevanti).</p>
+                <p class="pillar-text">Abitudini, pattern, stile di vita (incluse le abitudini digitali e sessuali, che la ricerca scientifica mostra essere rilevanti e che per questo guardo sempre).</p>
             </div>
             <div class="pillar">
                 <h3 class="pillar-title">Contesto relazionale</h3>
@@ -174,9 +176,9 @@ extra_css: |
 <section class="differentiator">
     <div class="container">
         <h2>Non il solito "parliamo e vediamo come va"</h2>
-        <p>Se cerchi qualcuno che ti ascolti e basta, probabilmente non sono la persona giusta. Se cerchi qualcuno che ti dica esattamente cosa sta succedendo, perché, e cosa fare, allora sì.</p>
-        <p>L'approccio che uso è <strong>strutturato e misurabile</strong>. Partiamo da dati concreti, non da impressioni vaghe. Lavoriamo per obiettivi definiti. E dopo ogni fase, misuriamo i progressi con gli stessi strumenti dell'inizio, così sai sempre dove sei.</p>
-        <p>Il percorso integra tecniche diverse a seconda di quello che serve: dalla ristrutturazione dei pensieri disfunzionali al lavoro graduale sulla desensibilizzazione dall'ansia, dalla mindfulness sessuale al coinvolgimento del partner quando è il caso. Non credo nelle soluzioni uguali per tutti, credo nel trovare cosa funziona per te.</p>
+        <p>Se cerchi qualcuno che ti ascolti e basta, probabilmente non sono la persona giusta; se cerchi qualcuno che ti dica che cosa sta succedendo, perché, e da dove si comincia, allora sì.</p>
+        <p>L'approccio che uso è <strong>strutturato e misurabile</strong>: partiamo da dati concreti e non da impressioni vaghe, lavoriamo su un bersaglio definito per volta, e i numeri li guardiamo a ogni seduta con gli stessi strumenti dell'inizio, così sai sempre dove sei.</p>
+        <p>Il percorso integra tecniche diverse a seconda di quello che serve, dalla ristrutturazione dei pensieri che alimentano l'allarme al lavoro graduale sull'ansia, dalla mindfulness sessuale al coinvolgimento della partner quando c'è e quando ha senso, perché non credo nei percorsi uguali per tutti: il primo bersaglio lo decide quello che emerge dalla valutazione.</p>
     </div>
 </section>
 
@@ -187,8 +189,8 @@ extra_css: |
         <div class="step">
             <div class="step-number">1</div>
             <div class="step-content">
-                <h3 class="step-title">Chiamata conoscitiva gratuita</h3>
-                <p class="step-description">15 minuti, online, completamente riservati. Serve a me per capire la tua situazione, e a te per capire se sono la persona giusta. Zero impegno, zero pressione.</p>
+                <h3 class="step-title">Una chiamata di 15 minuti</h3>
+                <p class="step-description">È online, è riservata e non si paga, e serve a me per capire da dove parti e che cosa hai già provato, e a te per capire come lavoro prima di decidere qualunque cosa.</p>
             </div>
         </div>
         
@@ -204,8 +206,14 @@ extra_css: |
             <div class="step-number">3</div>
             <div class="step-content">
                 <h3 class="step-title">Percorso terapeutico</h3>
-                <p class="step-description">Otto sedute settimanali online, con due revisioni sui numeri alla quarta e all'ottava, poi due richiami a distanza. Un bersaglio per seduta, progressi misurati, nessuna coda infinita.</p>
+                <p class="step-description">Il percorso è costruito su otto sedute settimanali online, un bersaglio per seduta, e alla quarta e all'ottava guardiamo i numeri insieme: le uscite sono tre, si continua, si cambia bersaglio oppure ci si ferma. Alcuni percorsi hanno bisogno di quattro sedute in più, e lo si decide solo a condizioni dichiarate prima; poi ci sono due richiami a distanza.</p>
             </div>
+        </div>
+
+        <div class="step-costi" style="max-width:640px; margin:40px auto 0; padding:24px 24px 20px; background:#F7F5F2; border:1px solid #E8E4DF; border-radius:8px;">
+            <h3 style="margin:0 0 10px;">Quanto costa, detto prima e non dopo</h3>
+            <p style="margin:0 0 12px;">La valutazione in due tempi costa 230 euro, e insieme alla prima seduta del percorso i primi due incontri sono 361 euro; ogni seduta successiva è 120 euro, e l'ordine di grandezza di un percorso tipico è intorno a 1.480 euro in tutto, fino a 1.980 se all'ottava i numeri dicono che servono quattro sedute in più, con ENPAP e bollo sempre compresi. Si paga seduta per seduta, nessun impegno da firmare, ci si ferma quando si vuole.</p>
+            <p style="margin:0;"><a href="{{ '/come-funziona/' | relative_url }}" style="color:#6B5B4F; text-decoration:underline;">Fasi, costi e domande sul percorso, scritti per esteso: come funziona →</a></p>
         </div>
     </div>
 </section>
@@ -213,11 +221,14 @@ extra_css: |
 <section class="about">
     <div class="container">
         <h2>Chi c'è dall'altra parte</h2>
-        <p>Sono Ivan Ferrero, psicologo e psicoterapeuta con oltre 20 anni di esperienza.</p>
-        <p>Mi occupo dell'impatto del digitale sul comportamento, le relazioni e la sessualità. Ho lavorato con centinaia di persone, molti uomini che si trovavano esattamente dove sei tu ora: con un corpo che "dovrebbe" funzionare e un problema che nessuno sembra prendere sul serio.</p>
-        <p>Nel tempo ho sviluppato un approccio che integra diversi strumenti terapeutici: dalla terapia cognitivo-comportamentale alla mindfulness, dal lavoro sul corpo all'analisi dei pattern relazionali. La valutazione diagnostica che propongo esplora sistematicamente tutte le cause psicologiche, comprese quelle che altri professionisti spesso trascurano.</p>
+        <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap; margin-bottom:20px;">
+            <img src="{{ '/assets/img/ivan-ferrero.jpg' | relative_url }}" alt="Ivan Ferrero, psicologo e psicoterapeuta" width="96" height="96" loading="lazy" style="width:96px; height:96px; border-radius:50%; object-fit:cover; object-position:center 15%; border:3px solid #E8E4DF; flex-shrink:0;">
+            <p style="margin:0; flex:1; min-width:220px;">Sono Ivan Ferrero, psicologo e psicoterapeuta, {{ site.albo }}: <a href="{{ site.opl_url }}" target="_blank" rel="noopener" style="color:#6B5B4F; text-decoration:underline;">la mia scheda nell'albo pubblico dell'Ordine</a> si controlla in dieci secondi.</p>
+        </div>
+        <p>Mi occupo dell'impatto del digitale sul comportamento, sulle relazioni e sulla sessualità, e nella mia pratica incontro spesso uomini che si trovano dove sei tu adesso, con un corpo che "dovrebbe" funzionare e una difficoltà che nessuno sembra prendere sul serio.</p>
+        <p>Nel tempo ho costruito un modo di lavorare che integra diversi strumenti terapeutici, dalla terapia cognitivo-comportamentale alla mindfulness, dal lavoro sul corpo all'analisi dei pattern relazionali, e la valutazione che propongo guarda in modo sistematico a tutte le componenti psicologiche, comprese le abitudini digitali e sessuali.</p>
         <p>Lavoro esclusivamente online, il che significa che puoi accedere al percorso da qualunque luogo, con la massima discrezione.</p>
-        <p>Se hai domande prima di prenotare una chiamata, scrivimi. Rispondo personalmente.</p>
+        <p>Se hai domande prima di prenotare una chiamata, <a href="#contatto" style="color:#6B5B4F; text-decoration:underline;">scrivimi</a>: rispondo personalmente.</p>
     </div>
 </section>
 
@@ -232,7 +243,7 @@ extra_css: |
         
         <div class="faq-item">
             <h3 class="faq-question">E se il problema fosse fisico e non psicologico?</h3>
-            <p class="faq-answer">La valutazione diagnostica serve esattamente a questo: distinguere le componenti. Se emergono indicatori che suggeriscono una componente organica, te lo dico con chiarezza e ti indirizzo verso il professionista giusto. Non ti terrò in terapia per qualcosa che richiede un intervento medico.</p>
+            <p class="faq-answer">La valutazione diagnostica serve esattamente a questo: distinguere le componenti. Se emergono indicatori che fanno pensare a una componente fisica, te lo dico con chiarezza, e prima di andare avanti viene il medico: non ha senso lavorare sulla mente per qualcosa che va guardato prima con una visita, e quando serve le due strade procedono insieme.</p>
         </div>
 
         <div class="faq-item">
@@ -242,17 +253,17 @@ extra_css: |
         
         <div class="faq-item">
             <h3 class="faq-question">La mia partner deve essere coinvolta?</h3>
-            <p class="faq-answer">Non necessariamente, soprattutto all'inizio. Nelle fasi successive del percorso, coinvolgere il partner può essere molto utile, ma è una decisione che prendiamo insieme, rispettando i tuoi tempi. Se sei single, il percorso funziona altrettanto bene.</p>
+            <p class="faq-answer">Non necessariamente, e all'inizio no: si entra da soli. Se c'è una partner, coinvolgerla può essere utile e di solito avviene entro la terza seduta, ma è una decisione che prendiamo insieme, rispettando i tuoi tempi; e se sei single, o lei preferisce restarne fuori, il percorso è costruito anche per chi lavora da solo.</p>
         </div>
         
         <div class="faq-item">
             <h3 class="faq-question">Quanto dura il percorso?</h3>
-            <p class="faq-answer">Il percorso è costruito su otto sedute settimanali, più due richiami a qualche settimana e a tre mesi: circa due mesi e mezzo di lavoro attivo. Otto non è una previsione di quando le cose andranno meglio, è la dose su cui il percorso è costruito. Se all'ottava i numeri lo indicano si possono aggiungere quattro sedute, solo a condizioni dichiarate in anticipo.</p>
+            <p class="faq-answer">Il percorso è costruito su otto sedute settimanali, più due richiami a qualche settimana e a tre mesi, e alla quarta e all'ottava guardiamo i numeri insieme. Otto non è una previsione di quando le cose andranno meglio, è la dose su cui il percorso è progettato: alla revisione le uscite sono tre, si continua, si cambia bersaglio oppure ci si ferma, e alcuni percorsi hanno bisogno di quattro sedute in più, che si aggiungono solo a condizioni dichiarate in anticipo.</p>
         </div>
         
         <div class="faq-item">
-            <h3 class="faq-question">Funziona davvero senza trattamenti farmacologici?</h3>
-            <p class="faq-answer">Il percorso psicologico è studiato e documentato come trattamento a sé, e anche in combinazione con il farmaco. Le soluzioni farmacologiche agiscono sul meccanismo fisico, ma quando quel meccanismo è intatto, non è lì che sta il problema. Il percorso che propongo lavora direttamente sui fattori che stanno bloccando la risposta naturale del tuo corpo: ansia anticipatoria, auto-monitoraggio, pensieri intrusivi. Sono quelli i veri interruttori da resettare.</p>
+            <h3 class="faq-question">E il farmaco? Devo scegliere fra la pillola e il percorso?</h3>
+            <p class="faq-answer">No, e non sono alternative in concorrenza. Il farmaco fa una parte precisa del lavoro, quella sull'idraulica, e non arriva dove l'allarme si accende prima ancora di cominciare, cioè sull'ansia anticipatoria, sull'auto-monitoraggio e sui pensieri che si infilano nel momento sbagliato, che sono i fattori su cui lavora il percorso. Gli studi citati più sopra hanno guardato il lavoro psicologico da solo e insieme al farmaco, e nei dati la combinazione è quella che regge meglio; le decisioni sul farmaco restano al medico che lo prescrive. Nessuno può prometterti un esito, e chi lo fa ti sta vendendo qualcosa: quello che posso dirti è come si lavora.</p>
         </div>
 
         <div class="faq-item">
@@ -262,7 +273,7 @@ extra_css: |
 
         <div class="faq-item">
             <h3 class="faq-question">E se poi mi trovo incastrato in un percorso lungo?</h3>
-            <p class="faq-answer">Non puoi restare incastrato, perché non c'è niente in cui incastrarsi. Non esistono pacchetti da pagare in blocco né impegni formali: paghi seduta per seduta e ti fermi quando vuoi, senza penali. Se disdici almeno 24 ore prima, la seduta non si paga. La mappa del percorso resta tua in ogni caso, anche se decidi di non proseguire con me. Le sedute con uno psicoterapeuta iscritto all'albo sono detraibili al 19% come spesa sanitaria. <a href="{{ '/come-funziona/' | relative_url }}">Qui trovi tutti i dettagli su fasi, durata e investimento →</a></p>
+            <p class="faq-answer">Non puoi restare incastrato, perché non c'è niente in cui incastrarsi. Non esistono pacchetti da pagare in blocco né impegni formali: paghi seduta per seduta e ti fermi quando vuoi, senza penali. Se disdici almeno 24 ore prima, la seduta non si paga. La mappa del percorso resta tua in ogni caso, anche se decidi di non proseguire con me. Le sedute con uno psicoterapeuta iscritto all'albo sono detraibili al 19% come spesa sanitaria. <a href="{{ '/come-funziona/' | relative_url }}">Qui trovi tutti i dettagli su fasi, durata e costi →</a></p>
         </div>
     </div>
 </section>
@@ -276,7 +287,7 @@ extra_css: |
 <section class="cta-final" id="contatto">
     <div class="container">
         <h2>Se sei arrivato fin qui, forse è il momento di scrivermi</h2>
-        <p>Hai già cercato risposte: dall'urologo, su internet, magari da solo di notte. Se quello che hai letto qui ti ha fatto pensare "ecco, è esattamente questo", il passo successivo è semplice: mi racconti la tua situazione, io ti dico se posso aiutarti e come. Nessun impegno, nessuna pressione, nessuna telefonata a sorpresa.</p>
+        <p>Hai già cercato risposte: dall'urologo, su internet, magari da solo di notte. Se quello che hai letto qui ti ha fatto pensare "ecco, è esattamente questo", il passo successivo è semplice: raccontami in tre righe cosa hai già provato, e ti rispondo io, con due orari per una chiamata di 15 minuti che non si paga, in cui ti dico come lavoro e da dove cominceremmo. Se poi si parte, si paga seduta per seduta, nessun impegno da firmare, ci si ferma quando si vuole.</p>
 
         {% include contact-form.html source="Landing DE Psicologica" %}
 
@@ -285,8 +296,12 @@ extra_css: |
         </p>
 
         <div style="margin-top: 40px; padding-top: 28px; border-top: 1px solid #E8E4DF; text-align: center;">
-            <a href="{{ '/autovalutazione-de/' | relative_url }}" class="btn-outline-small">Non ancora? Comincia dal check-up (5 domande, 2 minuti, anonimo) →</a>
-            <p class="cta-note-small" style="margin-top: 8px;">Oppure <a href="#guida" style="color:#6B5B4F; text-decoration:underline;">ricevi la guida gratuita via email</a>.</p>
+            <a href="{{ '/autovalutazione-de/' | relative_url }}" class="btn-outline-small">Se prima vuoi mettere a fuoco a che punto è la difficoltà: il check-up (7 domande, 2 minuti, anonimo) →</a>
+        </div>
+
+        <div class="guida-de-coda" id="guida" style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #E8E4DF;">
+            <p style="text-align:center; max-width:520px; margin:0 auto; font-size:0.95rem; color:#5C5650;"><strong style="color:#2D2A26;">La guida «Quando la testa spegne il corpo»</strong> spiega il meccanismo della paura che spegne l'erezione, perché la pillola da sola spesso non basta e da dove si comincia, e te la mando per email.</p>
+            {% include sendfox-form-de.html %}
         </div>
     </div>
 </section>
