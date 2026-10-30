@@ -1,5 +1,5 @@
 /* Equilibrio – Assessment scoring logic
-   BPS (Kraus 2017), IIEF-5 (Rosen 1999), PHQ-2, GAD-2
+   BPS (Kraus et al., 2020: 5 item, risposte 0-2, totale 0-10, soglia di screening >= 4), IIEF-5 (Rosen 1999), PHQ-2, GAD-2
    Tutto client-side, nessun dato trasmesso fino al form submit */
 
 const answers = {};
@@ -62,9 +62,13 @@ function calculateResults() {
   const gad = answers.e1 + answers.e2;
 
   /* ── Bande BPS ── */
-  const bpsBand = bps <= 4 ? 'basso' : bps <= 11 ? 'moderato' : 'alto';
-  const bpsBandLabel = bps <= 4 ? 'Basso rischio' : bps <= 11 ? 'Rischio moderato' : 'Rischio significativo';
-  const bpsBandClass = bps <= 4 ? 'band-green' : bps <= 11 ? 'band-yellow' : 'band-red';
+  /* Due soli esiti, come nel paper originale (Kraus et al., 2020): totale 0-10,
+     screening positivo da 4 in su. Gli autori invitano a interpretare la soglia con cautela. */
+  const bpsPositive = bps >= 4;
+  const bpsBand = bpsPositive ? 'positivo' : 'basso';
+  const bpsBandLabel = bpsPositive ? 'Screening positivo: merita un approfondimento' : 'Sotto la soglia di screening';
+  const bpsBandShort = bpsPositive ? 'Screening positivo' : 'Sotto la soglia';
+  const bpsBandClass = bpsPositive ? 'band-yellow' : 'band-green';
 
   /* ── Bande IIEF-5 ── */
   let iiefBand, iiefBandLabel, iiefBandClass;
@@ -88,7 +92,7 @@ function calculateResults() {
 
   /* ── Score cards ── */
   document.getElementById('scoresGrid').innerHTML =
-    '<div class="score-card"><div class="score-card-label">Pornografia</div><div class="score-card-number">' + bps + '<span class="score-card-max"> / 20</span></div><div class="score-card-band ' + bpsBandClass + '">' + bpsBandLabel + '</div></div>' +
+    '<div class="score-card"><div class="score-card-label">Pornografia</div><div class="score-card-number">' + bps + '<span class="score-card-max"> / 10</span></div><div class="score-card-band ' + bpsBandClass + '">' + bpsBandLabel + '</div></div>' +
     '<div class="score-card"><div class="score-card-label">Funzione erettile</div><div class="score-card-number">' + iiefDisplay + '<span class="score-card-max"> ' + iiefMaxDisplay + '</span></div><div class="score-card-band ' + iiefBandClass + '">' + iiefBandLabel + '</div></div>' +
     '<div class="score-card"><div class="score-card-label">Umore</div><div class="score-card-number">' + phq + '<span class="score-card-max"> / 6</span></div><div class="score-card-band ' + phqBandClass + '">' + phqBandLabel + '</div></div>' +
     '<div class="score-card"><div class="score-card-label">Ansia</div><div class="score-card-number">' + gad + '<span class="score-card-max"> / 6</span></div><div class="score-card-band ' + gadBandClass + '">' + gadBandLabel + '</div></div>';
@@ -99,18 +103,17 @@ function calculateResults() {
   // BPS
   r += '<div class="report-section"><h2>Pornografia: cosa indicano le tue risposte</h2>';
   if (bpsBand === 'basso') {
-    r += '<p>Il tuo punteggio (' + bps + '/20) suggerisce che, negli ultimi 6 mesi, il tuo consumo di pornografia non ha presentato segnali di problematicità significativa secondo i parametri di questo strumento.</p><p>Tuttavia, se qualcosa ti ha portato a fare questo assessment (un dubbio, un disagio, una situazione che ti preoccupa), quel segnale merita attenzione. Il fatto di cercare informazioni è già un atto di consapevolezza importante.</p>';
-  } else if (bpsBand === 'moderato') {
-    r += '<p>Il tuo punteggio (' + bps + '/20) indica che il tuo rapporto con la pornografia presenta segnali che meritano attenzione. Non necessariamente una situazione critica, ma un pattern che potrebbe star sottraendo qualcosa alla tua qualità di vita (energia, intimità, serenità).</p><p>Spesso è in questa fascia che un intervento è più efficace: il comportamento non si è ancora consolidato in modo rigido, e ci sono buone leve su cui lavorare.</p>';
-    if (answers.b4 >= 3) {
-      r += '<div class="report-highlight"><p>In particolare, emerge un uso della pornografia come strategia per gestire emozioni spiacevoli. Questo è un pattern importante: quando un comportamento diventa il modo principale per regolare lo stress o la tristezza, tende a rafforzarsi nel tempo.</p></div>';
-    }
-    if (answers.b2 >= 3) {
-      r += '<div class="report-highlight"><p>Segnali una difficoltà nel controllo volontario, la sensazione di non riuscire a smettere anche quando vorresti. Questo non è una questione di forza di volontà: è un meccanismo neurobiologico che può essere affrontato con gli strumenti giusti.</p></div>';
-    }
+    r += '<p>Il tuo punteggio (' + bps + '/10) si colloca sotto la soglia di screening: negli ultimi sei mesi le tue risposte non mostrano segnali che, secondo i parametri di questo strumento, richiedano un approfondimento.</p><p>Tuttavia, se qualcosa ti ha portato a fare questo assessment (un dubbio, un disagio, una situazione che ti preoccupa), quel segnale merita attenzione. Il fatto di cercare informazioni è già un atto di consapevolezza importante.</p>';
   } else {
-    r += '<p>Il tuo punteggio (' + bps + '/20) indica che la pornografia sta avendo un impatto significativo sulla tua vita. Probabilmente lo percepisci già, forse è proprio ciò che ti ha portato qui.</p><p>Un punteggio in questa fascia significa che il comportamento ha sviluppato caratteristiche che lo rendono difficile da gestire autonomamente: interferenza con la vita quotidiana, difficoltà di controllo, uso come regolatore emotivo.</p><div class="report-highlight"><p>Questo non significa che qualcosa in te sia rotto. Il tuo cervello ha sviluppato un pattern di risposta molto forte (e come tutto ciò che si impara, si può cambiare). Le problematiche con punteggi in questa fascia sono tra le più responsive al trattamento strutturato.</p></div>';
+    r += '<p>Il tuo punteggio (' + bps + '/10) raggiunge o supera la soglia di screening (4 o più): le tue risposte indicano che il tuo rapporto con la pornografia merita un approfondimento. Non è una diagnosi e non dice che qualcosa in te sia rotto: è un\'indicazione che c\'è un pattern che vale la pena guardare da vicino, e come tutto ciò che si impara, si può cambiare.</p><p>Le difficoltà di questo tipo rispondono bene a un lavoro strutturato, e aver risposto con sincerità a queste domande è già un primo passo concreto.</p>';
+    if (answers.b4 === 2) {
+      r += '<div class="report-highlight"><p>In particolare, emerge un uso della pornografia come strategia per far fronte a emozioni intense. Questo è un pattern importante: quando un comportamento diventa il modo principale per regolare lo stress o la tristezza, tende a rafforzarsi nel tempo, ed è proprio per questo che lavorare su questo aspetto apre molte possibilità.</p></div>';
+    }
+    if (answers.b2 === 2 || answers.b3 === 2) {
+      r += '<div class="report-highlight"><p>Segnali una difficoltà nel controllo volontario, la sensazione di non riuscire a ridurre o a resistere agli impulsi anche quando vorresti. Non è una questione di forza di volontà: è un meccanismo che può essere affrontato con gli strumenti giusti.</p></div>';
+    }
   }
+  r += '<p><em>Il Brief Pornography Screen è uno strumento di screening, non una diagnosi: gli autori stessi invitano a interpretare la soglia con prudenza.</em></p>';
   r += '</div>';
 
   // IIEF
@@ -169,10 +172,8 @@ function calculateResults() {
 
   // Cross-referencing
   r += '<div class="next-steps"><h2>Cosa significano questi risultati insieme</h2>';
-  if (bpsBand === 'alto' && (iiefBand === 'lieve' || iiefBand === 'moderata' || iiefBand === 'severa')) {
-    r += '<p>Il tuo profilo mostra un quadro coerente: uso significativo di pornografia e difficoltà erettili. In termini clinici, questo è il profilo più chiaro e più responsivo al trattamento, perché le due cose sono probabilmente collegate in modo diretto. Un percorso strutturato che lavori su entrambi i fronti può produrre risultati concreti.</p>';
-  } else if (bpsBand === 'moderato' && (iiefBand === 'lieve' || iiefBand === 'moderata')) {
-    r += '<p>Le tue risposte delineano un profilo tra i più comuni: un consumo di pornografia che ha iniziato a creare attrito, accompagnato da segnali di cambiamento nella risposta sessuale. È il punto in cui un intervento precoce fa la differenza più grande.</p>';
+  if (bpsBand === 'positivo' && (iiefBand === 'lieve' || iiefBand === 'moderata' || iiefBand === 'severa')) {
+    r += '<p>Il tuo profilo mostra un quadro coerente: segnali di uso problematico di pornografia e difficoltà erettili. In termini clinici, questo è un profilo molto leggibile e responsivo al trattamento, perché le due cose sono probabilmente collegate in modo diretto. Un percorso strutturato che lavori su entrambi i fronti può produrre risultati concreti.</p>';
   } else if (bpsBand === 'basso' && (iiefBand === 'moderata' || iiefBand === 'severa')) {
     r += '<p>Le tue risposte mostrano difficoltà erettili significative senza un uso problematico della pornografia. Questo suggerisce che le cause vadano cercate altrove (ansia da prestazione, stress, dinamiche relazionali, o fattori medici). Un assessment più approfondito può identificare con precisione le componenti in gioco.</p>';
   } else if (bpsBand !== 'basso' && iiefBand === 'normale') {
@@ -190,9 +191,9 @@ function calculateResults() {
 
   /* ── Store data for Google Form ── */
   window._assessmentData = {
-    punteggi: 'BPS:' + bps + '/20 IIEF:' + (iiefNA ? 'N/A' : iief + '/25') + ' PHQ:' + phq + '/6 GAD:' + gad + '/6',
+    punteggi: 'BPS:' + bps + '/10 IIEF:' + (iiefNA ? 'N/A' : iief + '/25') + ' PHQ:' + phq + '/6 GAD:' + gad + '/6',
     risposte: JSON.stringify(answers),
-    profilo: 'BPS:' + bps + '(' + bpsBandLabel + ') IIEF:' + (iiefNA ? 'N/A' : iief) + '(' + iiefBandLabel + ') PHQ:' + phq + '(' + phqBandLabel + ') GAD:' + gad + '(' + gadBandLabel + ')'
+    profilo: 'BPS:' + bps + '(' + bpsBandShort + ') IIEF:' + (iiefNA ? 'N/A' : iief) + '(' + iiefBandLabel + ') PHQ:' + phq + '(' + phqBandLabel + ') GAD:' + gad + '(' + gadBandLabel + ')'
   };
 
   /* ── Conversion tracking: assessment completato ──

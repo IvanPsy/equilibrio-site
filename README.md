@@ -58,7 +58,7 @@ jekyll serve
 ## Form
 
 Il form dell'assessment (`autovalutazione/index.html`) invia campi nascosti con i punteggi:
-- `punteggio-bps` (0-20)
+- `punteggio-bps` (0-10, soglia di screening >= 4)
 - `punteggio-iief` (0-25 o N/A)
 - `punteggio-phq` (0-6)
 - `punteggio-gad` (0-6)
