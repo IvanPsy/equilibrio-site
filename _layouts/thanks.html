@@ -1,6 +1,6 @@
 ---
 layout: default
-noindex: true
+noindex: true  # NB: head.html legge page.noindex, non layout.noindex: il noindex va messo anche nel frontmatter di ogni pagina che usa questo layout
 ---
 
 <section class="thank-you">
@@ -12,7 +12,7 @@ noindex: true
             
             <h1>{{ page.heading | default: "Grazie per avermi contattato" }}</h1>
             
-            <p>{{ page.message | default: "Ho ricevuto la tua richiesta. Ti ricontatterò entro 24-48 ore per fissare la chiamata conoscitiva gratuita." }}</p>
+            <p>{{ page.message | default: "Ho ricevuto la tua richiesta. Ti rispondo io, entro 24 ore lavorative, con due possibilità di orario per la chiamata di 15 minuti." }}</p>
             
             <p>{{ page.sub_message | default: "Nel frattempo, se hai domande urgenti puoi scrivermi direttamente." }}</p>
             

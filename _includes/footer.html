@@ -3,9 +3,15 @@
         <p>{{ site.author }}, {{ site.credentials }}</p>
         <p>P.IVA {{ site.piva }}, {{ site.albo }}</p>
         <p style="margin-top: 0.5em; font-size: 0.85em;">
-            <a href="{{ site.privacy_url }}" target="_blank" rel="noopener">Privacy Policy</a>
+            <a href="{{ '/come-funziona/' | relative_url }}">Come funziona</a>
             &nbsp;·&nbsp;
-            <a href="#" id="eqCookieReset">Gestisci preferenze cookie</a>
+            <a href="{{ '/contatto/' | relative_url }}">Scrivimi</a>
+            &nbsp;·&nbsp;
+            <a href="{{ '/disfunzione-erettile-psicologica/' | relative_url }}">Disfunzione erettile psicologica</a>
+            &nbsp;·&nbsp;
+            <a href="{{ site.privacy_url }}" target="_blank" rel="noopener">Privacy</a>
+            &nbsp;·&nbsp;
+            <a href="#" id="eqCookieReset">Gestisci cookie</a>
         </p>
     </div>
 </footer>

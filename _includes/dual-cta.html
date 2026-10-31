@@ -1,7 +1,7 @@
 {% assign wa_msg = include.wa_message | default: site.whatsapp_msg_generic %}
 <div class="dual-cta">
     <div class="dual-cta-primary">
-        <a href="{{ '/contatto/' | relative_url }}#formContatto" class="btn-contact-primary">Scrivimi via email, ti rispondo entro 24 ore</a>
+        <a href="{{ '/contatto/' | relative_url }}#formContatto" class="btn-contact-primary">Scrivimi via email, ti rispondo entro 24 ore lavorative</a>
         <p class="dual-cta-privacy">
             <span class="privacy-badge">Più privacy</span>
             La mail arriva direttamente a me (<strong>ivan@ivanferrero.it</strong>). Niente moduli anonimi, niente filtri. Ti rispondo personalmente.
@@ -11,10 +11,10 @@
         Oppure se preferisci, <a href="https://wa.me/{{ site.whatsapp_number }}?text={{ wa_msg }}" class="dual-cta-alt-link" target="_blank" rel="noopener">mandami un messaggio su WhatsApp →</a>
     </p>
     <div class="dual-cta-tertiary">
-        {% if include.de %}<a href="{{ '/autovalutazione-de/' | relative_url }}" class="btn-outline">Preferisci capire prima? Fai il test (5 minuti) →</a>{% else %}<a href="{{ '/autovalutazione/' | relative_url }}" class="btn-outline">Preferisci capire prima? Fai il test (6 minuti) →</a>{% endif %}
+        {% if include.de %}<a href="{{ '/autovalutazione-de/' | relative_url }}" class="btn-outline">Preferisci capire prima? Fai il check-up della funzione erettile (7 domande, 2 minuti) →</a>{% else %}<a href="{{ '/autovalutazione/' | relative_url }}" class="btn-outline">Preferisci capire prima? Fai il test (6 minuti) →</a>{% endif %}
     </div>
 </div>
 {% comment %} Tier guida: attivare solo dove on-message (cluster pornografia) con {% raw %}{% include dual-cta.html guida=true %}{% endraw %} {% endcomment %}
-{% if include.guida %}{% include guida-cta.html title="Non sei pronto a scrivermi? Inizia dalla guida." text="Una lettura gratuita per capire cosa ti sta succedendo, a tuo ritmo e in forma riservata. La ricevi via email." %}{% endif %}
+{% if include.guida %}{% include guida-cta.html title="C'è anche una guida su questo." text="«Quando la pornografia smette di essere un passatempo»: per capire cosa ti sta succedendo e come si lavora, in forma riservata. Te la mando via email." %}{% endif %}
 {% comment %} Tier guida DE: per gli articoli puri DE/ansia con {% raw %}{% include dual-cta.html de=true %}{% endraw %} — guida e test del funnel DE, mai PPU {% endcomment %}
-{% if include.de %}{% include guida-cta.html url="/guida-de/" title="Non sei pronto a scrivermi? Inizia dalla guida." text="«Quando la testa spegne il corpo»: una lettura gratuita e riservata per capire cosa succede e cosa puoi iniziare a fare, a tuo ritmo. La ricevi via email." %}{% endif %}
+{% if include.de %}{% include guida-cta.html url="/guida-de/" title="C'è anche una guida su questo." text="«Quando la testa spegne il corpo»: per capire perché il corpo può non rispondere anche quando gli esami sono a posto, e come si lavora su quel punto. Te la mando via email, in forma riservata." %}{% endif %}

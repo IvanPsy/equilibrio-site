@@ -55,13 +55,15 @@ extra_css: |
   .numeri-percorso p { margin: 0 0 10px; }
   .numeri-percorso p:last-child { margin-bottom: 0; }
   .numeri-percorso strong { color: #2D2A26; }
-  .uscita-guida {
+  .uscita-coda {
+    max-width: 560px;
+    margin: 28px auto 0;
     text-align: center;
-    padding: 32px 0 56px;
-    font-size: 0.88rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
     color: #A89B8C;
   }
-  .uscita-guida a { color: #6B5B4F; text-decoration: underline; }
+  .uscita-coda a { color: #6B5B4F; text-decoration: underline; }
 ---
 
 <section class="hero">
@@ -72,8 +74,7 @@ extra_css: |
         <div class="hero-ctas">
             <a href="#richiesta" class="btn">Richiedi la valutazione →</a>
             <p class="hero-cta-note">Mi scrivi in tre righe cosa hai già provato e come è andata. Ti rispondo io, con due possibilità di orario per una chiamata di 15 minuti.</p>
-            <p class="hero-cta-tertiary">Se preferisci un messaggio, <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20gi%C3%A0%20fatto%20visite%20o%20tentativi%20e%20vorrei%20capire%20come%20funziona%20la%20valutazione." target="_blank" rel="noopener">puoi scrivermi su WhatsApp</a>. Se invece vuoi prima mettere a fuoco a che punto è la difficoltà, <a href="{{ '/autovalutazione-de/' | relative_url }}">ci sono cinque domande e le risposte restano sul tuo telefono</a>.</p>
-            <p class="hero-cta-tertiary">Se stai leggendo per il tuo compagno, <a href="#giusta">più in basso c'è un passaggio scritto per te</a>.</p>
+            <p class="hero-cta-tertiary">Se preferisci un messaggio, <a href="https://wa.me/{{ site.whatsapp_number }}?text=Ciao%2C%20ho%20gi%C3%A0%20fatto%20visite%20o%20tentativi%20e%20vorrei%20capire%20come%20funziona%20la%20valutazione." target="_blank" rel="noopener">puoi scrivermi su WhatsApp</a>.</p>
         </div>
     </div>
 </section>
@@ -91,6 +92,8 @@ extra_css: |
             <li><strong>Hai provato qualcosa, e non ha tenuto.</strong> Ogni tentativo che non ha funzionato dice qualcosa su dove si inceppa il meccanismo. Se ha funzionato una volta e la volta dopo no, quella differenza è il dato più utile che hai. Non è una colpa da spiegare, è informazione clinica da leggere.</li>
             <li><strong>Non sei fuori tempo, e non sei fuori posto.</strong> Un nuovo paziente su quattro ha quarant'anni o meno, e l'età media di chi chiede aiuto oggi è 32 anni (Capogrosso et al., 2013, San Raffaele Milano). L'età che ti sembra il pezzo più imbarazzante della frase è, nei dati, la più comune.</li>
         </ul>
+
+        <p><strong>«Se non ha funzionato niente, perché dovrebbe funzionare questo?»</strong> È la domanda più onesta che si possa fare arrivati fin qui, e la risposta non è una rassicurazione ma una descrizione: niente di quello che hai provato è andato perduto, perché ogni tentativo che non ha tenuto ha lasciato un'informazione su dove il meccanismo si inceppa, e la valutazione comincia proprio da lì, da che cosa hai provato, da come è andata e soprattutto da che cosa ne hai concluso tu, che è quasi sempre il punto su cui si lavora.</p>
 
         <p class="antipromessa">Nessuno può prometterti un esito, e chi lo fa ti sta vendendo qualcosa. Quello che posso dirti è come si lavora, quanto dura, quanto costa e cosa serve perché abbia senso provarci.</p>
     </div>
@@ -110,12 +113,12 @@ extra_css: |
 <section class="proof">
     <div class="container">
         <h2>Cosa dicono i dati, e cosa non dicono</h2>
-        <p>La strada del farmaco è sensata e per molti è quella giusta da provare per prima. Vale però la pena sapere come va, nei numeri, dopo il primo mese.</p>
+        <p>Che il farmaco tu l'abbia già provato o che non ci sia ancora arrivato, vale la pena sapere che cosa fa e che cosa lascia scoperto: fa metà del lavoro, quella che riguarda l'idraulica, e i numeri raccontano con una certa chiarezza come va quando quella metà resta da sola.</p>
         <p><strong>Metà di chi comincia con la pillola smette entro un anno.</strong> Una meta-analisi su 22 studi e 162.936 pazienti documenta un abbandono dei farmaci per l'erezione intorno al 4% al mese, quasi il 50% entro dodici mesi, più alto nei giovani. Le ragioni principali non sono di efficacia meccanica: sono relazionali e di percezione. <strong>Si smette anche quando i rapporti riescono</strong>, il che dice che la partita non si giocava lì. La pillola lavora sull'idraulica per qualche ora, e il motivo per cui l'allarme si accende lavora su una scala diversa.</p>
         <p>Sull'altro versante, le revisioni sistematiche disponibili confrontano il lavoro psicologico, il farmaco e i due insieme. Una revisione Cochrane su 11 studi e 398 uomini ha misurato una riduzione della persistenza della difficoltà con l'intervento psicologico rispetto al non trattamento, e un vantaggio della combinazione rispetto al solo farmaco. Nella stessa revisione, chi affronta le due cose insieme tende ad andare avanti invece di fermarsi a metà. Una meta-analisi successiva su 8 studi e 562 pazienti propone il trattamento combinato come prima scelta.</p>
         <p>Questo è quanto dicono i dati su una popolazione. Non dicono cosa succederà a te, e nessuno studio può dirlo. <strong>Il farmaco e il percorso psicologico non sono alternative in concorrenza</strong>: nella letteratura recente stanno bene insieme, e se in questo momento la pillola ti serve, non è una cosa da smettere per cominciare.</p>
 
-        <p class="antipromessa">Non ti dico che funzionerà. Ti dico come si lavora, e cosa serve perché abbia senso provarci. Se dopo la valutazione emergono indicatori di una componente organica, te lo dico con chiarezza e ti indirizzo verso il professionista giusto.</p>
+        <p class="antipromessa">Non ti dico che funzionerà. Ti dico come si lavora, e cosa serve perché abbia senso provarci. Se dopo la valutazione emergono indicatori di una componente organica te lo dico con chiarezza, perché in quel caso il primo passo è il medico.</p>
 
         <p class="proof-sources">Se vuoi controllare tu stesso: Corona G. et al., <em>Sildenafil, vardenafil and tadalafil dropout rates</em>, <a href="https://doi.org/10.1111/andr.12255" target="_blank" rel="noopener">Andrology, 2016</a> (22 studi, 162.936 pazienti) · Melnik T., Soares B.G., Nasselo A.G., <em>Psychosocial interventions for erectile dysfunction</em>, <a href="https://pubmed.ncbi.nlm.nih.gov/17636774/" target="_blank" rel="noopener">Cochrane Database of Systematic Reviews, 2007</a> · Schmidt H.M., Munder T., Gerger H., Frühauf S., Barth J., <em>Combination of psychological intervention and phosphodiesterase-5 inhibitors for erectile dysfunction</em>, <a href="https://pubmed.ncbi.nlm.nih.gov/24641632/" target="_blank" rel="noopener">The Journal of Sexual Medicine, 2014</a> · Capogrosso P. et al., <em>One patient out of four with newly diagnosed erectile dysfunction is a young man</em>, <a href="https://doi.org/10.1111/jsm.12179" target="_blank" rel="noopener">The Journal of Sexual Medicine, 2013</a>.</p>
     </div>
@@ -131,7 +134,7 @@ extra_css: |
             <div class="step-content">
                 <h3 class="step-title">Chiamata conoscitiva</h3>
                 <p class="step-price">15 minuti, videocall, non si paga</p>
-                <p class="step-description">Serve a me per capire da dove parti, e a te per capire se sono la persona giusta. Non contiene interventi clinici e non impegna a niente. Se il tuo caso non rientra nel lavoro che faccio, te lo dico e ti indirizzo altrove.</p>
+                <p class="step-description">Serve a me per capire da dove parti, e a te per capire se sono la persona giusta. Non contiene interventi clinici. Se c'è ancora da escludere una causa fisica te lo dico con chiarezza, perché in quel caso il primo passo è il medico.</p>
             </div>
         </div>
 
@@ -154,9 +157,10 @@ extra_css: |
         </div>
 
         <div class="numeri-percorso">
-            <p><strong>A ogni importo si aggiungono il 2% ENPAP e 2 euro di bollo.</strong> Il totale tipico del percorso, già comprensivo, è intorno a 1.480 euro.</p>
+            <p><strong>La valutazione è 230 euro, una volta sola, e poi ogni seduta del percorso è 120</strong>, a cui si aggiungono il contributo previdenziale e il bollo: te lo dico adesso e non dopo, perché è la cifra che ti serve per decidere se cominciare.</p>
+            <p><strong>A ogni importo si aggiungono il 2% ENPAP e 2 euro di bollo.</strong> Il totale tipico del percorso, già comprensivo, è intorno a 1.480 euro, e arriva intorno a 1.980 se all'ottava seduta i numeri dicono che servono quattro sedute in più.</p>
             <p><strong>Si paga seduta per seduta.</strong> Nessun pacchetto da versare in blocco, nessun impegno da firmare, ci si ferma quando si vuole e senza penali.</p>
-            <p><strong>Disdetta gratuita fino a 24 ore prima.</strong> Sotto le 24 ore la seduta viene addebitata: quello slot era riservato e non è rimpiazzabile in tempi brevi.</p>
+            <p><strong>Disdetta senza costi fino a 24 ore prima.</strong> Sotto le 24 ore la seduta viene addebitata: quello slot era riservato e non è rimpiazzabile in tempi brevi.</p>
             <p><strong>Fattura dopo ogni seduta, detraibile al 19%</strong> come spesa sanitaria nella dichiarazione dei redditi.</p>
             <p>Il dettaglio completo di fasi, strumenti e investimento sta nella pagina su <a href="{{ '/come-funziona/' | relative_url }}">come funziona il percorso</a>.</p>
         </div>
@@ -168,7 +172,7 @@ extra_css: |
         <h2>Quando sono la persona giusta, e quando non lo sono</h2>
         <p>Se cerchi qualcuno che ti ascolti e basta, probabilmente non sono la persona giusta. Se cerchi qualcuno che ti dica cosa sta succedendo, su quali elementi si interviene e in che ordine, allora sì. Il lavoro parte da dati raccolti, procede per obiettivi definiti e si misura con gli stessi strumenti alla quarta e all'ottava seduta: è una struttura, non una conversazione a tema.</p>
         <p>Non è la strada giusta se la difficoltà è comparsa da poche settimane dopo un evento isolato e non si è ancora stabilizzata, se non hai ancora escluso le cause fisiche (in quel caso il primo passo è il medico, non io), o se quello che cerchi in questo momento è una lettura e non un percorso.</p>
-        <p>Va bene arrivare qui perché te l'ha chiesto qualcun altro. Nella prima conversazione si guarda anche se diventa una cosa che vuoi tu, perché è quello che regge il percorso. E se stai leggendo per il tuo compagno: puoi fargli sapere che questa porta esiste, non puoi attraversarla al posto suo, e non è compito tuo farlo.</p>
+        <p>Va bene arrivare qui perché te l'ha chiesto qualcun altro. Nella prima conversazione si guarda anche se diventa una cosa che vuoi tu, perché è quello che regge il percorso. E se stai leggendo per il tuo compagno: puoi fargli sapere che questa porta esiste, non puoi attraversarla al posto suo, e non è compito tuo farlo. Quello che stai portando tu ha un peso anche se non ha un sintomo, e per questo <a href="{{ '/mio-marito-non-ha-erezioni/' | relative_url }}#per-te">c'è uno spazio che è tuo</a>.</p>
     </div>
 </section>
 
@@ -185,14 +189,9 @@ extra_css: |
 
         <p class="cta-note-small" style="margin-top: 20px;">Se la parte difficile è proprio scrivere il primo messaggio, <a href="{{ '/chiedere-aiuto/' | relative_url }}" style="color:#6B5B4F; text-decoration:underline;">qui trovi cosa succede quando chiedi aiuto</a>, passo per passo.</p>
 
-        <div style="margin-top: 40px; padding-top: 28px; border-top: 1px solid #E8E4DF; text-align: center;">
-            <a href="{{ '/autovalutazione-de/' | relative_url }}" class="btn-outline-small">Prima vuoi un quadro? Fai il check-up della funzione erettile (5 domande, 2 minuti) →</a>
-            <p class="cta-note-small" style="margin-top: 8px;">Strumento clinico validato (IIEF-5). Misura la gravità, non la causa, e le risposte restano sul tuo dispositivo.</p>
-        </div>
+        <p class="uscita-coda">Se prima vuoi mettere a fuoco a che punto è la difficoltà, c'è <a href="{{ '/autovalutazione-de/' | relative_url }}">il check-up della funzione erettile</a> (sette domande, misura la gravità e non la causa, le risposte restano sul tuo telefono); se vuoi partire da una lettura, <a href="{{ '/guida-de/' | relative_url }}">la guida «Quando la testa spegne il corpo»</a> te la mando via email.</p>
     </div>
 </section>
-
-<p class="uscita-guida">Se in questo momento vuoi solo leggere qualcosa, c'è la guida <a href="{{ '/guida-de/' | relative_url }}">«Quando la testa spegne il corpo»</a>, che spiega il meccanismo. La ricevi per email.</p>
 
 <!-- 25/08/2026 (prompt-07) - LETTURA DEL CANALE WHATSAPP DI QUESTA PAGINA.
      Evento GA4 puro, senza parametri, senza valore e senza nessuna azione di
