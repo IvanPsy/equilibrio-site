@@ -12,6 +12,18 @@ canonical: "https://equilibrio.ivanferrero.it/mio-marito-non-ha-erezioni/"
 # Decisione e dati in de_cartella_lavoro/STATO.md, riga "Superficie per la partner".
 # whatsapp_float spento: legge spesso di notte, accanto a lui.
 whatsapp_float: false
+# 02/11/2026: tre eventi GA4 per sapere quale uscita sceglie chi legge
+# (la pagina per lui, il punto di partenza su di lui, lo spazio per lei).
+# Nessun parametro: solo il nome dell'evento. Lettura in misura/monitoraggio-nurture.md.
+extra_js: |
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a') : null;
+    if (!a || typeof gtag !== 'function') return;
+    var h = a.getAttribute('href') || '';
+    if (h.indexOf('/disfunzione-erettile-esami-a-posto/') !== -1) gtag('event', 'partner_pagina_per_lui');
+    else if (h.indexOf('/problemi-di-erezione/') !== -1) gtag('event', 'partner_pagina_problemi');
+    else if (h === '#per-te') gtag('event', 'partner_spazio_suo');
+  });
 extra_css: |
   .article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
   .article-content h1 { font-family: 'Cormorant', Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 500; line-height: 1.25; color: #2D2A26; margin-bottom: 24px; margin-top: 60px; }
