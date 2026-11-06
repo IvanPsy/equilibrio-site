@@ -1,0 +1,25 @@
+{%- comment -%}
+  Dati strutturati dell'articolo (audit SEO del 06/11/2026).
+  Lega ogni articolo del blog all'entita' "Ivan Ferrero" di schema-person.html
+  (autore con credenziali verificabili) e alle sue date: per i temi di salute
+  e' il segnale di fiducia che Google pesa di piu'.
+  dateModified: si aggiorna SOLO con `last_modified_at:` nel front matter,
+  e solo quando il contenuto cambia nella sostanza.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{ page.url | absolute_url }}#articolo",
+  "mainEntityOfPage": "{{ page.url | absolute_url }}",
+  "headline": {{ page.seo_title | default: page.title | jsonify }},
+  "description": {{ page.description | default: site.description | jsonify }},
+  "inLanguage": "it-IT",
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+  "author": { "@id": "{{ site.url }}/#ivan" },
+  "publisher": { "@id": "{{ site.url }}/#ivan" },
+  "image": "{{ page.image | default: '/assets/img/ivan-ferrero.jpg' | absolute_url }}",
+  "isPartOf": { "@id": "{{ site.url }}/#website" }
+}
+</script>

@@ -3,7 +3,8 @@
 {% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
 <meta name="description" content="{{ page.description | default: site.description }}">
 <title>{{ page.seo_title | default: page.title }} · {{ site.author }}</title>
-{% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}">{% endif %}
+{%- comment -%} Canonical su ogni pagina indicizzabile (audit SEO del 06/11/2026: mancava su 23 pagine). Una pagina puo' ancora dichiararne uno suo con `canonical:` nel front matter. {%- endcomment -%}
+{% unless page.noindex %}<link rel="canonical" href="{{ page.canonical | default: page.url | absolute_url }}">{% endunless %}
 
 <!-- Open Graph: anteprima quando un link viene incollato in una chat privata,
      che su questo funnel e' il modo in cui il sito viene passato di mano. -->
@@ -17,6 +18,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
 {% include schema-person.html %}
+{% if page.collection == "posts" %}{% include schema-articolo.html %}{% endif %}
 
 <!-- Consent Mode v2 Advanced (consente modeling conversioni anche senza consenso) -->
 <script>
