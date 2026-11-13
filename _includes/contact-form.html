@@ -102,17 +102,6 @@
     </div>
     <p class="form-error" id="cfError" style="display:none;">Inserisci un indirizzo email valido.</p>
     <p class="form-error form-error-consent" id="cfErrorConsenso" style="display:none;" role="alert">Per inviare il messaggio devi spuntare anche la casella del consenso qui sopra: senza quella spunta non posso leggere quello che mi scrivi.</p>
-    {%- comment -%}
-      12/11/2026, decisione di Ivan: AVVISO A TEMPO PER IL VIAGGIO (20/11-06/12/2026).
-      La campagna resta accesa e nessuno risponde per 17 giorni: il modulo lo dice,
-      invece di promettere "24 ore lavorative". Si accende da solo giovedi' 19/11 alle 20:00
-      e si spegne da solo a mezzanotte fra il 6 e il 7/12 (ora italiana). Cambia quattro testi
-      e nient'altro: avviso, bottone, nota sotto il bottone resta, messaggio di conferma.
-      Campi, consenso, endpoint e conversioni non sono toccati.
-      Per vederlo prima: aggiungere ?avviso=prova all'indirizzo della pagina.
-      Dopo il 07/12 questo blocco e lo script "cfAssenza" in fondo si possono togliere.
-    {%- endcomment -%}
-    <p id="cfAssenza" hidden style="margin:0 0 14px;padding:12px 14px;border-left:3px solid #8A7A5C;background:#FAF6EF;border-radius:4px;font-size:0.95rem;line-height:1.5;color:#3A3530;"><strong>Dal 20 novembre al 6 dicembre sono in viaggio.</strong> Il tuo messaggio mi arriva lo stesso e ti rispondo io, personalmente, da lunedì 7 dicembre, con due orari per la chiamata di 15 minuti già in quella settimana.</p>
     <button type="submit" class="btn-form-submit" id="cfSubmitBtn">Scrivimi, ti rispondo entro 24 ore lavorative</button>
     <p class="form-note">Ti rispondo io, per email, con due orari per la chiamata di 15 minuti. Niente telefonate a sorpresa, niente newsletter.</p>
   </form>
@@ -351,19 +340,3 @@ function submitContactForm(e) {
 }
 </script>
 
-<script>
-/* cfAssenza: avviso a tempo per il viaggio 20/11-06/12/2026 (vedi commento sopra il bottone). */
-(function () {
-  var ora = Date.now();
-  var da = Date.parse('2026-11-19T20:00:00+01:00');
-  var a = Date.parse('2026-12-07T00:00:00+01:00');
-  var prova = /[?&]avviso=prova(&|$)/.test(window.location.search);
-  if (!prova && !(ora >= da && ora < a)) return;
-  var avviso = document.getElementById('cfAssenza');
-  var bottone = document.getElementById('cfSubmitBtn');
-  var conferma = document.querySelector('#contactFormSuccess p');
-  if (avviso) avviso.hidden = false;
-  if (bottone) bottone.textContent = 'Scrivimi, ti rispondo da lunedì 7 dicembre';
-  if (conferma) conferma.textContent = 'Ti rispondo personalmente da lunedì 7 dicembre, con due possibilità di orario in quella stessa settimana. Controlla anche la cartella spam.';
-})();
-</script>
